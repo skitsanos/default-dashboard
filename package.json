@@ -9,7 +9,8 @@
   "license": "MIT",
   "scripts": {
     "start": "umi dev",
-    "build": "umi build"
+    "build": "umi build",
+    "deploy": "netlify deploy --prod"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
