@@ -1,0 +1,12 @@
+/.idea/
+/node_modules/
+
+*.lock
+*/.umi/
+*/.umi-production/
+
+/dist/
+/.netlify/
+
+/src/pages/__tests__/
+/src/pages/test/
