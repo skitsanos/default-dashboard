@@ -3,6 +3,7 @@ import sidebarMenu from '@/sidebarMenu';
 import {UserOutlined} from '@ant-design/icons';
 import ProLayout from '@ant-design/pro-layout';
 import {Avatar, ConfigProvider} from 'antd';
+import enUS from 'antd/lib/locale/en_US';
 import React, {useState} from 'react';
 
 const Container = props =>
@@ -11,7 +12,7 @@ const Container = props =>
 
     const [pathname, setPathname] = useState(document.location.pathname);
 
-    return <ConfigProvider locale={'en-US'}>
+    return <ConfigProvider locale={enUS}>
         <ProLayout {...sidebarMenu}
                    fixSiderbar={true}
                    fixedHeader={true}
