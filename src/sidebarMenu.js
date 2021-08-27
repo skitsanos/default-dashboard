@@ -1,4 +1,4 @@
-import {DashboardOutlined, FolderOutlined, SettingOutlined, UserOutlined} from '@ant-design/icons';
+import {DashboardOutlined, FolderOutlined, MessageOutlined, SettingOutlined, UserOutlined} from '@ant-design/icons';
 
 const sidebarMenu = {
     route: {
@@ -23,6 +23,12 @@ const sidebarMenu = {
                         name: 'Media'
                     }
                 ]
+            },
+
+            {
+                path: '/chat',
+                name: 'Chat',
+                icon: <MessageOutlined/>
             },
 
             {
