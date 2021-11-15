@@ -33,13 +33,13 @@
     classnames "^2.2.6"
     rc-util "^5.9.4"
 
-"@ant-design/pro-card@^1.17.1":
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-card/-/pro-card-1.17.1.tgz#49c253ea471dec71aa9c505d397a5bb770d46300"
-  integrity sha512-HB2zVX4th7SZsrsFx1ndZ2YdicFhNNf18Rbd2/AtMUssz8jn+P5lBmmlVqNIiEv/RI0V1vaioIHL5eLE8/+aMQ==
+"@ant-design/pro-card@^1.18.0":
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-card/-/pro-card-1.18.0.tgz#6315ddf663dda9c0ba2d5db3349955ac78288a7a"
+  integrity sha512-iuArR3KA14vT1xoIdUkWILV9L0CwhOK0CnNFdfvkgKLYvg1rUiTFCN3hcFpLGjN0fuFgeUHs/yg686WM5mpoUg==
   dependencies:
     "@ant-design/icons" "^4.2.1"
-    "@ant-design/pro-utils" "1.27.0"
+    "@ant-design/pro-utils" "1.28.0"
     classnames "^2.2.6"
     omit.js "^2.0.2"
     rc-util "^5.4.0"
@@ -105,10 +105,10 @@
   dependencies:
     rc-util "^5.0.1"
 
-"@ant-design/pro-utils@1.26.1":
-  version "1.26.1"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.26.1.tgz#23e27760377acbcf1bca99dc6d04d5ef256dc3cc"
-  integrity sha512-VcsZwmcnQfOmHRAPnOzRRc6Ph2AKDjyhWkLrCdmAQd7Ge6CQgUbSapqDERwKPBaIEOmm5NyojeL8EKXBEJMFQA==
+"@ant-design/pro-utils@1.27.0":
+  version "1.27.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.27.0.tgz#f87852e6ef8e86e866b52ccd4ff4cf0265bb7982"
+  integrity sha512-2shQ4D1CDo0+8v2tQO83lwNr5D4CUOBTREe1+WSPlal0BNwqfQ+YPh6MHinzQ5FAAkZyjAu1ImiT2cMmze4x9w==
   dependencies:
     "@ant-design/icons" "^4.3.0"
     "@ant-design/pro-provider" "1.4.20"
@@ -118,10 +118,10 @@
     react-sortable-hoc "^2.0.0"
     swr "1.1.0-beta.6"
 
-"@ant-design/pro-utils@1.27.0":
-  version "1.27.0"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.27.0.tgz#f87852e6ef8e86e866b52ccd4ff4cf0265bb7982"
-  integrity sha512-2shQ4D1CDo0+8v2tQO83lwNr5D4CUOBTREe1+WSPlal0BNwqfQ+YPh6MHinzQ5FAAkZyjAu1ImiT2cMmze4x9w==
+"@ant-design/pro-utils@1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.28.0.tgz#31b7c9baa33d380dcc12c2a7ed0d29d20700e63a"
+  integrity sha512-N0mqR8ID3Jf0st6GIxGRwoKkk6lYeo7sD0GeFKBdXpDSbkRVI8Q448fhD4HmvCEaBunFEhpu21H9g9qBbdtU3g==
   dependencies:
     "@ant-design/icons" "^4.3.0"
     "@ant-design/pro-provider" "1.4.20"
