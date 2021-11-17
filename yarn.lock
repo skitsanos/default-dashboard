@@ -33,13 +33,13 @@
     classnames "^2.2.6"
     rc-util "^5.9.4"
 
-"@ant-design/pro-card@^1.17.1":
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-card/-/pro-card-1.17.1.tgz#49c253ea471dec71aa9c505d397a5bb770d46300"
-  integrity sha512-HB2zVX4th7SZsrsFx1ndZ2YdicFhNNf18Rbd2/AtMUssz8jn+P5lBmmlVqNIiEv/RI0V1vaioIHL5eLE8/+aMQ==
+"@ant-design/pro-card@^1.18.1":
+  version "1.18.1"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-card/-/pro-card-1.18.1.tgz#968111f5f39c1a9de7b058d0ec55f71315bc4288"
+  integrity sha512-FREQQODWPr/8mLm562H0UXIJ1ds8MCsZ1bgCB9Di6V6L0M2nfUbUPwSDtog1Woh+XD6HEAb97GzoqBa2wpmoQQ==
   dependencies:
     "@ant-design/icons" "^4.2.1"
-    "@ant-design/pro-utils" "1.27.0"
+    "@ant-design/pro-utils" "1.28.1"
     classnames "^2.2.6"
     omit.js "^2.0.2"
     rc-util "^5.4.0"
