@@ -45,10 +45,10 @@
     omit.js "^2.0.2"
     rc-util "^5.4.0"
 
-"@ant-design/pro-field@1.28.0":
-  version "1.28.0"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-field/-/pro-field-1.28.0.tgz#d3e38766cef227c2862127bd1664b99b6fba194f"
-  integrity sha512-bJTDV3g4ogV8qiwIphK6CbrDSwgLzntVNYAd/ajPaIgWhLIAprdCR9WP8bakSbYqVJdEtaxQLOoP/hLXKYRAKw==
+"@ant-design/pro-field@1.28.2":
+  version "1.28.2"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-field/-/pro-field-1.28.2.tgz#66a6a5b2198e8cb6c46ae83b448d0b1927330d1a"
+  integrity sha512-V72h+gRz+iAdRVbl7HAdc/9GPOpQQsdmRcgAN3U2RcYNBniFk5CijqnhTKF+br/IMt+5BY5yE1W8htv4BkBY4A==
   dependencies:
     "@ant-design/icons" "^4.2.1"
     "@ant-design/pro-provider" "1.5.0"
@@ -62,13 +62,13 @@
     react-color "2.19.3"
     swr "1.1.0-beta.6"
 
-"@ant-design/pro-form@^1.49.4":
-  version "1.49.4"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-form/-/pro-form-1.49.4.tgz#f2e57517e48d25e437748ba05bd3c6bf0c40fd52"
-  integrity sha512-YYAowdI1JTET9MdPt7FZ4QKobOI46/fj2cg8zxfynSy7+yW3MoEzbayDvDKr8OEwVLGv4vPOOkDT6sRAhSHzRA==
+"@ant-design/pro-form@^1.49.6":
+  version "1.49.6"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-form/-/pro-form-1.49.6.tgz#2843948e6c041d75dc6f739941c2ea98bea2547e"
+  integrity sha512-ExwnrIPscdIUXa9g4/V76ie3c6LST/X8+tQcJK77eZeJmzv0L5ty+pUuxiO0vVIE+N4FZ6i1bNkdzxxCqMICWQ==
   dependencies:
     "@ant-design/icons" "^4.2.1"
-    "@ant-design/pro-field" "1.28.0"
+    "@ant-design/pro-field" "1.28.2"
     "@ant-design/pro-provider" "1.5.0"
     "@ant-design/pro-utils" "1.28.5"
     "@babel/runtime" "^7.16.3"
