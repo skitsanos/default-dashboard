@@ -471,10 +471,10 @@ add-px-to-style@1.0.0:
   resolved "https://registry.yarnpkg.com/add-px-to-style/-/add-px-to-style-1.0.0.tgz#d0c135441fa8014a8137904531096f67f28f263a"
   integrity sha1-0ME1RB+oAUqBN5BFMQlvZ/KPJjo=
 
-ahooks@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.0.0.tgz#1d4140e543a327589980f5a3e93733df4606e8dc"
-  integrity sha512-G2IdwqdeB8seJ8Oj4UF768cf5PpjwEOd8g0aRhqh8FwxT1gf37PQEkUigOS6ysqpfNmv5dU6UcjgVT/k5H4QKQ==
+ahooks@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.0.1.tgz#092a0fdc4083fb8d4ec48ce0115e1d91343468d9"
+  integrity sha512-/qIFqEmIQevlp7MPV/VMNTx2dvy6fr7VsnDDEIJ3dp82P0XFREHRRlkdrbsivXBEX7r1LU4KihEkjgKbXyrgFg==
   dependencies:
     dayjs "^1.9.1"
     intersection-observer "^0.7.0"
