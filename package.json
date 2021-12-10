@@ -16,7 +16,7 @@
     "@ant-design/icons": "^4.6.2",
     "@ant-design/pro-card": "^1.18.8",
     "@ant-design/pro-form": "^1.49.9",
-    "@ant-design/pro-layout": "^6.31.5",
+    "@ant-design/pro-layout": "^6.31.7",
     "ahooks": "^3.0.1",
     "antd": "^4.17.3",
     "braft-editor": "^2.3.9",
