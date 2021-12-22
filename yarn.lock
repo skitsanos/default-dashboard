@@ -37,14 +37,14 @@
     omit.js "^2.0.2"
     rc-util "^5.4.0"
 
-"@ant-design/pro-field@1.30.2":
-  version "1.30.2"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-field/-/pro-field-1.30.2.tgz#6e4cc90c31379194cc34b15e3b8c4ef3e6274c1a"
-  integrity sha512-QmFufTKjuQ6k9pW3iMLk/AXkWPLhCY1JsOOV2Ar+U4Oju0EvPIrxgNE6/R48rJK87wuyQ58TzGMyLUdayfrxyQ==
+"@ant-design/pro-field@1.31.1":
+  version "1.31.1"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-field/-/pro-field-1.31.1.tgz#743c92d2f9cba865f640a94f87c4a278ad208bb5"
+  integrity sha512-tFMLi1YZeuqQHk6VWlzo1xo25Y//7sqC1jo/t3L6UHAAqW9aBulOmF+Sg76cf5wZ1XMLkWvzGjcasslD7QToQQ==
   dependencies:
     "@ant-design/icons" "^4.2.1"
     "@ant-design/pro-provider" "1.5.4"
-    "@ant-design/pro-utils" "1.31.1"
+    "@ant-design/pro-utils" "1.32.0"
     "@babel/runtime" "^7.16.3"
     classnames "^2.2.6"
     lodash.tonumber "^4.0.3"
@@ -54,15 +54,15 @@
     react-color "2.19.3"
     swr "1.1.0"
 
-"@ant-design/pro-form@^1.51.2":
-  version "1.51.2"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-form/-/pro-form-1.51.2.tgz#ffc153446264406f91c10d86ae6c6ce3c408eb71"
-  integrity sha512-nms3Iwwn8EN5AZxnXtrMeA5WsuNjLEx1tcsc79w+HbBPkptWQTgh3KHt9s69MxX12qng9poFjra34UVTUl8ecQ==
+"@ant-design/pro-form@^1.52.1":
+  version "1.52.1"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-form/-/pro-form-1.52.1.tgz#10ac58cfacf75e6227920cfc41ea72bd8f137b05"
+  integrity sha512-6OYeHB8x6S/YvaIPBpdk4HsW8Zp2Gu134Q2XUEzJPAu1GX3DkcO/1WYXxS0987puxppL1sQ0qPSzuLoG/VgKCQ==
   dependencies:
     "@ant-design/icons" "^4.2.1"
-    "@ant-design/pro-field" "1.30.2"
+    "@ant-design/pro-field" "1.31.1"
     "@ant-design/pro-provider" "1.5.4"
-    "@ant-design/pro-utils" "1.31.1"
+    "@ant-design/pro-utils" "1.32.0"
     "@babel/runtime" "^7.16.3"
     "@umijs/use-params" "^1.0.9"
     classnames "^2.2.6"
@@ -122,6 +122,20 @@
   version "1.31.1"
   resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.31.1.tgz#38a997965af08d0fb60251e3695414180832b0e8"
   integrity sha512-hf/eE4LgHhfWEGjvsHVy4CMsDSxMwZl7wTcrKC4nlyaVLfW4YkJIvhAYN75q2/x/U98Fjmp2mvGBesV9a4uAxg==
+  dependencies:
+    "@ant-design/icons" "^4.3.0"
+    "@ant-design/pro-provider" "1.5.4"
+    "@babel/runtime" "^7.16.3"
+    classnames "^2.2.6"
+    moment "^2.27.0"
+    rc-util "^5.0.6"
+    react-sortable-hoc "^2.0.0"
+    swr "1.1.0"
+
+"@ant-design/pro-utils@1.32.0":
+  version "1.32.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.32.0.tgz#1c01917db019ec3cc0725e2bb992122b4a9cd537"
+  integrity sha512-0Lb5J1kn+aVSVw/odwSPPmdOh4Esd7XzT4nrCfkZ4MzYI3NRqNMIUuNu+YcZ7B3cVVDwotB1wlRwOeRfi/LpfQ==
   dependencies:
     "@ant-design/icons" "^4.3.0"
     "@ant-design/pro-provider" "1.5.4"
