@@ -499,11 +499,17 @@ add-px-to-style@1.0.0:
   resolved "https://registry.yarnpkg.com/add-px-to-style/-/add-px-to-style-1.0.0.tgz#d0c135441fa8014a8137904531096f67f28f263a"
   integrity sha1-0ME1RB+oAUqBN5BFMQlvZ/KPJjo=
 
-ahooks@^3.0.8:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.0.8.tgz#77a683b0348c4a61b37d55cd7712f5447380941d"
-  integrity sha512-5baHmCZHeuR5QKYdUyZwPhCT4MZJcyWsjSp7CdaE4XvnOsI8NSfLYld4KAIEHKUrNVUZxF3xi0/QGudAC4id8Q==
+ahooks-v3-count@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ahooks-v3-count/-/ahooks-v3-count-1.0.0.tgz#ddeb392e009ad6e748905b3cbf63a9fd8262ca80"
+  integrity sha512-V7uUvAwnimu6eh/PED4mCDjE7tokeZQLKlxg9lCTMPhN+NjsSbtdacByVlR1oluXQzD3MOw55wylDmQo4+S9ZQ==
+
+ahooks@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.1.1.tgz#9450154a9b616d312e9574d5049ddba9c2f104f1"
+  integrity sha512-bj4B2lK8iHNUw8lwYwbrzy6/W+feRUbXlPQPHaVT4Mj65RAJz27bj9ErOHaxsVV2X3ZOf4Uw9fz9ac3S+kab4g==
   dependencies:
+    ahooks-v3-count "^1.0.0"
     dayjs "^1.9.1"
     intersection-observer "^0.12.0"
     js-cookie "^3.0.0"
