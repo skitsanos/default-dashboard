@@ -25,13 +25,13 @@
     classnames "^2.2.6"
     rc-util "^5.9.4"
 
-"@ant-design/pro-card@^1.18.19":
-  version "1.18.19"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-card/-/pro-card-1.18.19.tgz#5483affc9bae4d0e62541b1de235261085ff5fc9"
-  integrity sha512-4fmKhlmRQMKRfbkVE4A8FtYRBW+IFSNJUz5c+wjeNhOyRyhPTGA2HnV8hGuj+D9+blpaJSTERtK3sb/4lBv9lQ==
+"@ant-design/pro-card@^1.18.20":
+  version "1.18.20"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-card/-/pro-card-1.18.20.tgz#eb6c22270165236da7d3a5b2701ee846a8898cec"
+  integrity sha512-9DaE/tW5R3SizbZgbytUIUpQdsTOokweKmCDII3TlPTC93RXfuSFAOR2+s5TV3JUbqmJoZ8+X96K1cjEplxL9Q==
   dependencies:
     "@ant-design/icons" "^4.2.1"
-    "@ant-design/pro-utils" "1.32.2"
+    "@ant-design/pro-utils" "1.32.3"
     "@babel/runtime" "^7.16.3"
     classnames "^2.2.6"
     omit.js "^2.0.2"
@@ -122,6 +122,20 @@
   version "1.32.2"
   resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.32.2.tgz#f33b0b1bce1c65e8035615464145c115214b8a09"
   integrity sha512-70zgamsIrCvXcrJW7Vaql1WB8VZhpcZbc5WfaWUrLgzHl/rSp16kx4ZYyBalFnLriMN0hQ6Exphr3Ca847Z96w==
+  dependencies:
+    "@ant-design/icons" "^4.3.0"
+    "@ant-design/pro-provider" "1.5.4"
+    "@babel/runtime" "^7.16.3"
+    classnames "^2.2.6"
+    moment "^2.27.0"
+    rc-util "^5.0.6"
+    react-sortable-hoc "^2.0.0"
+    swr "1.1.0"
+
+"@ant-design/pro-utils@1.32.3":
+  version "1.32.3"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.32.3.tgz#19e4e67c2d96eaa6dcec115497f405061ebc5280"
+  integrity sha512-wq8PSybvPWHpvlXILOMjs0rg2H9o/oYkI5gjSopIdTVfOBJgR19+SlOqa0Xza3VJId3A3tGSoguaGU/s9g3hpQ==
   dependencies:
     "@ant-design/icons" "^4.3.0"
     "@ant-design/pro-provider" "1.5.4"
