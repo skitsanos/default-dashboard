@@ -37,14 +37,14 @@
     omit.js "^2.0.2"
     rc-util "^5.4.0"
 
-"@ant-design/pro-field@1.31.6":
-  version "1.31.6"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-field/-/pro-field-1.31.6.tgz#ef0595ef9d24115ece22b9f83d6a0696f2769806"
-  integrity sha512-T3hqCWwaeX2D8SKRXnghJv7YmLeX3Adn05+bH3S440wxPMpnXiUeEAO8SxpWUe2Zqyg+a6M/eMZeRQfoDuuZqA==
+"@ant-design/pro-field@1.31.7":
+  version "1.31.7"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-field/-/pro-field-1.31.7.tgz#05aeb3336677512d5672f73807d9b3a6432c9b20"
+  integrity sha512-TD+sO16HAmkiqg5L0ov2k+ohduXWNJzcl93XIHICXTeeWnYqntK5BDqu6w93Bj2sqkXjJM5b1/3SdF0u2Qp32w==
   dependencies:
     "@ant-design/icons" "^4.2.1"
     "@ant-design/pro-provider" "1.5.5"
-    "@ant-design/pro-utils" "1.32.4"
+    "@ant-design/pro-utils" "1.32.5"
     "@babel/runtime" "^7.16.3"
     classnames "^2.2.6"
     lodash.tonumber "^4.0.3"
@@ -54,15 +54,15 @@
     react-color "2.19.3"
     swr "1.1.0"
 
-"@ant-design/pro-form@^1.52.6":
-  version "1.52.6"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-form/-/pro-form-1.52.6.tgz#84439639a92154d730404f395a18029b26f93c80"
-  integrity sha512-W7Y3a17p/BYcbbRLVG+8UvdR3/NHXPB9RQEDSFQbqJkAGBKXX0pqcKjdVA6cG2t122yhgjV7DbdzjoSmTZvNlg==
+"@ant-design/pro-form@^1.52.7":
+  version "1.52.7"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-form/-/pro-form-1.52.7.tgz#37607feb560e09f7c51a29055a18576cacca13e3"
+  integrity sha512-gErXY6Pj2+wf3siyXxBceBVyNxxB1IOz6aqQFbaUH/VAdcoFwh3U1VfuqkVf+WX6lQErIdC70nsndgOODyJ1ag==
   dependencies:
     "@ant-design/icons" "^4.2.1"
-    "@ant-design/pro-field" "1.31.6"
+    "@ant-design/pro-field" "1.31.7"
     "@ant-design/pro-provider" "1.5.5"
-    "@ant-design/pro-utils" "1.32.4"
+    "@ant-design/pro-utils" "1.32.5"
     "@babel/runtime" "^7.16.3"
     "@umijs/use-params" "^1.0.9"
     classnames "^2.2.6"
