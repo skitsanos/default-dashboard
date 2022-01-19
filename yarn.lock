@@ -496,10 +496,10 @@ ahooks-v3-count@^1.0.0:
   resolved "https://registry.yarnpkg.com/ahooks-v3-count/-/ahooks-v3-count-1.0.0.tgz#ddeb392e009ad6e748905b3cbf63a9fd8262ca80"
   integrity sha512-V7uUvAwnimu6eh/PED4mCDjE7tokeZQLKlxg9lCTMPhN+NjsSbtdacByVlR1oluXQzD3MOw55wylDmQo4+S9ZQ==
 
-ahooks@^3.1.6:
-  version "3.1.6"
-  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.1.6.tgz#722700b6d0d8985ac30f595527e07b310f1c8b99"
-  integrity sha512-WSEHy+eGWohAvyRKL+ZEiIefx30BDJwMaKEzYAZ88pdRhGjg17aSGVzI3lkJkzWHg+tjNz4sK6gFf3ouQ4xCzg==
+ahooks@^3.1.7:
+  version "3.1.7"
+  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.1.7.tgz#e5a7096608e2d82f74eaaf9bb038a81fc097a825"
+  integrity sha512-H+5LCbOXs7rpHkegiBApGgI6U/Ute8P93elU+bGsgdXkUsElJjYuEmWY6RujSr/IkV/dskFb7iptce3tLbYxng==
   dependencies:
     ahooks-v3-count "^1.0.0"
     dayjs "^1.9.1"
