@@ -25,13 +25,13 @@
     classnames "^2.2.6"
     rc-util "^5.9.4"
 
-"@ant-design/pro-card@^1.18.24":
-  version "1.18.24"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-card/-/pro-card-1.18.24.tgz#7b1391334dc679b0c4b1af696da85b7dd455ff10"
-  integrity sha512-V97mNmdIETkDdxxWhGdNv2luIq4U7vZyeBxKz8dwGm9TjdpchrLB2v40ObTFdeB750qvz6z698oX6uH1GQCKFg==
+"@ant-design/pro-card@^1.18.25":
+  version "1.18.25"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-card/-/pro-card-1.18.25.tgz#1537d5b0b6298dc1e9fcda4f2b76b9b21e948c6d"
+  integrity sha512-2lSAw6g/UDCY9uUaoZONrgKegZY5Ni31CcYKTDVXNCmWCp2bD80H6qFxNUF/S/gRwn3jDwHTx5E8mg7MmpiHhA==
   dependencies:
     "@ant-design/icons" "^4.2.1"
-    "@ant-design/pro-utils" "1.32.6"
+    "@ant-design/pro-utils" "1.32.7"
     "@babel/runtime" "^7.16.3"
     classnames "^2.2.6"
     omit.js "^2.0.2"
@@ -105,6 +105,15 @@
     rc-util "^5.0.1"
     swr "1.1.0"
 
+"@ant-design/pro-provider@1.5.6":
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-provider/-/pro-provider-1.5.6.tgz#839940eda5bba5b4f9d22796ba41837be44f28d2"
+  integrity sha512-wwkpaW3GQQOZltKQBtTJPYM12urQeZ7hU3obFfc5BTBfJ+/L8LObuTv6ah90EHMsxupCwGP3jLfsQYjDmeKL+A==
+  dependencies:
+    "@babel/runtime" "^7.16.3"
+    rc-util "^5.0.1"
+    swr "1.1.0"
+
 "@ant-design/pro-utils@1.32.5":
   version "1.32.5"
   resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.32.5.tgz#31d2bc4a4177aaf7f1be9c0ff88e9e8321077505"
@@ -126,6 +135,20 @@
   dependencies:
     "@ant-design/icons" "^4.3.0"
     "@ant-design/pro-provider" "1.5.5"
+    "@babel/runtime" "^7.16.3"
+    classnames "^2.2.6"
+    moment "^2.27.0"
+    rc-util "^5.0.6"
+    react-sortable-hoc "^2.0.0"
+    swr "1.1.0"
+
+"@ant-design/pro-utils@1.32.7":
+  version "1.32.7"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.32.7.tgz#8c8945e0e6f728f58619e27cbca0fc7ed874cd5d"
+  integrity sha512-86vimtPoYIh8tmWTB9IbfVRtv1aNouKlu8E7L28YjAtMu6N4dyBYiI4k0+rC56FOV219D5wd/sG3MqhppN6e9A==
+  dependencies:
+    "@ant-design/icons" "^4.3.0"
+    "@ant-design/pro-provider" "1.5.6"
     "@babel/runtime" "^7.16.3"
     classnames "^2.2.6"
     moment "^2.27.0"
