@@ -17,7 +17,7 @@
     "@ant-design/pro-card": "^1.18.26",
     "@ant-design/pro-form": "^1.52.9",
     "@ant-design/pro-layout": "^6.32.7",
-    "ahooks": "^3.1.8",
+    "ahooks": "^3.1.9",
     "antd": "^4.18.5",
     "braft-editor": "^2.3.9",
     "dayjs": "^1.10.6",
