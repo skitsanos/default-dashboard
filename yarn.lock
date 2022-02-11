@@ -72,14 +72,14 @@
     use-json-comparison "^1.0.5"
     use-media-antd-query "^1.0.6"
 
-"@ant-design/pro-layout@^6.32.10":
-  version "6.32.10"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.32.10.tgz#bc29a6d6d132c03c49ce64e244871111ce48fe5b"
-  integrity sha512-cLQQtzoSwpNokh3vKZASbzMqlC4FMFF6gT3MqlSheu2oQAu5bQw7VV9Kyts26EYSLaxJH1uKgWh0Dk0DECRyVQ==
+"@ant-design/pro-layout@^6.32.11":
+  version "6.32.11"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.32.11.tgz#380c47f70380879919afd96b976418869f1da3ca"
+  integrity sha512-Mk624Ca61GdODzipMeC1kfHczy5IbQgQKA/gEbw3ppUL/4ABNlsMXbObTGrp5VspKuFsIhNTy8iYlHDk+PbykA==
   dependencies:
     "@ant-design/icons" "^4.0.0"
     "@ant-design/pro-provider" "1.5.7"
-    "@ant-design/pro-utils" "1.34.1"
+    "@ant-design/pro-utils" "1.34.2"
     "@babel/runtime" "^7.16.3"
     "@umijs/route-utils" "^2.0.1"
     "@umijs/ssr-darkreader" "^4.9.44"
