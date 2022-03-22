@@ -25,13 +25,13 @@
     classnames "^2.2.6"
     rc-util "^5.9.4"
 
-"@ant-design/pro-card@^1.18.41":
-  version "1.18.41"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-card/-/pro-card-1.18.41.tgz#a430e47b966699c9f3fcda77bbc0d8ec5e69cf9f"
-  integrity sha512-QWAs2URY6J5mbbImPM3gVlbzAdnXg10X5tt3MPq6wJ4OjkOp0s99MDnZeTJe+1Lier6W5pO5UC5OdSXoW9u87g==
+"@ant-design/pro-card@^1.18.42":
+  version "1.18.42"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-card/-/pro-card-1.18.42.tgz#667b6f3eaa17b8724a68c6fecb99711208371a77"
+  integrity sha512-Ju3HwV/JGDSVBZiReYt6U4wFcR3phGAAF8X8SMilq7+tUcn7Our07/px+h8pOxxYThSQj82Q8mdQe5rGE/172Q==
   dependencies:
     "@ant-design/icons" "^4.2.1"
-    "@ant-design/pro-utils" "1.37.1"
+    "@ant-design/pro-utils" "1.37.2"
     "@babel/runtime" "^7.16.3"
     classnames "^2.2.6"
     omit.js "^2.0.2"
