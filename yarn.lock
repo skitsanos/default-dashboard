@@ -510,10 +510,10 @@ ahooks-v3-count@^1.0.0:
   resolved "https://registry.yarnpkg.com/ahooks-v3-count/-/ahooks-v3-count-1.0.0.tgz#ddeb392e009ad6e748905b3cbf63a9fd8262ca80"
   integrity sha512-V7uUvAwnimu6eh/PED4mCDjE7tokeZQLKlxg9lCTMPhN+NjsSbtdacByVlR1oluXQzD3MOw55wylDmQo4+S9ZQ==
 
-ahooks@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.2.0.tgz#e610a65c534992d05497aa94eb0816802ffa88a3"
-  integrity sha512-QzwiEhMyI5h7M3VG9NS27cfPllE6wSuKso6NASYeivZZGDrg1PxZ/0tHQ/rVwu0BSYDA9LNUBkSYoHTlOwOjvg==
+ahooks@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.3.0.tgz#7f3f126500068b74c4db6cd3c8a0b7b4feed71f8"
+  integrity sha512-X1TIXvRNgWrx9Cfxa3QDnHttnphT1otSCNjELs1Yf88cPHt6Fp96MWHx83Zhkb3wcRbWzeQHQTISDTKq4itIbw==
   dependencies:
     "@types/js-cookie" "^2.x.x"
     ahooks-v3-count "^1.0.0"
