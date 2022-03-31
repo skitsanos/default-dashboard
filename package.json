@@ -21,9 +21,9 @@
     "antd": "^4.19.3",
     "braft-editor": "^2.3.9",
     "dayjs": "^1.11.0",
-    "react": "^17.0.0",
+    "react": "^18.0.0",
     "react-custom-scrollbars": "^4.2.1",
-    "react-dom": "^17.0.2",
+    "react-dom": "^18.0.0",
     "react-entities": "^1.3.0",
     "umi": "^3.5.21",
     "umi-request": "^1.3.9"
