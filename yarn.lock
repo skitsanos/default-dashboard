@@ -72,14 +72,14 @@
     use-json-comparison "^1.0.5"
     use-media-antd-query "^1.0.6"
 
-"@ant-design/pro-layout@^6.34.9":
-  version "6.34.9"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.34.9.tgz#d84178595eaf1fd03c707d1e3b6779bb6266305c"
-  integrity sha512-Pwz+q5OUL7FR3xsTjkRpbnqlayweAEs8/XqDKjPOXiAz4H0rgXO26eliqVkYy8H9KTQzlH97l8IThZjdqSYqlA==
+"@ant-design/pro-layout@^6.34.10":
+  version "6.34.10"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.34.10.tgz#f2ff79a47c7610405de97fe2a988b662a14e28b7"
+  integrity sha512-RZ1oKh7dDURKemcuzwj62KMdpckCSwJ/D1gZcus3ybaR7hToggPqxG6ZKa/KZ7pBIUoTUROjNZtfgujyc7sN1w==
   dependencies:
     "@ant-design/icons" "^4.0.0"
-    "@ant-design/pro-provider" "1.6.2"
-    "@ant-design/pro-utils" "1.38.2"
+    "@ant-design/pro-provider" "1.6.3"
+    "@ant-design/pro-utils" "1.39.0"
     "@babel/runtime" "^7.16.3"
     "@umijs/route-utils" "^2.0.1"
     "@umijs/ssr-darkreader" "^4.9.44"
@@ -114,6 +114,15 @@
     rc-util "^5.0.1"
     swr "^1.2.0"
 
+"@ant-design/pro-provider@1.6.3":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-provider/-/pro-provider-1.6.3.tgz#d6932ee2489cca387634e32f53bcc6101c31785c"
+  integrity sha512-GyjN5oTUZVylf6Fy3TJfuvs/u8TmeWoqFZ5AKZLvWsdNKN+lPsYXmEYPjutyCtq/ogZkkx6drnuGqAc5E7lb4Q==
+  dependencies:
+    "@babel/runtime" "^7.16.3"
+    rc-util "^5.0.1"
+    swr "^1.2.0"
+
 "@ant-design/pro-utils@1.32.5":
   version "1.32.5"
   resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.32.5.tgz#31d2bc4a4177aaf7f1be9c0ff88e9e8321077505"
@@ -135,6 +144,20 @@
   dependencies:
     "@ant-design/icons" "^4.3.0"
     "@ant-design/pro-provider" "1.6.2"
+    "@babel/runtime" "^7.16.3"
+    classnames "^2.2.6"
+    moment "^2.27.0"
+    rc-util "^5.0.6"
+    react-sortable-hoc "^2.0.0"
+    swr "^1.2.0"
+
+"@ant-design/pro-utils@1.39.0":
+  version "1.39.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.39.0.tgz#b51fab7b7845c6d8a274687e9a9edf74ed00259c"
+  integrity sha512-UCc+RDMyAR2Z3F3E8CXV4wqaUngMEHYSWMxfgKqkYOi2/f5zp+QtCPKck6nQyS2tR6arjcBqiP6BVmeyy1FpBg==
+  dependencies:
+    "@ant-design/icons" "^4.3.0"
+    "@ant-design/pro-provider" "1.6.3"
     "@babel/runtime" "^7.16.3"
     classnames "^2.2.6"
     moment "^2.27.0"
