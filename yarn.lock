@@ -72,16 +72,16 @@
     use-json-comparison "^1.0.5"
     use-media-antd-query "^1.0.6"
 
-"@ant-design/pro-layout@^6.35.1":
-  version "6.35.1"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.35.1.tgz#ff44305d9706aa98f510259441c132fd60dd131e"
-  integrity sha512-3q65fBj2X64SXCbGJoVGminhuON7UjYO01vFwQQU2tt7ZKoXHpbydFNWcKqEIHo8bfa7DwzqchuJlPFFX515IA==
+"@ant-design/pro-layout@^6.36.1":
+  version "6.36.1"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.36.1.tgz#d877434cf46ec92af445da0b6293f74ab0b67e37"
+  integrity sha512-px6+rLp4sQtSkVzD0PM1PEGMc1ByZwQFatB5ASY9n+dHiTDlVIVNo/aZbGma9CWbBT2AgbVQwZTAvKsw269hVw==
   dependencies:
     "@ant-design/icons" "^4.0.0"
-    "@ant-design/pro-provider" "1.6.3"
-    "@ant-design/pro-utils" "1.39.2"
+    "@ant-design/pro-provider" "1.6.4"
+    "@ant-design/pro-utils" "1.39.3"
     "@babel/runtime" "^7.16.3"
-    "@umijs/route-utils" "^2.0.1"
+    "@umijs/route-utils" "^2.1.0"
     "@umijs/ssr-darkreader" "^4.9.44"
     "@umijs/use-params" "^1.0.9"
     classnames "^2.2.6"
@@ -464,10 +464,10 @@
     "@umijs/runtime" "3.5.23"
     react-router-config "5.1.1"
 
-"@umijs/route-utils@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@umijs/route-utils/-/route-utils-2.0.1.tgz#141e1863a37acb878275bdb9655eca5c32e94546"
-  integrity sha512-PUBakvQuuRAh1GlAPbN3sab6xCw2811WG0JXufUe303OgDNu21ABkqMPgScAZb2N8AvxRjk5k7SHr7kIczaEuQ==
+"@umijs/route-utils@^2.1.0":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@umijs/route-utils/-/route-utils-2.1.1.tgz#85d19351f888f105ce348aecfdc1234e13a93220"
+  integrity sha512-N2ftgkqDEPBau1WyAxJfTQOs78OAVJY/Grl90fDo6ui75Eww563FhWcTrribS8sJS33mv9gtSlBLJ3F9WPLVog==
   dependencies:
     "@qixian.cs/path-to-regexp" "^6.1.0"
     fast-deep-equal "^3.1.3"
