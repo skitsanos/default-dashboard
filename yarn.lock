@@ -105,15 +105,6 @@
     rc-util "^5.0.1"
     swr "1.1.0"
 
-"@ant-design/pro-provider@1.6.3":
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-provider/-/pro-provider-1.6.3.tgz#d6932ee2489cca387634e32f53bcc6101c31785c"
-  integrity sha512-GyjN5oTUZVylf6Fy3TJfuvs/u8TmeWoqFZ5AKZLvWsdNKN+lPsYXmEYPjutyCtq/ogZkkx6drnuGqAc5E7lb4Q==
-  dependencies:
-    "@babel/runtime" "^7.16.3"
-    rc-util "^5.0.1"
-    swr "^1.2.0"
-
 "@ant-design/pro-provider@1.6.4":
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/@ant-design/pro-provider/-/pro-provider-1.6.4.tgz#91010f16c1180e93000443a26dc2790709c0bbf3"
@@ -136,20 +127,6 @@
     rc-util "^5.0.6"
     react-sortable-hoc "^2.0.0"
     swr "1.1.0"
-
-"@ant-design/pro-utils@1.39.2":
-  version "1.39.2"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.39.2.tgz#8fe6d11ba96b2e03b86e53cd3a60b0964c24058d"
-  integrity sha512-z98NhVR2QC6JF1fFoerkBHb53aXTxQBAx2w9S3Zb9EwxLocJdqXhmjavGyvBDMmimfjpaJuTZUTGC26EEwrX4w==
-  dependencies:
-    "@ant-design/icons" "^4.3.0"
-    "@ant-design/pro-provider" "1.6.3"
-    "@babel/runtime" "^7.16.3"
-    classnames "^2.2.6"
-    moment "^2.27.0"
-    rc-util "^5.0.6"
-    react-sortable-hoc "^2.0.0"
-    swr "^1.2.0"
 
 "@ant-design/pro-utils@1.39.3":
   version "1.39.3"
@@ -2875,13 +2852,13 @@ react-dom@16.x:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-react-dom@^18.0.0:
-  version "18.0.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.0.0.tgz#26b88534f8f1dbb80853e1eabe752f24100d8023"
-  integrity sha512-XqX7uzmFo0pUceWFCt7Gff6IyIMzFUn7QMZrbrQfGxtaxXZIcGQzoNpRLE3fQLnS4XzLLPMZX2T9TRcSrasicw==
+react-dom@^18.1.0:
+  version "18.1.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.1.0.tgz#7f6dd84b706408adde05e1df575b3a024d7e8a2f"
+  integrity sha512-fU1Txz7Budmvamp7bshe4Zi32d0ll7ect+ccxNu9FlObT605GOEB8BfO4tmRJ39R5Zj831VCpvQ05QPBW5yb+w==
   dependencies:
     loose-envify "^1.1.0"
-    scheduler "^0.21.0"
+    scheduler "^0.22.0"
 
 react-entities@^1.3.0:
   version "1.3.0"
@@ -3065,10 +3042,10 @@ scheduler@^0.19.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-scheduler@^0.21.0:
-  version "0.21.0"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.21.0.tgz#6fd2532ff5a6d877b6edb12f00d8ab7e8f308820"
-  integrity sha512-1r87x5fz9MXqswA2ERLo0EbOAU74DpIUO090gIasYTqlVoJeMcl+Z1Rg7WHz+qtPujhS/hGIt9kxZOYBV3faRQ==
+scheduler@^0.22.0:
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.22.0.tgz#83a5d63594edf074add9a7198b1bae76c3db01b8"
+  integrity sha512-6QAm1BgQI88NPYymgGQLCZgvep4FyePDWFpXVK+zNSUgHwlqpJy8VEh8Et0KxTACS4VWwMousBElAZOH9nkkoQ==
   dependencies:
     loose-envify "^1.1.0"
 
