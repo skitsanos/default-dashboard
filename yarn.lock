@@ -105,15 +105,6 @@
     rc-util "^5.0.1"
     swr "1.1.0"
 
-"@ant-design/pro-provider@1.6.3":
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-provider/-/pro-provider-1.6.3.tgz#d6932ee2489cca387634e32f53bcc6101c31785c"
-  integrity sha512-GyjN5oTUZVylf6Fy3TJfuvs/u8TmeWoqFZ5AKZLvWsdNKN+lPsYXmEYPjutyCtq/ogZkkx6drnuGqAc5E7lb4Q==
-  dependencies:
-    "@babel/runtime" "^7.16.3"
-    rc-util "^5.0.1"
-    swr "^1.2.0"
-
 "@ant-design/pro-provider@1.6.4":
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/@ant-design/pro-provider/-/pro-provider-1.6.4.tgz#91010f16c1180e93000443a26dc2790709c0bbf3"
@@ -136,20 +127,6 @@
     rc-util "^5.0.6"
     react-sortable-hoc "^2.0.0"
     swr "1.1.0"
-
-"@ant-design/pro-utils@1.39.2":
-  version "1.39.2"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.39.2.tgz#8fe6d11ba96b2e03b86e53cd3a60b0964c24058d"
-  integrity sha512-z98NhVR2QC6JF1fFoerkBHb53aXTxQBAx2w9S3Zb9EwxLocJdqXhmjavGyvBDMmimfjpaJuTZUTGC26EEwrX4w==
-  dependencies:
-    "@ant-design/icons" "^4.3.0"
-    "@ant-design/pro-provider" "1.6.3"
-    "@babel/runtime" "^7.16.3"
-    classnames "^2.2.6"
-    moment "^2.27.0"
-    rc-util "^5.0.6"
-    react-sortable-hoc "^2.0.0"
-    swr "^1.2.0"
 
 "@ant-design/pro-utils@1.39.3":
   version "1.39.3"
@@ -534,10 +511,10 @@ ahooks-v3-count@^1.0.0:
   resolved "https://registry.yarnpkg.com/ahooks-v3-count/-/ahooks-v3-count-1.0.0.tgz#ddeb392e009ad6e748905b3cbf63a9fd8262ca80"
   integrity sha512-V7uUvAwnimu6eh/PED4mCDjE7tokeZQLKlxg9lCTMPhN+NjsSbtdacByVlR1oluXQzD3MOw55wylDmQo4+S9ZQ==
 
-ahooks@^3.3.8:
-  version "3.3.8"
-  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.3.8.tgz#57efcfd4749d35036adf6f0a8d43b1e8d49b014a"
-  integrity sha512-jMfUTiWfd6KgfFAdY06kXIqXNC0Ak7Yq7Xw8zJjjS/qKDbqoBYZALYTqwmfo9KM81tAHiTVytvwBTIAhbx0w6w==
+ahooks@^3.3.10:
+  version "3.3.10"
+  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.3.10.tgz#a65782b0ce29df3508b5ca76355fb3005d64a011"
+  integrity sha512-CNZQRnNkvbafV5qdGcx7AT81XJNPa7vAo1XoShvdI8s6oHigTrmc+kWkyWWEywiEchF992Z6oIQEXkSsL034fw==
   dependencies:
     "@types/js-cookie" "^2.x.x"
     ahooks-v3-count "^1.0.0"
