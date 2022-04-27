@@ -23,7 +23,7 @@
     "dayjs": "^1.11.1",
     "react": "^18.1.0",
     "react-custom-scrollbars": "^4.2.1",
-    "react-dom": "^18.0.0",
+    "react-dom": "^18.1.0",
     "react-entities": "^1.3.0",
     "umi": "^3.5.23",
     "umi-request": "^1.3.9"
