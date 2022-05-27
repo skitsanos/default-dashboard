@@ -73,14 +73,14 @@
     use-json-comparison "^1.0.5"
     use-media-antd-query "^1.1.0"
 
-"@ant-design/pro-layout@^6.38.4":
-  version "6.38.4"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.38.4.tgz#471161b7b5b840368d0a456a57e661aa07a9c0f4"
-  integrity sha512-s3c3YQjel0brhbZFp5mabf4vuF4LHPEPVIghmSOP2C2RI6iigYLiIQ3mvOYdFG8XFbeZ41w5KHp9m+XsCpqYXQ==
+"@ant-design/pro-layout@^6.38.6":
+  version "6.38.6"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.38.6.tgz#f06069cbbbcca3b1dd0e5c8d0dee41a5f67e1184"
+  integrity sha512-ftb/Pmjz87hrCqOsK/SuAqvMv+GSdgbt1bOsr+JRpGblpNS3eVw0K1n3iLSjOrvHQku6AO1vnvc3sIUzot1lJA==
   dependencies:
     "@ant-design/icons" "^4.0.0"
     "@ant-design/pro-provider" "1.7.1"
-    "@ant-design/pro-utils" "1.41.4"
+    "@ant-design/pro-utils" "1.42.0"
     "@babel/runtime" "^7.16.3"
     "@umijs/route-utils" "^2.1.0"
     "@umijs/ssr-darkreader" "^4.9.44"
@@ -94,7 +94,7 @@
     swr "^1.2.0"
     unstated-next "^1.1.0"
     use-json-comparison "^1.0.3"
-    use-media-antd-query "^1.0.6"
+    use-media-antd-query "^1.1.0"
     warning "^4.0.3"
 
 "@ant-design/pro-provider@1.7.1":
@@ -3356,7 +3356,7 @@ use-json-comparison@^1.0.3, use-json-comparison@^1.0.5:
   resolved "https://registry.yarnpkg.com/use-json-comparison/-/use-json-comparison-1.0.6.tgz#a012bbc258ce745db1f56745dc653f575226cb21"
   integrity sha512-xPadt5yMRbEmVfOSGFSMqjjICrq7nLbfSH3rYIXsrtcuFX7PmbYDN/ku8ObBn3v8o/yZelO1OxUS5+5TI3+fUw==
 
-use-media-antd-query@^1.0.6, use-media-antd-query@^1.1.0:
+use-media-antd-query@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/use-media-antd-query/-/use-media-antd-query-1.1.0.tgz#f083ad7e292c1c0261b6bbfaac0edc3e0920d85d"
   integrity sha512-B6kKZwNV4R+l4Rl11sWO7HqOay9alzs1Vp1b4YJqjz33YxbltBCZtt/yxXxkXN9rc1S7OeEL/GbwC30Wmqhw6Q==
