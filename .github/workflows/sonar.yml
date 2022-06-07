@@ -1,4 +1,4 @@
-name: Sonar Scan
+name: SonarQube
 on:
   workflow_dispatch:
 
@@ -7,7 +7,7 @@ on:
   #  - master # or the name of your main branch
 jobs:
   build:
-    name: Build
+    name: Scan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
