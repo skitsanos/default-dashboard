@@ -43,6 +43,6 @@ jobs:
         if: always() && github.event.number
         with:
           message: |
-            SonarQube Quality Gate reported code issues and you can see them on https://sonarqube-reporting.netlify.app/api/quality-gate/${{env.RUN_ID}}
+            SonarQube Quality Gate reported code issues and you can see them on https://sonarqube-reporting.netlify.app/quality-gate/${{env.RUN_ID}}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]'
