@@ -35,4 +35,14 @@ jobs:
         if: always()
         run: |
           curl "http://${{ secrets.SONAR_TOKEN }}:@sonar.retraced.com:9000/api/issues/search?componentKeys=default-dashboard&resolved=no" | jq '.issues[] | {key, message, severity, component, textRange}' | jq -s '{issues: ., repo: "${{github.repository}}", pr: "${{github.event.number}}", project: "default-dashboard"}' >report.json
-          curl -H "Content-Type: application/json" --data @report.json "https://sonarqube-reporting.netlify.app/api/quality-gate"
+          RUN_ID=$(curl -H "Content-Type: application/json" --data @report.json "https://sonarqube-reporting.netlify.app/api/quality-gate" | jq '.result._key')
+          echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
+
+      - name: Post comment
+        uses: mshick/add-pr-comment@v1
+        if: always() && github.event.number
+        with:
+          message: |
+            Message https://sonarqube-reporting.netlify.app/api/quality-gate/${{env.RUN_ID}}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]'
