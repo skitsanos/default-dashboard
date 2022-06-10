@@ -34,5 +34,5 @@ jobs:
       - name: Collect issues
         if: always()
         run: |
-          curl "http://${{ secrets.SONAR_TOKEN }}:@sonar.retraced.com:9000/api/issues/search?componentKeys=default-dashboard&resolved=no" | jq '.issues[] | {key, message, severity, component, textRange, repo: "${{github.repository}}", pr: "${{github.event.number}}", project: "default-dashboard" }' >report.json
-          curl -H "Content-Type: application/json" --data @report.json "https://webhook.site/7aff8ce3-bdaa-413b-9fce-3a47f613860d"
+          curl "http://${{ secrets.SONAR_TOKEN }}:@sonar.retraced.com:9000/api/issues/search?componentKeys=default-dashboard&resolved=no" | jq '.issues[] | {key, message, severity, component, textRange, repo: "${{github.repository}}", pr: "${{github.event.number}}", project: "default-dashboard" }' | jq -s >report.json
+          curl -H "Content-Type: application/json" --data @report.json "https://sonarqube-reporting.netlify.app/api/quality-gate"
