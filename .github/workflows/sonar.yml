@@ -1,4 +1,5 @@
 name: SonarQube
+
 on:
   workflow_dispatch:
 
@@ -6,7 +7,7 @@ on:
   #branches:
   #  - master # or the name of your main branch
 jobs:
-  build:
+  scan:
     name: Scan
     runs-on: ubuntu-latest
     steps:
@@ -25,7 +26,7 @@ jobs:
 
       # If you wish to fail your job when the Quality Gate is red, uncomment the
       # following lines. This would typically be used to fail a deployment.
-       - uses: sonarsource/sonarqube-quality-gate-action@master
-         timeout-minutes: 5
-         env:
-           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - uses: sonarsource/sonarqube-quality-gate-action@master
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
