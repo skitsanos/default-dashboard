@@ -2,7 +2,7 @@ import {PageContainer} from '@ant-design/pro-layout';
 import React from 'react';
 import {Link} from 'umi';
 
-const ContentArea = props =>
+donst ContentArea = props =>
 {
     const {children, title, breadcrumb, subTitle, content, avatar, extra, onBack} = props;
 
