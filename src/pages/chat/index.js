@@ -38,7 +38,7 @@ const Page = () =>
     const [form] = Form.useForm();
     const refScroll = useRef();
 
-    const {readyState, sendMessage, latestMessage, disconnect, connect} = useWebSocket(
+    const {readyState, sendMessage, latestMessage, connect} = useWebSocket(
         'ws://demo-chat.anyscripts.com/pubsub/mydemochatroom'
     );
 
