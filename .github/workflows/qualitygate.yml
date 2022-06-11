@@ -1,4 +1,4 @@
-name: SonarQube
+name: SonarQube Report
 
 on:
   workflow_dispatch:
