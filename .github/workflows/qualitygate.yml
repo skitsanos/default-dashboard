@@ -9,8 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: skitsanosinc/sonarqube-qualitygate-generate-report@main
+        id: report-generator
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           SONAR_PROJECT: default-dashboard
+
+      - run: |
+          echo ${{ steps.report-generator.outputs.PREVIEW_URL }}
