@@ -17,4 +17,5 @@ jobs:
           SONAR_PROJECT: default-dashboard
 
       - run: |
-          echo ${{ steps.report-generator.outputs.PREVIEW_URL }}
+          echo "env: ${{env.PREVIEW_URL}}"
+          echo "output: ${{ steps.report-generator.outputs.PREVIEW_URL }}"
