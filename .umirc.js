@@ -17,8 +17,7 @@ export default defineConfig({
         loading: '@/components/Loading'
     },
 
-    plugins: [
-    ],
+    plugins: [],
 
     //this line allows handling Page Not found errors and displays content from 404.js
     404: true,
@@ -33,5 +32,7 @@ export default defineConfig({
 
     devtool: false,
 
-    mfsu: {}
+    mfsu: {
+        production: {}
+    }
 });

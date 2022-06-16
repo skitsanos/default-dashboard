@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "start": "umi dev",
-    "build": "umi build",
+    "build": "NODE_ENV=production umi build",
     "deploy": "netlify deploy --prod"
   },
   "dependencies": {
