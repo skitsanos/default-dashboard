@@ -82,18 +82,19 @@
     use-json-comparison "^1.0.5"
     use-media-antd-query "^1.1.0"
 
-"@ant-design/pro-layout@^6.38.13":
-  version "6.38.13"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.38.13.tgz#a8282ad05a05ee9f1777407993a530999a38419a"
-  integrity sha512-ZNUUJow0pLxOqkuPIGDJJw9FqPYX5Pu/iz5kBRz9vxSakJUylrtg4GWVVuMqZlSbEpRdPdr4WCx0Jz78R4IPmQ==
+"@ant-design/pro-layout@^6.38.15":
+  version "6.38.15"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.38.15.tgz#cdfc17344b2d2539a67b556b177cb32371afb4fe"
+  integrity sha512-caK8Syz/N2k+TN6WBwGG7wS+F8tF81/HYEV2qns9Z/EM34niGeR6Gx/ey0954NVX8qk5iKZa3Q7nzuEeuTVx7w==
   dependencies:
     "@ant-design/icons" "^4.0.0"
-    "@ant-design/pro-provider" "1.9.0"
-    "@ant-design/pro-utils" "1.42.5"
+    "@ant-design/pro-provider" "1.9.2"
+    "@ant-design/pro-utils" "1.43.1"
     "@babel/runtime" "^7.18.0"
     "@umijs/route-utils" "^2.1.0"
     "@umijs/ssr-darkreader" "^4.9.44"
     "@umijs/use-params" "^1.0.9"
+    antd ">=4.20.0"
     classnames "^2.2.6"
     lodash.merge "^4.6.2"
     omit.js "^2.0.2"
