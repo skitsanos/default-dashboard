@@ -84,10 +84,10 @@
     use-json-comparison "^1.0.5"
     use-media-antd-query "^1.1.0"
 
-"@ant-design/pro-layout@^6.38.16":
-  version "6.38.16"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.38.16.tgz#65e2ec58002442b4613c83d6a2582b76d9b6799d"
-  integrity sha512-s6BfR2lS63Twq9mQwSw9tLCaoUEBUPFRoM2rmTYDqYHVEfuO4F0l3BAIAs4udeb3sumfaV1r4Nuk4mUoBIzEgA==
+"@ant-design/pro-layout@^6.38.17":
+  version "6.38.17"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.38.17.tgz#b864768b15849022e5aab197498956b7b5aafe11"
+  integrity sha512-dlwcjlhh/vCaEc+RUfSCWx67/PVvFaOiDULvlMs9Z/hcqfo7JpoafFY29uUJg54MmYE6u7Pzvx5dSa2KkmGcIg==
   dependencies:
     "@ant-design/icons" "^4.0.0"
     "@ant-design/pro-provider" "1.9.3"
