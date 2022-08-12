@@ -20,7 +20,7 @@
     "ahooks": "^3.7.0",
     "antd": "^4.22.4",
     "braft-editor": "^2.3.9",
-    "dayjs": "^1.11.4",
+    "dayjs": "^1.11.5",
     "react": "^18.2.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^18.2.0",
