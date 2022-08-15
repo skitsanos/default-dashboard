@@ -46,14 +46,14 @@
     omit.js "^2.0.2"
     rc-util "^5.4.0"
 
-"@ant-design/pro-field@1.35.2":
-  version "1.35.2"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-field/-/pro-field-1.35.2.tgz#8cbf51ba5424af6c2360522f525353deb21339e1"
-  integrity sha512-IuO+pYVs29ZLfC1C+HiVd61rLlVgMTcn0hNFyx/RhEoWV1h+ufMHCeRYS/n4opSeV8xfqlT0BJBefDffwuN4TA==
+"@ant-design/pro-field@1.35.3":
+  version "1.35.3"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-field/-/pro-field-1.35.3.tgz#7f74046d714b1895270b63d74d0eb2ac2ce003cb"
+  integrity sha512-DGusiIaXukyw5LfZU3FnNrGqoDt347OKCpgrl3/tgVO27Kl2A+5U6WKRiBV2iUc3MzddeD8xCbumkg6EAk2EyQ==
   dependencies:
     "@ant-design/icons" "^4.2.1"
-    "@ant-design/pro-provider" "1.9.3"
-    "@ant-design/pro-utils" "1.43.2"
+    "@ant-design/pro-provider" "1.10.0"
+    "@ant-design/pro-utils" "1.44.0"
     "@babel/runtime" "^7.18.0"
     "@chenshuai2144/sketch-color" "^1.0.8"
     antd "^4.20.0 "
@@ -64,15 +64,15 @@
     rc-util "^5.4.0"
     swr "^1.2.0"
 
-"@ant-design/pro-form@^1.72.0":
-  version "1.72.0"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-form/-/pro-form-1.72.0.tgz#2b42676a6b4433e47799b123510d2581a4e585c2"
-  integrity sha512-Ip5MUIpf+PD8UznufXuk1eZ8at84hBvCDOBaytN1HoWMwLwDaHUDsC8r9q0uXB3V2nBZczEyKkby64ePGgQPNA==
+"@ant-design/pro-form@^1.73.0":
+  version "1.73.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-form/-/pro-form-1.73.0.tgz#f22afe546a4a66c48fdbb571758484f01faf5706"
+  integrity sha512-oVOdzuRDB8FN5HbXNgdYre08AHjuqz6zEQiBhzyctYMcOOrLfloOCFeZlVMlKKwLvplXLNz3Ub3v704pFV0O9g==
   dependencies:
     "@ant-design/icons" "^4.2.1"
-    "@ant-design/pro-field" "1.35.2"
-    "@ant-design/pro-provider" "1.9.3"
-    "@ant-design/pro-utils" "1.43.2"
+    "@ant-design/pro-field" "1.35.3"
+    "@ant-design/pro-provider" "1.10.0"
+    "@ant-design/pro-utils" "1.44.0"
     "@babel/runtime" "^7.18.0"
     "@umijs/use-params" "^1.0.9"
     antd "^4.20.0 "
@@ -109,6 +109,16 @@
     use-media-antd-query "^1.1.0"
     warning "^4.0.3"
 
+"@ant-design/pro-provider@1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-provider/-/pro-provider-1.10.0.tgz#6f15a5a7600d6ec7dd42755c4727254a9df46dbd"
+  integrity sha512-gbQtq+Qlnob6aEghiWX/kXEzNhe4eOFlv5Ue2/xsal+22qvot/kFoOB652TD76fMI7vlkoema1pTKsvD5Uji6A==
+  dependencies:
+    "@babel/runtime" "^7.18.0"
+    antd "^4.20.0 "
+    rc-util "^5.0.1"
+    swr "^1.2.0"
+
 "@ant-design/pro-provider@1.9.3":
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/@ant-design/pro-provider/-/pro-provider-1.9.3.tgz#4df9a1fd581025c760487202957f8b5e84c4a683"
@@ -126,6 +136,21 @@
   dependencies:
     "@ant-design/icons" "^4.3.0"
     "@ant-design/pro-provider" "1.9.3"
+    "@babel/runtime" "^7.18.0"
+    antd "^4.20.0 "
+    classnames "^2.2.6"
+    moment "^2.27.0"
+    rc-util "^5.0.6"
+    react-sortable-hoc "^2.0.0"
+    swr "^1.2.0"
+
+"@ant-design/pro-utils@1.44.0":
+  version "1.44.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.44.0.tgz#d129774452748c680506a96db38388ff9063c4bc"
+  integrity sha512-+r5KwzuCkp34p5Apudbe1wNGuSVNu2yrPX3TVAnFT8p7ZTg5iHLhNXOOcAKmON/Qktil7GUTW+v0t29/0fBy8Q==
+  dependencies:
+    "@ant-design/icons" "^4.3.0"
+    "@ant-design/pro-provider" "1.10.0"
     "@babel/runtime" "^7.18.0"
     antd "^4.20.0 "
     classnames "^2.2.6"
