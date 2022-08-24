@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "@ant-design/pro-card": "^1.20.18",
+    "@ant-design/pro-card": "^1.20.19",
     "@ant-design/pro-form": "^1.74.1",
     "@ant-design/pro-layout": "^6.38.18",
     "ahooks": "^3.7.0",
