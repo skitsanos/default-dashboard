@@ -84,14 +84,14 @@
     use-json-comparison "^1.0.5"
     use-media-antd-query "^1.1.0"
 
-"@ant-design/pro-layout@^6.38.18":
-  version "6.38.18"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.38.18.tgz#39a83724b97d0b438c6fc74fa1f9ec199cea5393"
-  integrity sha512-ItZBM4T5wp8VoR1xXodyH4EBYiaZFJeJhyfrE7MNJnqL00Yd8AsF+gIgh42aOB2XQZMRAz5P3AOk2HdYjOPVFA==
+"@ant-design/pro-layout@^6.38.20":
+  version "6.38.20"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-layout/-/pro-layout-6.38.20.tgz#a4a0a2247972ba8eb2ccdcb42f0e5f153b889690"
+  integrity sha512-J9jSpRFBxMY0wU2zJkqcSsph8IEMB/jUxpjL0EXUX0lrs+z0lZ089g6Pr/sMUqz1WtMr5qFnl7n4MH1TlOlAvQ==
   dependencies:
     "@ant-design/icons" "^4.0.0"
     "@ant-design/pro-provider" "1.10.0"
-    "@ant-design/pro-utils" "1.44.0"
+    "@ant-design/pro-utils" "1.45.1"
     "@babel/runtime" "^7.18.0"
     "@umijs/route-utils" "^2.1.0"
     "@umijs/ssr-darkreader" "^4.9.44"
@@ -119,10 +119,10 @@
     rc-util "^5.0.1"
     swr "^1.2.0"
 
-"@ant-design/pro-utils@1.44.0":
-  version "1.44.0"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.44.0.tgz#d129774452748c680506a96db38388ff9063c4bc"
-  integrity sha512-+r5KwzuCkp34p5Apudbe1wNGuSVNu2yrPX3TVAnFT8p7ZTg5iHLhNXOOcAKmON/Qktil7GUTW+v0t29/0fBy8Q==
+"@ant-design/pro-utils@1.45.0":
+  version "1.45.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.45.0.tgz#3853d7bf69e66eb78781671bb0d03b35a4edf54d"
+  integrity sha512-Tk9uYj1Ep7ISeC4pk701jeQ91fUOG5zQmyNrKqeBo1i402ErcK7Nw9uCCvCUU3KxWmgywhWLy1VaVFl0KDQTgQ==
   dependencies:
     "@ant-design/icons" "^4.3.0"
     "@ant-design/pro-provider" "1.10.0"
@@ -134,10 +134,10 @@
     react-sortable-hoc "^2.0.0"
     swr "^1.2.0"
 
-"@ant-design/pro-utils@1.45.0":
-  version "1.45.0"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.45.0.tgz#3853d7bf69e66eb78781671bb0d03b35a4edf54d"
-  integrity sha512-Tk9uYj1Ep7ISeC4pk701jeQ91fUOG5zQmyNrKqeBo1i402ErcK7Nw9uCCvCUU3KxWmgywhWLy1VaVFl0KDQTgQ==
+"@ant-design/pro-utils@1.45.1":
+  version "1.45.1"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.45.1.tgz#c31199c722e8f762107d47efd8d10827cc055cb1"
+  integrity sha512-gBHU0PQRM6Z6ED8Ee5WoNYu9c5S4GKSVZdYgZF/3NMypXCCAu8t5V1skFPhDKAfep1qpfIxDUujdaZbDpNm0Rg==
   dependencies:
     "@ant-design/icons" "^4.3.0"
     "@ant-design/pro-provider" "1.10.0"
