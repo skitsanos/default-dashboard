@@ -33,13 +33,13 @@
     classnames "^2.2.6"
     rc-util "^5.9.4"
 
-"@ant-design/pro-card@^1.20.19":
-  version "1.20.19"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-card/-/pro-card-1.20.19.tgz#5c63eb49e7d2a20992c2caeab1a25ce0d8d49e09"
-  integrity sha512-zt3CwL5tZj6tKyey3f4qJcquC86xi0LThewpK+5OOO0uxSWwXtlvhjKyUyFkaCKVMI25kH4W8ZJ6W+PV7wXm+A==
+"@ant-design/pro-card@^1.20.20":
+  version "1.20.20"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-card/-/pro-card-1.20.20.tgz#4ed49fc7bd57be94f1102ef06c617c9e3f846694"
+  integrity sha512-xlpTZzOexqyyZnEBPmU8D9PG1Zj+f5TirlNkvNa7/tfkuTIGUtIupB3+hfLn5o+8IUbplBgys4dIrZu00+Y6Iw==
   dependencies:
     "@ant-design/icons" "^4.2.1"
-    "@ant-design/pro-utils" "1.45.1"
+    "@ant-design/pro-utils" "1.45.2"
     "@babel/runtime" "^7.18.0"
     antd "^4.20.0 "
     classnames "^2.2.6"
