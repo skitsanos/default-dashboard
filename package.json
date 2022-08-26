@@ -18,7 +18,7 @@
     "@ant-design/pro-form": "^1.74.2",
     "@ant-design/pro-layout": "^6.38.20",
     "ahooks": "^3.7.0",
-    "antd": "^4.22.7",
+    "antd": "^4.22.8",
     "braft-editor": "^2.3.9",
     "dayjs": "^1.11.5",
     "react": "^18.2.0",
