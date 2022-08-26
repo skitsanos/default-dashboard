@@ -46,33 +46,34 @@
     omit.js "^2.0.2"
     rc-util "^5.4.0"
 
-"@ant-design/pro-field@1.36.2":
-  version "1.36.2"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-field/-/pro-field-1.36.2.tgz#53d6c28e400daafe628e3977f33a3016dc0bf494"
-  integrity sha512-4W0Og5fwoq+U2cS1xWl2369x1LQcd5g6Ust7PqUsdK4wdELkKOnLQ32RDBzrdlQe11X7G2txK2U9TpuY3j+Qbg==
+"@ant-design/pro-field@1.36.3":
+  version "1.36.3"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-field/-/pro-field-1.36.3.tgz#7f2f76e68f950706ea5cf93f6bf76d90d5472e57"
+  integrity sha512-XVYxgystD8S9Wcj8vBHnrurm3U2O9VX1wRJzxqB3K62Gs+3kU08Hsuq5reie1SBOHToLN3WT8ZJmf1hpsu1T6w==
   dependencies:
     "@ant-design/icons" "^4.2.1"
     "@ant-design/pro-provider" "1.10.0"
-    "@ant-design/pro-utils" "1.45.1"
+    "@ant-design/pro-utils" "1.45.2"
     "@babel/runtime" "^7.18.0"
     "@chenshuai2144/sketch-color" "^1.0.8"
     antd "^4.20.0 "
     classnames "^2.2.6"
+    lodash.omit "^4.5.0"
     lodash.tonumber "^4.0.3"
     moment "^2.27.0"
     omit.js "^2.0.2"
     rc-util "^5.4.0"
     swr "^1.2.0"
 
-"@ant-design/pro-form@^1.74.2":
-  version "1.74.2"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-form/-/pro-form-1.74.2.tgz#2e005d8fb29af509f0598d8207aee3ba7f51e6ec"
-  integrity sha512-KGFlPXUtfZj8UgT/I9KrSzehh4abYyUvnPREkNk3MARKR9v/1HAxAWn2nm3tALDcN6hwcNYlympmFiywizkPXQ==
+"@ant-design/pro-form@^1.74.3":
+  version "1.74.3"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-form/-/pro-form-1.74.3.tgz#ad08ec4e15bab91ed02ab2f82eb28802905d27eb"
+  integrity sha512-taPnBkwwYKpIOPAMQuouKO9+zWC2+2VyvOCO6YvPl1NYKJPO5saVFTx5l8k379h3Vo89h90pVBTmzoyAtPJbrg==
   dependencies:
     "@ant-design/icons" "^4.2.1"
-    "@ant-design/pro-field" "1.36.2"
+    "@ant-design/pro-field" "1.36.3"
     "@ant-design/pro-provider" "1.10.0"
-    "@ant-design/pro-utils" "1.45.1"
+    "@ant-design/pro-utils" "1.45.2"
     "@babel/runtime" "^7.18.0"
     "@umijs/use-params" "^1.0.9"
     antd "^4.20.0 "
@@ -117,21 +118,6 @@
     "@babel/runtime" "^7.18.0"
     antd "^4.20.0 "
     rc-util "^5.0.1"
-    swr "^1.2.0"
-
-"@ant-design/pro-utils@1.45.1":
-  version "1.45.1"
-  resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.45.1.tgz#c31199c722e8f762107d47efd8d10827cc055cb1"
-  integrity sha512-gBHU0PQRM6Z6ED8Ee5WoNYu9c5S4GKSVZdYgZF/3NMypXCCAu8t5V1skFPhDKAfep1qpfIxDUujdaZbDpNm0Rg==
-  dependencies:
-    "@ant-design/icons" "^4.3.0"
-    "@ant-design/pro-provider" "1.10.0"
-    "@babel/runtime" "^7.18.0"
-    antd "^4.20.0 "
-    classnames "^2.2.6"
-    moment "^2.27.0"
-    rc-util "^5.0.6"
-    react-sortable-hoc "^2.0.0"
     swr "^1.2.0"
 
 "@ant-design/pro-utils@1.45.2":
@@ -4417,6 +4403,11 @@ lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
+
+lodash.omit@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.omit/-/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
+  integrity sha512-XeqSp49hNGmlkj2EJlfrQFIzQ6lXdNro9sddtQzcJY8QaoC2GO0DT7xaIokHeyM+mIT0mPMlPvkYzg2xCuHdZg==
 
 lodash.tonumber@^4.0.3:
   version "4.0.3"
