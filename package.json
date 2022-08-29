@@ -8,6 +8,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "postinstall": "umi setup",
     "start": "umi dev",
     "build": "NODE_ENV=production umi build",
     "deploy": "netlify deploy --prod"

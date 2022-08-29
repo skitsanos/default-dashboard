@@ -13,26 +13,13 @@ export default defineConfig({
         '@primary-color': '#482684'
     },
 
-    dynamicImport: {
-        loading: '@/components/Loading'
-    },
-
     plugins: [],
 
-    //this line allows handling Page Not found errors and displays content from 404.js
-    404: true,
-
-    fastRefresh: {},
 
     ignoreMomentLocale: true,
-
-    nodeModulesTransform: {
-        type: 'none'
-    },
 
     devtool: false,
 
     mfsu: {
-        production: {}
     }
 });

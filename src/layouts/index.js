@@ -5,10 +5,11 @@ import ProLayout from '@ant-design/pro-layout';
 import {Avatar, ConfigProvider} from 'antd';
 import enUS from 'antd/lib/locale/en_US';
 import React, {useState} from 'react';
+import {Outlet, history} from "umi";
 
 const Container = props =>
 {
-    const {children, history} = props;
+    console.log(history)
 
     const [pathname, setPathname] = useState(document.location.pathname);
 
@@ -33,7 +34,7 @@ const Container = props =>
                                    icon={<UserOutlined/>}/>
                        </div>
                    }>
-            {children}
+            <Outlet />
         </ProLayout>
     </ConfigProvider>;
 };
