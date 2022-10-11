@@ -3,9 +3,8 @@ import {gridGutter} from '@/defaults';
 import ProCard from '@ant-design/pro-card';
 import {Divider, Statistic} from 'antd';
 
-const Page = props =>
+const Page = () =>
 {
-    const {history} = props;
     return <ContentArea title={'Welcome'}
                         subTitle={'You are logged as Demo user'}>
         <ProCard direction={'row'}
