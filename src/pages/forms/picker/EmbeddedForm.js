@@ -1,5 +1,4 @@
-import DatePicker from '@/components/DatePicker';
-import {Form} from 'antd';
+import {DatePicker, Form} from 'antd';
 
 const DATE_FORMAT = 'YYYY-MM-DD';
 

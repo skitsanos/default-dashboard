@@ -10,16 +10,7 @@ export default ({
     //favicon: '/assets/favicon.ico',
     title: 'My Dashboard',
 
-    theme: {
-        '@primary-color': '#482684'
-    },
-
-    ignoreMomentLocale: false,
-
-    chainWebpack: memo =>
-    {
-        //memo.plugin('AntdDayjsWebpackPlugin').use(new AntdDayjsWebpackPlugin());
-
-        return memo;
+    mfsu: {
+        strategy: 'normal'
     }
 });

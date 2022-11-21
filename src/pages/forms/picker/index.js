@@ -1,6 +1,6 @@
-import DatePicker from '@/components/DatePicker';
+//import DatePicker from '@/components/DatePicker';
 import EmbeddedForm from '@/pages/forms/picker/EmbeddedForm';
-import {Button, Divider, Form, Space} from 'antd';
+import {Button, DatePicker, Divider, Form, Space} from 'antd';
 
 import dayjs from 'dayjs';
 
@@ -54,7 +54,6 @@ const page = () =>
         </Space>
     </>;
 };
-;
-;
+
 
 export default page;

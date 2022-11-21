@@ -27,7 +27,9 @@ const ContentArea = props =>
                                   }
                               }
                           }}>
-        {children}
+        <div className={'pt-xxl'}>
+            {children}
+        </div>
 
     </PageContainer>;
 };
