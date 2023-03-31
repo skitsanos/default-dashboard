@@ -1,12 +1,19 @@
 import ContentArea from '@/components/ContentArea';
 import {gridGutter} from '@/defaults';
+import useLayoutSwitcher from '@/hooks/useLayoutSwitcher';
 import ProCard from '@ant-design/pro-card';
 import {Divider, Statistic} from 'antd';
 
 const Page = () =>
 {
+    const {layout, toggle} = useLayoutSwitcher();
+
     return <ContentArea title={'Welcome'}
-                        subTitle={'You are logged as Demo user'}>
+                        subTitle={'You are logged as Demo user'}
+                        extra={[
+                            <a key={'toggle-layout'}
+                               onClick={toggle}>Toggle layout ({layout})</a>
+                        ]}>
         <ProCard direction={'row'}
                  ghost={true}
                  gutter={gridGutter}

@@ -1,13 +1,13 @@
-/.idea/
-/node_modules/
+.idea/
+node_modules/
 
 */.umi/
 */.umi-production/
 
-/dist/
-/.netlify/
+dist/
+.netlify/
 
-/src/pages/__tests__/
-/src/pages/test/
+src/pages/__tests__/
+src/pages/test/
 
 *.lock

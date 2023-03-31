@@ -2,10 +2,13 @@ export const app = {
     title: 'My Dashboard'
 };
 
+const colorPrimary = '#31204d';
+
 export const ApplicationTheme = {
+
     token: {
+        colorPrimary,
         borderRadius: 1,
-        colorPrimary: '#31204d',
         fontFamily: 'Work Sans, sans-serif'
     },
 

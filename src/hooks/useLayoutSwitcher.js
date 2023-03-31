@@ -9,7 +9,7 @@ const useLayoutSwitcher = create((set, get) => ({
 
     toggle: () =>
     {
-        const newLayout = get().layout === 'top' ? 'left' : 'top';
+        const newLayout = get().layout === 'top' ? 'side' : 'top';
         set({layout: newLayout});
 
         localStorage.setItem(APPLICATION_LAYOUT_KEY, newLayout);
