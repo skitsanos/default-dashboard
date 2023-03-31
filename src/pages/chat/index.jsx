@@ -1,10 +1,11 @@
 import ContentArea from '@/components/ContentArea';
+import Loading from '@/components/Loading';
 import {SendOutlined, UserOutlined} from '@ant-design/icons';
 import ProCard from '@ant-design/pro-card';
-import {useMount, useWebSocket} from 'ahooks';
-import {Button, Form, Input, Space} from 'antd';
+import {useWebSocket} from 'ahooks';
+import {Button, Form, Input} from 'antd';
 import dayjs from 'dayjs';
-import {useMemo, useRef} from 'react';
+import {useEffect, useMemo, useRef} from 'react';
 
 const ReadyState = {
     Connecting: 0,
@@ -36,7 +37,8 @@ const Page = () =>
     const [form] = Form.useForm();
 
     const {readyState, sendMessage, latestMessage, disconnect, connect} = useWebSocket(
-        'wss://socketsbay.com/wss/v2/1/demo/'
+        'wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self'
+        //'wss://socketsbay.com/wss/v2/1/demo/'
     );
 
     const messageHistory = useRef([]);
@@ -51,11 +53,13 @@ const Page = () =>
         return messageHistory.current;
     }, [latestMessage]);
 
-    useMount(() =>
+    useEffect(() => connect(), []);
+    //useEffect(() => () => disconnect(), []);
+
+    useEffect(() =>
     {
-        //connect to websocket server when UI is ready
-        connect();
-    });
+        console.log(readyState);
+    }, [readyState]);
 
     const onFinish = values =>
     {
@@ -71,6 +75,7 @@ const Page = () =>
 
     return <ContentArea title={'Chat'}
                         subTitle={'Websockets demonstration'}>
+        <Loading loading={readyState !== ReadyState.Open}/>
         <ProCard className={'chat'}
                  ghost={false}
                  bordered={true}
@@ -90,7 +95,6 @@ const Page = () =>
                     </Form.Item>
 
                     <Button htmlType={'submit'}
-                            loading={readyState === ReadyState.Connecting || readyState === ReadyState.Closing}
                             disabled={readyState !== ReadyState.Open}
                             type={'primary'}
                             icon={<SendOutlined/>}>Send</Button>
