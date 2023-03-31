@@ -12,17 +12,19 @@ const generateUser = function* () {
 };
 
 export default {
-    'GET /api/users': (req, res) => {
+    'GET /api-local/users': (req, res) =>
+    {
         const {skip = 0, pageSize = 10, q} = req.query;
 
-        if (!existsSync('./.data')) {
+        if (!existsSync('./.data'))
+        {
             mkdirSync('./.data');
-
 
         }
 
         //check if the file exists
-        if (!existsSync('./.data/users.json')) {
+        if (!existsSync('./.data/users.json'))
+        {
             const generatedUsers = [
                 {
                     key: 'user-skitsanos',

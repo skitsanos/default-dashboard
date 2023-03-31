@@ -17,6 +17,8 @@ const spacing = 16;
 
 const uiMessage = (raw, index) =>
 {
+    console.log(raw);
+
     return <div key={`message-${index}`}
                 className={'h-box'}>
         <div>
@@ -34,7 +36,7 @@ const Page = () =>
     const [form] = Form.useForm();
 
     const {readyState, sendMessage, latestMessage, disconnect, connect} = useWebSocket(
-        'ws://foxx.skitsanos.com/pubsub/mydemochatroom'
+        'wss://socketsbay.com/wss/v2/1/demo/'
     );
 
     const messageHistory = useRef([]);
@@ -61,6 +63,8 @@ const Page = () =>
         sendMessage(JSON.stringify({
             message
         }));
+
+        messageHistory.current.push({data: JSON.stringify({message})});
 
         form.resetFields();
     };
