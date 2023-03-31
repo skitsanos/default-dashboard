@@ -23,7 +23,6 @@
         "braft-editor": "^2.3.9",
         "dayjs": "^1.11.7",
         "react": "^18.2.0",
-        "react-custom-scrollbars": "^4.2.1",
         "react-dom": "^18.2.0",
         "react-entities": "^1.3.0",
         "umi": "^4.0.64",

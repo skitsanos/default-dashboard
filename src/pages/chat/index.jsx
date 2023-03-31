@@ -1,10 +1,10 @@
+import ContentArea from '@/components/ContentArea';
 import {SendOutlined, UserOutlined} from '@ant-design/icons';
 import ProCard from '@ant-design/pro-card';
 import {useMount, useWebSocket} from 'ahooks';
-import {Button, Comment, Form, Input} from 'antd';
+import {Button, Form, Input, Space} from 'antd';
 import dayjs from 'dayjs';
-import {useEffect, useMemo, useRef} from 'react';
-import {Scrollbars} from 'react-custom-scrollbars';
+import {useMemo, useRef} from 'react';
 
 const ReadyState = {
     Connecting: 0,
@@ -17,35 +17,37 @@ const spacing = 16;
 
 const uiMessage = (raw, index) =>
 {
-    try
-    {
-        const {message} = JSON.parse(raw.data);
-
-        return <Comment key={index}
-                        datetime={dayjs().format('YYYY-MM-DD HH:mm:ss')}
-                        avatar={<UserOutlined/>}
-                        content={message}/>;
-    } catch (ex)
-    {
-        //skip if someone sent something non-json
-    }
-
-    return null;
+    return <div key={`message-${index}`}
+                className={'h-box'}>
+        <div>
+            <UserOutlined/>
+        </div>
+        <div className={'ml mb'}>
+            <div>{dayjs().format('YYYY-MM-DD HH:mm:ss')}</div>
+            {raw.data}
+        </div>
+    </div>;
 };
 
 const Page = () =>
 {
     const [form] = Form.useForm();
-    const refScroll = useRef();
 
     const {readyState, sendMessage, latestMessage, disconnect, connect} = useWebSocket(
-        'ws://demo-chat.anyscripts.com/pubsub/mydemochatroom'
+        'ws://foxx.skitsanos.com/pubsub/mydemochatroom'
     );
 
     const messageHistory = useRef([]);
-    messageHistory.current = useMemo(() => messageHistory.current.concat(latestMessage), [
-        latestMessage
-    ]);
+
+    messageHistory.current = useMemo(() =>
+    {
+        if (latestMessage)
+        {
+            messageHistory.current.push(latestMessage);
+        }
+
+        return messageHistory.current;
+    }, [latestMessage]);
 
     useMount(() =>
     {
@@ -63,35 +65,35 @@ const Page = () =>
         form.resetFields();
     };
 
-    return <ProCard className={'chat'}
-                    title={'Chat'}
-                    ghost={false}
-                    bordered={true}
-                    direction={'column'}
-                    gutter={[spacing, spacing]}>
-        <ProCard className={'chat-messages'}>
-            <Scrollbars ref={refScroll}>
-                {messageHistory.current.map(uiMessage)}
-            </Scrollbars>
-        </ProCard>
+    return <ContentArea title={'Chat'}
+                        subTitle={'Websockets demonstration'}>
+        <ProCard className={'chat'}
+                 ghost={false}
+                 bordered={true}
+                 direction={'column'}
+                 gutter={[spacing, spacing]}>
+            <ProCard className={'chat-messages'}>
+                {messageHistory.current.map((message, index) => uiMessage(message, index))}
+            </ProCard>
 
-        <ProCard bordered={true}>
-            <Form form={form}
-                  onFinish={onFinish}
-                  inputMode={'text'}
-                  layout={'inline'}>
-                <Form.Item name={'message'}>
-                    <Input title={'Type'}/>
-                </Form.Item>
+            <ProCard bordered={true}>
+                <Form form={form}
+                      onFinish={onFinish}
+                      inputMode={'text'}
+                      layout={'inline'}>
+                    <Form.Item name={'message'}>
+                        <Input title={'Type'}/>
+                    </Form.Item>
 
-                <Button htmlType={'submit'}
-                        loading={readyState === ReadyState.Connecting || readyState === ReadyState.Closing}
-                        disabled={readyState !== ReadyState.Open}
-                        type={'primary'}
-                        icon={<SendOutlined/>}>Send</Button>
-            </Form>
+                    <Button htmlType={'submit'}
+                            loading={readyState === ReadyState.Connecting || readyState === ReadyState.Closing}
+                            disabled={readyState !== ReadyState.Open}
+                            type={'primary'}
+                            icon={<SendOutlined/>}>Send</Button>
+                </Form>
+            </ProCard>
         </ProCard>
-    </ProCard>;
+    </ContentArea>;
 };
 
 export default Page;

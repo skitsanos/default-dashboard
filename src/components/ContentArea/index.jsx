@@ -1,13 +1,5 @@
-import {PageContainer} from '@ant-design/pro-layout';
-import {Link} from 'umi';
 import {Breadcrumb, Col, Divider, Row, Space} from 'antd';
-
-const itemRender = (route, params, items, paths) =>
-{
-    const last = items.indexOf(route) === items.length - 1;
-    return last ? <span>{route.title}</span> : <Link to={paths.join('/')}>{route.title}</Link>;
-};
-
+import {Link} from 'umi';
 
 const ContentArea = props =>
 {
@@ -27,11 +19,11 @@ const ContentArea = props =>
             //paddingLeft: 40,
             //paddingRight: 40
         }}>
-            <Breadcrumb>
-                {breadcrumb.map((item, index) => <Breadcrumb.Item key={`crumb-${item.title}`}>{item.path ?
-                                                                                               <Link to={item.path}>{item.title}</Link> : item.title}
+            {breadcrumb && <Breadcrumb>
+                {breadcrumb.map(item => <Breadcrumb.Item key={`crumb-${item.title}`}>{item.path ?
+                    <Link to={item.path}>{item.title}</Link> : item.title}
                 </Breadcrumb.Item>)}
-            </Breadcrumb>
+            </Breadcrumb>}
 
             <div className={'h-box'}>
                 <h1>{title}</h1>

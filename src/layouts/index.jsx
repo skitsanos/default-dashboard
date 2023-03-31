@@ -1,39 +1,41 @@
 import {app, ApplicationTheme} from '@/defaults';
+import useLayoutSwitcher from '@/hooks/useLayoutSwitcher';
 import sidebarMenu from '@/sidebarMenu';
 import ProLayout from '@ant-design/pro-layout';
 import {ConfigProvider} from 'antd';
 import React, {useState} from 'react';
-import {history, Outlet} from 'umi';
+import {history, Link, Outlet} from 'umi';
 import enUS from 'antd/locale/en_US';
 
 const Container = () =>
 {
     const [pathname, setPathname] = useState(document.location.pathname);
 
+    const {layout} = useLayoutSwitcher();
+
+    const menuItemRender = (item, dom) => <a onClick={() =>
+    {
+        history.push(item.path || '/');
+        setPathname(item.path || '/');
+    }}>{dom}</a>;
+
     return <ConfigProvider locale={enUS}
                            theme={ApplicationTheme}>
         <ProLayout {...sidebarMenu}
                    token={ApplicationTheme}
-                   layout={'top'}
+                   layout={layout}
                    fixSiderbar={true}
-                   fixedHeader={true}
+                   fixedHeader={false}
                    title={app.title}
                    location={{
                        pathname
                    }}
-                   menuItemRender={(item, dom) => <a onClick={() =>
-                   {
-                       history.push(item.path || '/');
-                       setPathname(item.path || '/');
-                   }}>{dom}</a>}
-                   siderMenuType="group"
+                   menuItemRender={menuItemRender}
+                   siderMenuType={'group'}
                    menu={{
                        collapsedShowGroupTitle: true
                    }}
-                   avatarProps={{
-                       src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
-                       size: 'large'
-                   }}>
+                   onPageChange={console.log}>
             <ConfigProvider theme={ApplicationTheme}>
                 <Outlet context={{
                     debug: true
