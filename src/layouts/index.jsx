@@ -25,7 +25,7 @@ const Container = () =>
                    token={ApplicationTheme}
                    layout={layout}
                    fixSiderbar={true}
-                   fixedHeader={false}
+                   fixedHeader={true}
                    title={app.title}
                    location={{
                        pathname
