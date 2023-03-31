@@ -5,26 +5,17 @@ export const app = {
 export const ApplicationTheme = {
     token: {
         borderRadius: 1,
-        colorPrimary: '#00b96b'
+        colorPrimary: '#31204d',
+        fontFamily: 'Work Sans, sans-serif'
     },
 
-    colorPrimary: '#00b96b',
+    colorPrimary: '#31204d',
 
     layout: {
         //bgLayout: '#00b96b'
     },
 
-    sider: {
-        colorMenuBackground: '#618676',
-        colorBgMenuItemCollapsedHover: '#618676',
-        colorBgRightActionsItemHover: '#618676',
-
-        colorTextMenuTitle: '#fff',
-        colorTextMenu: '#f1f5f3',
-        colorTextMenuSelected: '#fff',
-        colorBgMenuItemHover: '#f1f5f3',
-        colorMenuItemDivider: '#f1f5f3'
-    },
+    sider: {},
 
     header: {
         colorBgHeader: '#fafafa'

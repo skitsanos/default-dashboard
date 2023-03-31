@@ -1,25 +1,28 @@
 import chance from 'chance';
 import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'fs';
 
-const generateUser = function* ()
-{
+const generateUser = function* () {
     yield {
         key: chance().guid(),
         name: chance().name(),
         email: chance().email(),
-        uuiid: chance().guid()
+        uuiid: chance().guid(),
+        avatar: chance().avatar()
     };
 };
 
 export default {
-    'GET /api/users': (req, res) =>
-    {
+    'GET /api/users': (req, res) => {
         const {skip = 0, pageSize = 10, q} = req.query;
 
-        if (!existsSync('./.data'))
-        {
+        if (!existsSync('./.data')) {
             mkdirSync('./.data');
 
+
+        }
+
+        //check if the file exists
+        if (!existsSync('./.data/users.json')) {
             const generatedUsers = [
                 {
                     key: 'user-skitsanos',
