@@ -12,6 +12,12 @@
 
 @form-item-margin-bottom: 0.6rem;
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 html {
   font-family: @font-family;
 }
@@ -20,8 +26,21 @@ h1, h2, h3 {
   font-weight: @font-weight-light;
 }
 
+h1, h2 {
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
 #root {
   height: 100%;
+}
+
+.debug {
+  background-color: rgba(184, 155, 181, 0.1) !important;
+  border: dashed 1px rgba(184, 155, 181);
 }
 
 .ant-pro-sider-logo h1 {
@@ -32,28 +51,42 @@ h1, h2, h3 {
   height: 100% !important;
 
   div.ant-pro-card-col:nth-of-type(1) {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	//justify-content: flex-end;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    //justify-content: flex-end;
 
-	.chat-messages {
-	  flex: 1;
+    .chat-messages {
+      flex: 1;
 
-	  .ant-pro-card-body {
-		flex: 1;
-	  }
-	}
+      .ant-pro-card-body {
+        flex: 1;
+      }
+    }
   }
 
   .ant-form-inline {
-	display: flex;
+    display: flex;
 
-	> div:nth-of-type(1) {
-	  flex: 1;
-	  background-color: #6d519d;
-	}
+    > div:nth-of-type(1) {
+      flex: 1;
+      background-color: #6d519d;
+    }
   }
+}
+
+.h-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ml {
+  margin-left: @margin-size;
+}
+
+.mr {
+  margin-right: @margin-size;
 }
 
 .pt {
@@ -62,4 +95,18 @@ h1, h2, h3 {
 
 .pt-xxl {
   padding-top: @margin-size*3;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-auto {
+  width: auto;
+}
+
+
+.ant-page-header-heading-title {
+  font-weight: @font-weight-light !important;
+
 }

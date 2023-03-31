@@ -1,10 +1,9 @@
 import {app, ApplicationTheme} from '@/defaults';
 import sidebarMenu from '@/sidebarMenu';
-import {UserOutlined} from '@ant-design/icons';
 import ProLayout from '@ant-design/pro-layout';
-import {Avatar, ConfigProvider} from 'antd';
+import {ConfigProvider} from 'antd';
 import React, {useState} from 'react';
-import {Outlet, history} from 'umi';
+import {history, Outlet} from 'umi';
 import enUS from 'antd/locale/en_US';
 
 const Container = () =>
@@ -15,6 +14,7 @@ const Container = () =>
                            theme={ApplicationTheme}>
         <ProLayout {...sidebarMenu}
                    token={ApplicationTheme}
+                   layout={'top'}
                    fixSiderbar={true}
                    fixedHeader={true}
                    title={app.title}
@@ -32,8 +32,7 @@ const Container = () =>
                    }}
                    avatarProps={{
                        src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
-                       size: 'small',
-                       title: 'Profile'
+                       size: 'large'
                    }}>
             <ConfigProvider theme={ApplicationTheme}>
                 <Outlet context={{
