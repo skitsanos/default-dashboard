@@ -59,7 +59,10 @@ const Page = props =>
                                 title: 'Users'
                             }]}
                         extra={[
-                            <Button key={'refresh'}>Refresh</Button>,
+                            <Button key={'refresh'} onClick={() =>
+                            {
+                                run(pagination);
+                            }}>Refresh</Button>,
                             <Button key={'add'}
                                     type={'primary'}>Add</Button>
                         ]}>

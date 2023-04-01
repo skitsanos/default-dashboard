@@ -9,7 +9,7 @@ export const ApplicationTheme = {
     token: {
         colorPrimary,
         borderRadius: 1,
-        fontFamily: 'Work Sans, sans-serif'
+        fontFamily: '"Work Sans", sans-serif !important',
     },
 
     colorPrimary: '#31204d',
