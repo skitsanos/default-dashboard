@@ -4,14 +4,20 @@ import {usePagination} from 'ahooks';
 import getTableData from '@/utils/getTableData';
 import {endpoints} from '@/api';
 
-const columns = [{
-    title: 'Name',
-    dataIndex: 'name',
-    render: (_, row) => <Space> <Avatar src={`${row.avatar}?d=retro`}/> <span>{row.name}</span> </Space>
-}, {
-    title: 'Email',
-    dataIndex: 'email'
-}];
+const columns = [
+    {
+        title: 'Name',
+        dataIndex: 'name',
+        render: (_, row) => <Space> <Avatar src={`${row.avatar}?d=retro`}/> <span>{row.name}</span> </Space>
+    }, {
+        title: 'Email',
+        dataIndex: 'email'
+    },
+    {
+        title: 'Uuid',
+        dataIndex: 'uuid'
+    }
+];
 
 const Page = props =>
 {

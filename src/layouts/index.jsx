@@ -33,7 +33,7 @@ const Container = () =>
                    menuItemRender={menuItemRender}
                    siderMenuType={'group'}
                    menu={{
-                       collapsedShowGroupTitle: true
+                       //collapsedShowGroupTitle: true
                    }}
                    onPageChange={console.log}>
             <ConfigProvider theme={ApplicationTheme}>

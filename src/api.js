@@ -1,6 +1,6 @@
 import request from 'umi-request';
 
-const url = '/api';
+const url = 'https://apimocks.netlify.app/api/users';
 
 export const endpoints = {
     login: `${url}/auth/login`,

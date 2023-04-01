@@ -1,4 +1,4 @@
-import {DashboardOutlined, FolderOutlined, MessageOutlined, SettingOutlined, UserOutlined} from '@ant-design/icons';
+import {DashboardOutlined, MessageOutlined, SettingOutlined, UserOutlined} from '@ant-design/icons';
 
 const sidebarMenu = {
     route: {
@@ -8,21 +8,6 @@ const sidebarMenu = {
                 path: '/',
                 icon: <DashboardOutlined/>,
                 name: 'Dashboard'
-            },
-            {
-                icon: <FolderOutlined/>,
-                name: 'Content',
-                routes: [
-                    {
-                        path: '/pages',
-                        name: 'Pages'
-                    },
-
-                    {
-                        path: '/media',
-                        name: 'Media'
-                    }
-                ]
             },
 
             {
