@@ -2,14 +2,23 @@ export const app = {
     title: 'My Dashboard'
 };
 
+export const hasNoLayout = [
+    '/login'
+];
+
+export const publicRoutes = [
+    '/login',
+    '/signup'
+];
+
 const colorPrimary = '#31204d';
 
 export const ApplicationTheme = {
 
     token: {
         colorPrimary,
-        borderRadius: 1,
-        fontFamily: '"Work Sans", sans-serif !important',
+        borderRadius: 5,
+        fontFamily: '"Work Sans", sans-serif !important'
     },
 
     colorPrimary: '#31204d',

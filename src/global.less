@@ -8,9 +8,12 @@
 @color-red: crimson;
 @color-orange: #e1ac41;
 
-@margin-size: 1ch;
+@margin-size: 1rem;
 
 @form-item-margin-bottom: 0.6rem;
+
+@shadow-light-inset: inset 0px 0px 5px -3px rgba(0, 0, 0, 0.55);
+@shadow-light: 0px 0px 5px -3px rgba(0, 0, 0, 0.55);
 
 *,
 *::before,
@@ -18,8 +21,10 @@
   box-sizing: inherit;
 }
 
-html {
+html, body {
   font-family: @font-family;
+  margin: 0;
+  height: 100%;
 }
 
 h1, h2, h3 {
@@ -42,6 +47,10 @@ h1 {
 .debug {
   background-color: rgba(184, 155, 181, 0.1) !important;
   border: dashed 1px rgba(184, 155, 181);
+}
+
+.red {
+  color: crimson;
 }
 
 .ant-pro-sider-logo h1 {
@@ -82,6 +91,14 @@ h1 {
   align-items: center;
 }
 
+.mt {
+  margin-top: @margin-size;
+}
+
+.mb {
+  margin-bottom: @margin-size;
+}
+
 .ml {
   margin-left: @margin-size;
 }
@@ -110,6 +127,21 @@ h1 {
   width: auto;
 }
 
+.transparent {
+  background-color: transparent;
+}
+
+.shadow {
+  box-shadow: @shadow-light;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
 
 .ant-page-header-heading-title {
   font-weight: @font-weight-light !important;
@@ -118,4 +150,45 @@ h1 {
 .ant-menu *,
 .ant-menu-item * {
   transition: none !important;
+}
+
+.page-login {
+  height: 100%;
+  background-image: url("/img/bg.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  .ant-layout {
+	height: 100%;
+	background-color: transparent;
+
+	main {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: center;
+	}
+
+	.login-box {
+	  min-width: 22rem;
+	  min-height: 22rem;
+	  padding: 2rem;
+	  border: solid 4px #fff;
+	  border-radius: 50%;
+	  background-color: rgba(255, 255, 255, 0.75);
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: center;
+
+	  > div {
+
+	  }
+	}
+  }
+
+  .ant-layout-header {
+	background-color: transparent;
+	color: #fff;
+  }
 }
