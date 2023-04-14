@@ -1,4 +1,6 @@
 import ContentArea from '@/components/ContentArea';
+import {ApplicationTheme} from '@/defaults';
+import {UserOutlined} from '@ant-design/icons';
 import {Avatar, Button, Card, Pagination, Space, Table} from 'antd';
 import {usePagination} from 'ahooks';
 import getTableData from '@/utils/getTableData';
@@ -46,7 +48,12 @@ const Page = props =>
 
     return <ContentArea title={'Users'}
                         subTitle={'User management zone'}
-                        breadcrumb={[
+                        avatar={<Avatar icon={<UserOutlined/>}
+                                        shape={'square'}
+                                        style={{
+                                            backgroundColor: '#af98d4'
+                                        }}/>}
+                        breadcrumbs={[
                             {
                                 title: 'Dashboard',
                                 path: '/'
@@ -57,12 +64,14 @@ const Page = props =>
                             },
                             {
                                 title: 'Users'
-                            }]}
+                            }
+                        ]}
                         extra={[
-                            <Button key={'refresh'} onClick={() =>
-                            {
-                                run(pagination);
-                            }}>Refresh</Button>,
+                            <Button key={'refresh'}
+                                    onClick={() =>
+                                    {
+                                        run(pagination);
+                                    }}>Refresh</Button>,
                             <Button key={'add'}
                                     type={'primary'}>Add</Button>
                         ]}>

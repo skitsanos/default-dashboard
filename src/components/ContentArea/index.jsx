@@ -1,32 +1,30 @@
 import {Breadcrumb, Col, Divider, Row, Space} from 'antd';
-import {Link} from 'umi';
 
-const ContentArea = props =>
+const ContentArea = ({
+                         children,
+                         title,
+                         breadcrumbs,
+                         subTitle,
+                         content,
+                         avatar,
+                         extra,
+                         onBack
+                     }) =>
 {
-    const {
-        children,
-        title,
-        breadcrumb,
-        subTitle,
-        content,
-        avatar,
-        extra,
-        onBack
-    } = props;
-
     return <>
         <div style={{
             //paddingLeft: 40,
             //paddingRight: 40
         }}>
-            {breadcrumb && <Breadcrumb>
-                {breadcrumb.map(item => <Breadcrumb.Item key={`crumb-${item.title}`}>{item.path ?
-                    <Link to={item.path}>{item.title}</Link> : item.title}
-                </Breadcrumb.Item>)}
+            {breadcrumbs && <Breadcrumb items={breadcrumbs.map(el => ({
+                key: `route-${el.path}`,
+                title: el.title,
+                href: el.path
+            }))}>
             </Breadcrumb>}
 
             <div className={'h-box'}>
-                <h1>{title}</h1>
+                {avatar && <span className={'mr'}>{avatar}</span>}<h1>{title}</h1>
 
                 {subTitle && <div className={'ml'}>{subTitle}</div>}
 
