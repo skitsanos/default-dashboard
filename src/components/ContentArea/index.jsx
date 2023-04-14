@@ -43,6 +43,8 @@ const ContentArea = ({
                 </Row>
             </div>
 
+            {content && <div className={'mt'}>{content}</div>}
+
             {children}
         </div>
     </>;

@@ -1,7 +1,7 @@
 import ContentArea from '@/components/ContentArea';
 import {ApplicationTheme} from '@/defaults';
 import {UserOutlined} from '@ant-design/icons';
-import {Avatar, Button, Card, Pagination, Space, Table} from 'antd';
+import {Avatar, Button, Card, Input, Pagination, Space, Table} from 'antd';
 import {usePagination} from 'ahooks';
 import getTableData from '@/utils/getTableData';
 import {endpoints} from '@/api';
@@ -66,6 +66,9 @@ const Page = props =>
                                 title: 'Users'
                             }
                         ]}
+                        content={<Card>
+                            <Input.Search/>
+                        </Card>}
                         extra={[
                             <Button key={'refresh'}
                                     onClick={() =>
