@@ -39,7 +39,7 @@ jobs:
           echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
 
       - name: Post comment
-        uses: mshick/add-pr-comment@v1
+        uses: mshick/add-pr-comment@v2
         if: always() && github.event.number
         with:
           message: |
