@@ -1,20 +1,28 @@
 import chance from 'chance';
 import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'fs';
 
-const generateUser = function* () {
+const generateFile = function* ()
+{
     yield {
         key: chance().guid(),
-        name: chance().name(),
-        email: chance().email(),
-        uuid: chance().guid(),
-        avatar: chance().avatar()
+        name: chance().string({
+            alpha: true,
+            number: false,
+            symbols: false,
+            length: 12
+        }),
+        type: 'PDF'
     };
 };
 
 export default {
-    'GET /api-local/users': (req, res) =>
+    'GET /api-local/files': (req, res) =>
     {
-        const {skip = 0, pageSize = 10, q} = req.query;
+        const {
+            skip = 0,
+            pageSize = 10,
+            q
+        } = req.query;
 
         if (!existsSync('./.data'))
         {
@@ -23,22 +31,16 @@ export default {
         }
 
         //check if the file exists
-        if (!existsSync('./.data/users.json'))
+        if (!existsSync('./.data/files.json'))
         {
             const generatedUsers = [
-                {
-                    key: 'user-skitsanos',
-                    name: 'Evgenios Skitsanos',
-                    email: chance().email(),
-                    uuid: chance().guid()
-                },
-                ...Array.from({length: 100}, () => generateUser().next().value)
+                ...Array.from({length: 100}, () => generateFile().next().value)
             ];
 
-            writeFileSync('./.data/users.json', JSON.stringify(generatedUsers));
+            writeFileSync('./.data/files.json', JSON.stringify(generatedUsers));
         }
 
-        const dataset = JSON.parse(readFileSync('./.data/users.json', 'utf8').toString());
+        const dataset = JSON.parse(readFileSync('./.data/files.json', 'utf8').toString());
 
         const current = Number(skip);
         const next = Number(skip) + Number(pageSize);

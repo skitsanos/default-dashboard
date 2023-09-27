@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Component = props =>
 {
     const {isLoading/*, timedOut, error, retry*/} = props;

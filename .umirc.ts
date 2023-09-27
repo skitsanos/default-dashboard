@@ -10,9 +10,9 @@ export default ({
     //favicon: '/assets/favicon.ico',
     title: 'My Dashboard',
 
-    mfsu: {
-        strategy: 'normal'
-    },
+    // mfsu: {
+    //     strategy: 'normal'
+    // },
 
     devtool: process.env.NODE_ENV === 'development' ? 'eval' : false,
 

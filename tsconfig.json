@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "umi": [
+        "src/.umi/exports"
+      ]
+    }
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/node_modules"
+  ]
+}

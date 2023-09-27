@@ -1,30 +1,25 @@
 import ContentArea from '@/components/ContentArea';
-import {ApplicationTheme} from '@/defaults';
-import {UserOutlined} from '@ant-design/icons';
+import {FileOutlined, FolderOutlined} from '@ant-design/icons';
 import {Avatar, Button, Card, Input, Pagination, Space, Table} from 'antd';
 import {usePagination} from 'ahooks';
 import getTableData from '@/utils/getTableData';
 import {endpoints} from '@/api';
+import {history} from 'umi';
 
 const columns = [
     {
-        title: 'Name',
+        title: 'File',
         dataIndex: 'name',
-        render: (_, row) => <Space> <Avatar src={`${row.avatar}?d=retro`}/> <span>{row.name}</span> </Space>
-    }, {
-        title: 'Email',
-        dataIndex: 'email'
+        render: (_, row) => <Space> <Avatar icon={<FileOutlined/>}/> <span>{row.name}</span> </Space>
     },
     {
-        title: 'Uuid',
-        dataIndex: 'uuid'
+        title: 'Type',
+        dataIndex: 'type'
     }
 ];
 
-const Page = props =>
+const Page = () =>
 {
-    const {history} = props;
-
     const {
         data,
         run,
@@ -34,21 +29,18 @@ const Page = props =>
     } = usePagination(({
                            current,
                            pageSize,
-                           sorter,
                            query
-                       }) => getTableData(endpoints.users, {
+                       }) => getTableData(endpoints.files, {
         current,
         pageSize,
-        sorter,
-        query,
-        filter: ''
+        query
     }), {
         defaultPageSize: 10
     });
 
-    return <ContentArea title={'Users'}
-                        subTitle={'User management zone'}
-                        avatar={<Avatar icon={<UserOutlined/>}
+    return <ContentArea title={'Files'}
+                        subTitle={'File management zone'}
+                        avatar={<Avatar icon={<FolderOutlined/>}
                                         shape={'square'}
                                         style={{
                                             backgroundColor: '#af98d4'
@@ -63,7 +55,7 @@ const Page = props =>
                                 path: '/management'
                             },
                             {
-                                title: 'Users'
+                                title: 'Files'
                             }
                         ]}
                         content={<Card>
@@ -76,11 +68,15 @@ const Page = props =>
                                         run(pagination);
                                     }}>Refresh</Button>,
                             <Button key={'add'}
-                                    type={'primary'}>Add</Button>
+                                    type={'primary'}
+                                    onClick={() =>
+                                    {
+                                        history.push('/files/upload');
+                                    }}>Upload</Button>
                         ]}>
         <Card>
             <Table loading={loading}
-                   dataSource={data?.data}
+                   dataSource={data?.list}
                    pagination={false}
                    columns={columns}
                    rowKey={'key'}/>
@@ -92,9 +88,6 @@ const Page = props =>
                            marginTop: 16,
                            textAlign: 'right'
                        }}/>
-
-            <Button type={'link'}
-                    onClick={() => history.push('/')}>Go back to Dashboard</Button>
         </Card>
     </ContentArea>;
 };

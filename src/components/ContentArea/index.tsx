@@ -1,15 +1,28 @@
 import {Breadcrumb, Col, Divider, Row, Space} from 'antd';
+import {FC, ReactNode} from 'react';
 
-const ContentArea = ({
-                         children,
-                         title,
-                         breadcrumbs,
-                         subTitle,
-                         content,
-                         avatar,
-                         extra,
-                         onBack
-                     }) =>
+export interface ContentAreaProps
+{
+    children: ReactNode,
+    title: string;
+    subTitle?: string;
+    breadcrumbs: any[];
+    content?: ReactNode;
+    avatar?: ReactNode;
+    extra?: ReactNode;
+    onBack?: () => {}
+}
+
+const ContentArea: FC<ContentAreaProps> = ({
+                                               children,
+                                               title,
+                                               breadcrumbs,
+                                               subTitle,
+                                               content,
+                                               avatar,
+                                               extra,
+                                               onBack
+                                           }) =>
 {
     return <>
         <div style={{

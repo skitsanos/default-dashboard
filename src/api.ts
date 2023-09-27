@@ -1,9 +1,10 @@
-import request from 'umi-request';
+import request, {RequestOptionsWithResponse} from 'umi-request';
 
-const url = '/api';
+const url = '/api-local';
 
 export const endpoints = {
     login: `${url}/auth/login`,
+    files: `${url}/files`,
     users: `${url}/users`
 };
 
@@ -45,10 +46,10 @@ request.interceptors.response.use(response =>
     return response;
 });
 
-export const apiGet = (apiUrl, options) => request.get(apiUrl, options);
+export const apiGet = (apiUrl: string, options?: RequestOptionsWithResponse) => request.get(apiUrl, options);
 
-export const apiPost = (apiUrl, options) => request.post(apiUrl, options);
+export const apiPost = (apiUrl: string, options?: RequestOptionsWithResponse) => request.post(apiUrl, options);
 
-export const apiPut = (apiUrl, options) => request.put(apiUrl, options);
+export const apiPut = (apiUrl: string, options?: RequestOptionsWithResponse) => request.put(apiUrl, options);
 
-export const apiDelete = (apiUrl, options) => request.delete(apiUrl, options);
+export const apiDelete = (apiUrl: string, options?: RequestOptionsWithResponse) => request.delete(apiUrl, options);
