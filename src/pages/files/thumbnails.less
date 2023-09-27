@@ -1,6 +1,7 @@
 .file-viewer {
   display: flex; /* Make .file-viewer itself a flex container */
-  height: calc(100vh - 170px);
+  flex: 1;
+  //height: calc(100vh - 170px);
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -8,6 +9,7 @@
 }
 
 .file-thumbnails-list {
+  min-height: 0;
   flex: 1;
   background-color: #ccc;
   overflow-y: auto;
@@ -29,5 +31,6 @@
 }
 
 .file-thumbnails-item:hover {
-  border: solid 2px #ccc;
+  border: solid 1px #666;
+  box-shadow: 0 0 5px -3px rgba(0, 0, 0, 0.55);
 }
