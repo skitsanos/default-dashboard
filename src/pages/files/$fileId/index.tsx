@@ -2,7 +2,6 @@ import ContentArea from '@/components/ContentArea';
 import {useLocation, useParams} from 'umi';
 import '@/pages/files/thumbnails.less';
 import chance from 'chance';
-import VirtualList from 'rc-virtual-list';
 
 const generatePage = function* ()
 {
@@ -29,16 +28,10 @@ export default () =>
 
             <div className={'file-thumbnails-list'}>
                 {
-                    loadedDocument.map((el, index) => <div key={`page-${index}`}
+                    loadedDocument.map((_el, index) => <div key={`page-${index}`}
                                                            className={'file-thumbnails-item'}></div>)
                 }
             </div>
-
-            {/*<VirtualList data={loadedDocument} height={800}*/}
-            {/*             itemKey={'uuid'}*/}
-            {/*             className={'file-thumbnails-list'}>*/}
-            {/*    {(item) => <div className={'file-thumbnails-item'}>x</div>}*/}
-            {/*</VirtualList>*/}
 
             <div className={'file-page-preview'}>preview</div>
         </div>
