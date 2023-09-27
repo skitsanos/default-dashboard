@@ -3,18 +3,20 @@ import {FC, ReactNode} from 'react';
 
 export interface ContentAreaProps
 {
-    children: ReactNode,
+    children?: ReactNode;
+    className?: string;
     title: string;
-    subTitle?: string;
-    breadcrumbs: any[];
+    subTitle?: string | ReactNode;
+    breadcrumbs?: any[];
     content?: ReactNode;
     avatar?: ReactNode;
     extra?: ReactNode;
-    onBack?: () => {}
+    onBack?: () => {};
 }
 
 const ContentArea: FC<ContentAreaProps> = ({
                                                children,
+                                               className,
                                                title,
                                                breadcrumbs,
                                                subTitle,
@@ -25,9 +27,8 @@ const ContentArea: FC<ContentAreaProps> = ({
                                            }) =>
 {
     return <>
-        <div style={{
-            //paddingLeft: 40,
-            //paddingRight: 40
+        <div className={className} style={{
+            flex: 1
         }}>
             {breadcrumbs && <Breadcrumb items={breadcrumbs.map(el => ({
                 key: `route-${el.path}`,
@@ -36,7 +37,7 @@ const ContentArea: FC<ContentAreaProps> = ({
             }))}>
             </Breadcrumb>}
 
-            <div className={'h-box'}>
+            <div className={`h-box`}>
                 {avatar && <span className={'mr'}>{avatar}</span>}<h1>{title}</h1>
 
                 {subTitle && <div className={'ml'}>{subTitle}</div>}

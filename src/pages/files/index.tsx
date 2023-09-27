@@ -1,12 +1,23 @@
 import ContentArea from '@/components/ContentArea';
-import {FileOutlined, FolderOutlined} from '@ant-design/icons';
-import {Avatar, Button, Card, Input, Pagination, Space, Table} from 'antd';
+import {DeleteOutlined, FileOutlined, FileTextOutlined, FolderOutlined} from '@ant-design/icons';
+import type {MenuProps} from 'antd';
+import {Avatar, Button, Card, Dropdown, Input, Pagination, Space, Table} from 'antd';
 import {usePagination} from 'ahooks';
 import getTableData from '@/utils/getTableData';
 import {endpoints} from '@/api';
 import {history} from 'umi';
+import {ColumnsType} from 'antd/es/table';
 
-const columns = [
+interface FilesItem
+{
+    key: string
+    name: string;
+    type: string,
+
+    [key: string]: any;
+}
+
+const columns: ColumnsType<FilesItem> = [
     {
         title: 'File',
         dataIndex: 'name',
@@ -14,7 +25,47 @@ const columns = [
     },
     {
         title: 'Type',
+        width: 120,
         dataIndex: 'type'
+    },
+    {
+        title: 'Actions',
+        width: 100,
+        render: (_value, row) =>
+        {
+            const items: MenuProps['items'] = [
+                {
+                    key: 'view',
+                    label: <Space><FileTextOutlined/> View</Space>
+                },
+
+                {
+                    key: 'delete',
+                    label: <Space><DeleteOutlined/> Delete</Space>
+                }
+            ];
+
+            const onClick: MenuProps['onClick'] = ({key}) =>
+            {
+                console.log(key, row.key);
+                switch (key)
+                {
+                    case 'view':
+                        history.push(`/files/${row.key}`, row);
+                        break;
+
+                    default:
+                        break;
+                }
+            };
+
+            return <Dropdown menu={{
+                items,
+                onClick
+            }}>
+                <Button shape={'circle'}>...</Button>
+            </Dropdown>;
+        }
     }
 ];
 

@@ -5,7 +5,7 @@ import sidebarMenu from '@/sidebarMenu';
 import ProLayout from '@ant-design/pro-layout';
 import {ConfigProvider} from 'antd';
 import enUS from 'antd/locale/en_US';
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {history, Outlet, useLocation} from 'umi';
 
 const Container = () =>
@@ -62,7 +62,7 @@ const Container = () =>
             </ConfigProvider>
         </ProLayout>}
 
-        {hasNoLayout.includes(document.location.pathname) && !Boolean(session) && <Outlet/>}
+        {hasNoLayout.includes(document.location.pathname) && !session && <Outlet/>}
     </ConfigProvider>;
 };
 
