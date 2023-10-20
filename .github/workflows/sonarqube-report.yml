@@ -13,6 +13,7 @@ jobs:
         with:
           SONAR_URL: ${{ secrets.SONAR_URL }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_QUALITY_GATE: 'Skitsanos'
 
 
       - run: |
