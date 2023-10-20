@@ -5,11 +5,15 @@ on:
 
 jobs:
   scan:
-    name: Generate Report
+    name: Run Scanner
     runs-on: ubuntu-latest
     steps:
       - uses: anyscripts/run-sonar-scanner@main
         id: run-sonar-scanner
+        with:
+          SONAR_URL: ${{ secrets.SONAR_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
 
       - run: |
           echo "Testing"
