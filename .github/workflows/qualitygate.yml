@@ -8,7 +8,7 @@ jobs:
     name: Generate Report
     runs-on: ubuntu-latest
     steps:
-      - uses: anyscripts/get-sonar-scanner
+      - uses: anyscripts/get-sonar-scanner@main
         id: get-sonar-scanner
 
       - run: |
