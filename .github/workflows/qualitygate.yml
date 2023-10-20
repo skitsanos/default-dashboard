@@ -8,13 +8,18 @@ jobs:
     name: Generate Report
     runs-on: ubuntu-latest
     steps:
-      - uses: skitsanosinc/sonarqube-issues-report@v1.0.0
-        id: report-generator
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          SONAR_PROJECT: default-dashboard
+      - uses: anyscripts/get-sonar-scanner
+        id: get-sonar-scanner
 
       - run: |
-          echo "output: ${{ steps.report-generator.outputs.PREVIEW_URL }}"
+          echo "output: ${{ steps.get-sonar-scanner.outputs.linux }}"
+#      - uses: skitsanosinc/sonarqube-issues-report@v1.0.0
+#        id: report-generator
+#        with:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+#          SONAR_PROJECT: default-dashboard
+#
+#      - run: |
+#          echo "output: ${{ steps.report-generator.outputs.PREVIEW_URL }}"
