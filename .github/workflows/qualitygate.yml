@@ -12,7 +12,7 @@ jobs:
         id: get-sonar-scanner
 
       - run: |
-          echo "output: ${{ steps.get-sonar-scanner.outputs.linux }}"
+          echo "output: ${{ toJSON(steps.get-sonar-scanner) }}"
 #      - uses: skitsanosinc/sonarqube-issues-report@v1.0.0
 #        id: report-generator
 #        with:
