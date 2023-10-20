@@ -8,11 +8,11 @@ jobs:
     name: Generate Report
     runs-on: ubuntu-latest
     steps:
-      - uses: anyscripts/get-sonar-scanner@main
-        id: get-sonar-scanner
+      - uses: anyscripts/run-sonar-scanner@main
+        id: run-sonar-scanner
 
       - run: |
-          echo "output: ${{ toJSON(steps.get-sonar-scanner) }}"
+          echo "Testing"
 #      - uses: skitsanosinc/sonarqube-issues-report@v1.0.0
 #        id: report-generator
 #        with:
