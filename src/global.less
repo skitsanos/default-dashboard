@@ -1,9 +1,9 @@
-//@import (css) url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i|IBM+Plex+Sans:300,400&display=swap');
-
 @font-family: 'Work Sans', sans-serif;
 @code-family: 'IBM Plex Mono', Menlo, Courier, monospace;
 @font-weight-light: 300;
 @font-weight-normal: 400;
+
+@font-letter-spacing: 0.02rem;
 
 @color-red: crimson;
 @color-orange: #e1ac41;
@@ -15,10 +15,16 @@
 @shadow-light-inset: inset 0px 0px 5px -3px rgba(0, 0, 0, 0.55);
 @shadow-light: 0px 0px 5px -3px rgba(0, 0, 0, 0.55);
 
+
 .ant-page-header-breadcrumb {
   padding-bottom: @margin-size;
   margin-bottom: @margin-size;
   border-bottom: solid 1px #ccc;
+}
+
+.ant-btn, button, .ant-menu-item {
+  box-shadow: none !important;
+  letter-spacing: @font-letter-spacing !important;
 }
 
 *,
@@ -28,9 +34,10 @@
 }
 
 html, body {
-  font-family: @font-family;
+  //font-family: @font-family;
   margin: 0;
   height: 100%;
+  letter-spacing: @font-letter-spacing;
 }
 
 h1, h2, h3 {
@@ -44,6 +51,11 @@ h1, h2 {
 h1 {
   font-weight: 200 !important;
   font-size: 2.5rem;
+}
+
+pre, code {
+  font-family: @code-family;
+  font-size: 1.1rem;
 }
 
 #root {

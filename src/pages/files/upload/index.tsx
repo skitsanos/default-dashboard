@@ -1,6 +1,6 @@
 import ContentArea from '@/components/ContentArea';
 import {AlignLeftOutlined, InboxOutlined, TableOutlined, UploadOutlined} from '@ant-design/icons';
-import {Avatar, Button, Card, Col, Divider, Row, Space, Upload, UploadFile} from 'antd';
+import {Button, Card, Col, Divider, Row, Space, Upload, UploadFile} from 'antd';
 import {useState} from 'react';
 import {UploadChangeParam} from 'antd/es/upload';
 import {useRequest} from 'ahooks';
@@ -38,18 +38,19 @@ export default () =>
 
     return <ContentArea title={'Upload'}
                         subTitle={'Upload files for processing and content extraction'}
-                        avatar={<Avatar icon={<UploadOutlined/>}
-                                        shape={'square'}
-                                        style={{
-                                            backgroundColor: '#af98d4'
-                                        }}/>} breadcrumbs={[]}>
+                        avatar={{
+                            icon: <UploadOutlined/>,
+                            shape: 'square',
+                            style: {
+                                backgroundColor: '#af98d4'
+                            }
+                        }}>
 
         {showUpload && <>
             <Card>
                 <div className={'mb'}>
                     Select the file you would like to process for text or table extraction.
                 </div>
-
 
                 <Upload.Dragger name={'file'}
                                 multiple={false}
@@ -68,8 +69,11 @@ export default () =>
         {!showUpload && <>
             <Card className={'mb'}>
                 <Space>
-                    <Button type={'link'} icon={<AlignLeftOutlined/>}>Extract text</Button>
-                    <Button type={'link'} icon={<TableOutlined/>} disabled={true}>Extract tables</Button>
+                    <Button type={'link'}
+                            icon={<AlignLeftOutlined/>}>Extract text</Button>
+                    <Button type={'link'}
+                            icon={<TableOutlined/>}
+                            disabled={true}>Extract tables</Button>
                 </Space>
             </Card>
 
@@ -78,11 +82,12 @@ export default () =>
                     <Col style={{width: '200px'}}>
                         <Space direction={'vertical'}>
                             {Array.from({length: 5}, () => ({})).map((_el, index) => <Card
-                                key={`thumbnail-${index}`} style={{
-                                width: '180px',
-                                aspectRatio: '3/4',
-                                backgroundColor: '#efefef'
-                            }}/>)}
+                                key={`thumbnail-${index}`}
+                                style={{
+                                    width: '180px',
+                                    aspectRatio: '3/4',
+                                    backgroundColor: '#efefef'
+                                }}/>)}
                         </Space>
                     </Col>
                     <Col>
@@ -93,7 +98,8 @@ export default () =>
                         }}></Card>
                     </Col>
 
-                    <Col><Divider type={'vertical'} style={{height: '100%'}}/></Col>
+                    <Col><Divider type={'vertical'}
+                                  style={{height: '100%'}}/></Col>
 
                     <Col>
                         <Space direction={'vertical'}>

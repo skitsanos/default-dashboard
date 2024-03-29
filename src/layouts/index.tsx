@@ -3,10 +3,10 @@ import useLayoutSwitcher from '@/hooks/useLayoutSwitcher';
 import useSession from '@/hooks/useSession';
 import sidebarMenu from '@/sidebarMenu';
 import ProLayout from '@ant-design/pro-layout';
-import {Button, ConfigProvider} from 'antd';
+import {ConfigProvider} from 'antd';
 import enUS from 'antd/locale/en_US';
 import {useEffect, useState} from 'react';
-import {history, Outlet, useLocation} from 'umi';
+import {history, Link, Outlet, useLocation} from 'umi';
 import ApplicationTheme from '@/theme';
 
 const Container = () =>
@@ -33,20 +33,19 @@ const Container = () =>
 
     const {layout} = useLayoutSwitcher();
 
-    const menuItemRender = (item, dom) => <Button type={'link'}
-                                                  onClick={() =>
-                                                  {
-                                                      history.push(item.path || '/');
-                                                      setPathname(item.path || '/');
-                                                  }}>{dom}</Button>;
+    const menuItemRender = (item, dom) => <Link to={item.path}
+                                                onClick={() =>
+                                                {
+                                                    setPathname(item.path || '/');
+                                                }}>{dom}</Link>;
 
     return <ConfigProvider locale={enUS}
                            theme={ApplicationTheme}>
         {!hasNoLayout.includes(location.pathname) && Boolean(session) && <ProLayout {...sidebarMenu}
-                                                                                    token={ApplicationTheme.token}
+            //token={ApplicationTheme.token}
                                                                                     layout={layout}
-                                                                                    fixSiderbar={true}
-                                                                                    fixedHeader={true}
+            //fixSiderbar={true}
+            //fixedHeader={true}
                                                                                     title={app.title}
                                                                                     location={{
                                                                                         pathname

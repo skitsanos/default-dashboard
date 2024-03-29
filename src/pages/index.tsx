@@ -43,7 +43,7 @@ const Page = () =>
                  gutter={gridGutter}>
             Some long content...
 
-            {Array.from({length: 20}, (el, key) => <ProCard key={key}>Card #{key}</ProCard>)}
+            {Array.from({length: 20}, (_el, key) => <ProCard key={key}>Card #{key}</ProCard>)}
         </ProCard>
     </ContentArea>;
 };

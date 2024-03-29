@@ -3,15 +3,14 @@
  */
 import {ThemeConfig} from 'antd/es/config-provider/context';
 
-//const colorPrimary = '#0064CC';
 const colorPrimary = '#5A358C';
-const colorPrimaryHover = '##f3eef9';
+const colorPrimaryHover = '#f3eef9';
 const colorTheme = '#5A358C';
-const colorOrange = '#FF891A';
 
 const ApplicationTheme: ThemeConfig = {
     token: {
-        fontFamily: 'Work Sans, sans-serif',
+        fontFamily: 'IBM Plex Sans, sans-serif',
+        fontSize: 14,
         colorPrimary: colorPrimary,
         colorInfo: colorPrimary,
         colorError: 'crimson',
@@ -28,7 +27,7 @@ const ApplicationTheme: ThemeConfig = {
         },
 
         Avatar: {
-            colorBgContainer: `${colorTheme} !important`
+            colorTextPlaceholder: `#878090 !important`
         },
 
         Breadcrumb: {
@@ -49,21 +48,29 @@ const ApplicationTheme: ThemeConfig = {
             colorLink: colorPrimary,
             colorPrimaryHover: colorTheme,
             colorIcon: colorPrimary,
-            borderRadius: 3
+            borderRadius: 3,
+            defaultBg: `${colorPrimaryHover} !important`,
+            defaultColor: `${colorPrimary} !important`,
+            defaultHoverBorderColor: colorPrimary,
+            defaultShadow: 'none'
         },
 
-        Menu: {
-            dropdownWidth: 250,
-            //colorText: '#ADB9BF',
-            controlItemBgActive: colorOrange,
-
-            colorBgTextHover: '#3A4A61',
-            itemHoverColor: '#fff',
-
-            itemSelectedBg: colorOrange,
-            itemSelectedColor: '#fff',
-            colorBgContainer: `${colorTheme} !important`
+        Statistic: {
+            colorTextHeading: colorPrimary
         },
+
+        // Menu: {
+        //     dropdownWidth: 250,
+        //     //colorText: '#ADB9BF',
+        //     controlItemBgActive: colorOrange,
+        //
+        //     colorBgTextHover: '#3A4A61',
+        //     itemHoverColor: '#fff',
+        //
+        //     itemSelectedBg: colorOrange,
+        //     itemSelectedColor: '#fff',
+        //     colorBgContainer: `${colorTheme} !important`
+        // },
 
         Alert: {
             defaultPadding: 4

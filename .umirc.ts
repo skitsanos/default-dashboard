@@ -15,9 +15,9 @@ export default ({
     favicons: [],
 
     styles: [
-        //'https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i|IBM+Plex+Sans:300,400&display=swap',
-        //'https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap'
-        'https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300;400&display=swap'
+        'https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i|IBM+Plex+Sans:300,400&display=swap',
+        'https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300;400&display=swap',
+        'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;300;400&display=swap'
     ],
 
     headScripts: [{
