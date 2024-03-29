@@ -5,7 +5,7 @@ import {Avatar, Button, Card, Dropdown, Input, Pagination, Space, Table} from 'a
 import {usePagination} from 'ahooks';
 import getTableData from '@/utils/getTableData';
 import {endpoints} from '@/api';
-import {history} from 'umi';
+import {history, Link} from 'umi';
 import {ColumnsType} from 'antd/es/table';
 
 interface FilesItem
@@ -47,7 +47,6 @@ const columns: ColumnsType<FilesItem> = [
 
             const onClick: MenuProps['onClick'] = ({key}) =>
             {
-                console.log(key, row.key);
                 switch (key)
                 {
                     case 'view':
@@ -76,7 +75,6 @@ const Page = () =>
         run,
         loading,
         pagination,
-        refresh
     } = usePagination(({
                            current,
                            pageSize,
@@ -91,24 +89,23 @@ const Page = () =>
 
     return <ContentArea title={'Files'}
                         subTitle={'File management zone'}
-                        avatar={<Avatar icon={<FolderOutlined/>}
-                                        shape={'square'}
-                                        style={{
-                                            backgroundColor: '#af98d4'
-                                        }}/>}
-                        breadcrumbs={[
-                            {
-                                title: 'Dashboard',
-                                path: '/'
-                            },
-                            {
-                                title: 'Management',
-                                path: '/management'
-                            },
-                            {
-                                title: 'Files'
-                            }
-                        ]}
+                        avatar={{
+                            icon: <FolderOutlined/>,
+                            shape: 'square'
+                        }}
+                        breadcrumb={{
+                            items: [
+                                {
+                                    title: <Link to={'/'}>Dashboard</Link>
+                                },
+                                {
+                                    title: <Link to={'/management'}>Management</Link>
+                                },
+                                {
+                                    title: 'Files'
+                                }
+                            ]
+                        }}
                         content={<Card>
                             <Input.Search/>
                         </Card>}

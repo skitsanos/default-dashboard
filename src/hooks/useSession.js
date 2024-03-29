@@ -4,10 +4,11 @@ const SESSION_STORAGE_KEY = 'session';
 
 const useSession = create((set) => ({
     session: localStorage.getItem(SESSION_STORAGE_KEY) !== null
-        ? JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY))
-        : null,
+             ? JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY))
+             : INITIAL_SESSION,
 
-    login: (newSession) => {
+    login: (newSession) =>
+    {
         set({
             session: {
                 ...newSession,
@@ -17,16 +18,19 @@ const useSession = create((set) => ({
         localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(newSession));
     },
 
-    logout: () => {
+    logout: () =>
+    {
         set({
             session: null
         });
         localStorage.removeItem(SESSION_STORAGE_KEY);
     },
 
-    restoreSessionFromLocalStorage: () => {
+    restoreSessionFromLocalStorage: () =>
+    {
         const storedSession = localStorage.getItem(SESSION_STORAGE_KEY);
-        if (storedSession) {
+        if (storedSession)
+        {
             set({session: JSON.parse(storedSession)});
         }
     }

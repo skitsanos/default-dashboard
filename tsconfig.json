@@ -9,9 +9,6 @@
         "src/.umi/exports"
       ]
     },
-    "types": [
-      "node"
-    ],
     "typeRoots": [
       "@types/"
     ],
@@ -21,6 +18,7 @@
     ],
     "jsx": "react-jsx",
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": true,

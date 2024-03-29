@@ -38,7 +38,10 @@ const Index = () =>
     {
         if (error)
         {
-            const {response, data: errData} = error;
+            const {
+                response,
+                data: errData
+            } = error as Record<string, any>;
             const {status} = response;
             setAuthError(true);
 
