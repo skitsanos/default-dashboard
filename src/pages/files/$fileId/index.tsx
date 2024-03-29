@@ -56,16 +56,18 @@ export default () =>
         };
     }, []);
 
-    return <ContentArea title={'File Preview'} className={'v-box'}
-                        subTitle={name}
-                        breadcrumbs={[]}>
+    return <ContentArea title={'File Preview'}
+                        className={'v-box'}
+                        subTitle={name}>
 
         <Card>
             some details
         </Card>
 
         <Card>
-            <div id={fileId} className={'file-viewer'} style={{height}}>
+            <div id={fileId}
+                 className={'file-viewer'}
+                 style={{height}}>
 
                 <div className={'file-thumbnails-list'}>
                     {

@@ -36,7 +36,13 @@ const Page = () =>
 {
     const [form] = Form.useForm();
 
-    const {readyState, sendMessage, latestMessage, disconnect, connect} = useWebSocket(
+    const {
+        readyState,
+        sendMessage,
+        latestMessage,
+        disconnect,
+        connect
+    } = useWebSocket(
         'wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self'
         //'wss://socketsbay.com/wss/v2/1/demo/'
     );

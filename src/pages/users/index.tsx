@@ -4,6 +4,7 @@ import {Avatar, Button, Card, Input, Pagination, Space, Table} from 'antd';
 import {usePagination} from 'ahooks';
 import getTableData from '@/utils/getTableData';
 import {endpoints} from '@/api';
+import {Link} from 'umi';
 
 const columns = [
     {
@@ -20,16 +21,13 @@ const columns = [
     }
 ];
 
-const Page = props =>
+const Page = () =>
 {
-    const {history} = props;
-
     const {
         data,
         run,
         loading,
         pagination,
-        refresh
     } = usePagination(({
                            current,
                            pageSize,
@@ -37,31 +35,33 @@ const Page = props =>
                        }) => getTableData(endpoints.users, {
         current,
         pageSize,
-        query,
+        query
     }), {
         defaultPageSize: 10
     });
 
     return <ContentArea title={'Users'}
                         subTitle={'User management zone'}
-                        avatar={<Avatar icon={<UserOutlined/>}
-                                        shape={'square'}
-                                        style={{
-                                            backgroundColor: '#af98d4'
-                                        }}/>}
-                        breadcrumbs={[
-                            {
-                                title: 'Dashboard',
-                                path: '/'
-                            },
-                            {
-                                title: 'Management',
-                                path: '/management'
-                            },
-                            {
-                                title: 'Users'
+                        avatar={{
+                            icon: <UserOutlined/>,
+                            shape: 'square',
+                            style: {
+                                //backgroundColor: '#af98d4'
                             }
-                        ]}
+                        }}
+                        breadcrumb={{
+                            items: [
+                                {
+                                    title: <Link to={'/'}>Dashboard</Link>
+                                },
+                                {
+                                    title: <Link to={'/management'}>Management</Link>
+                                },
+                                {
+                                    title: 'Users'
+                                }
+                            ]
+                        }}
                         content={<Card>
                             <Input.Search/>
                         </Card>}

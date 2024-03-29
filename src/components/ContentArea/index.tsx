@@ -1,5 +1,6 @@
-import {Breadcrumb, Col, Divider, Row, Space} from 'antd';
+import {AvatarProps, BreadcrumbProps} from 'antd';
 import {FC, ReactNode} from 'react';
+import {PageHeader} from '@ant-design/pro-layout';
 
 export interface ContentAreaProps
 {
@@ -7,9 +8,9 @@ export interface ContentAreaProps
     className?: string;
     title: string;
     subTitle?: string | ReactNode;
-    breadcrumbs?: any[];
+    breadcrumb?: Partial<BreadcrumbProps>;
     content?: ReactNode;
-    avatar?: ReactNode;
+    avatar?: AvatarProps;
     extra?: ReactNode;
     onBack?: () => {};
 }
@@ -18,7 +19,7 @@ const ContentArea: FC<ContentAreaProps> = ({
                                                children,
                                                className,
                                                title,
-                                               breadcrumbs,
+                                               breadcrumb,
                                                subTitle,
                                                content,
                                                avatar,
@@ -27,40 +28,17 @@ const ContentArea: FC<ContentAreaProps> = ({
                                            }) =>
 {
     return <>
-        <div className={className} style={{
-            flex: 1
-        }}>
-            {breadcrumbs && <Breadcrumb items={breadcrumbs.map(el => ({
-                key: `route-${el.path}`,
-                title: el.title,
-                href: el.path
-            }))}>
-            </Breadcrumb>}
+        <PageHeader className={className}
+                    avatar={avatar}
+                    onBack={onBack}
+                    title={title}
+                    subTitle={subTitle}
+                    breadcrumb={breadcrumb}
+                    extra={extra}/>
 
-            <div className={`h-box`}>
-                {avatar && <span className={'mr'}>{avatar}</span>}<h1>{title}</h1>
+        {content && <div className={'mt'}>{content}</div>}
 
-                {subTitle && <div className={'ml'}>{subTitle}</div>}
-
-                <Divider type={'vertical'}/>
-
-                <Row style={{
-                    flex: 1
-                }}
-                     justify={'end'}
-                     align={'middle'}>
-                    <Col>
-                        <Space>
-                            {extra}
-                        </Space>
-                    </Col>
-                </Row>
-            </div>
-
-            {content && <div className={'mt'}>{content}</div>}
-
-            {children}
-        </div>
+        {children}
     </>;
 };
 

@@ -1,12 +1,13 @@
-import {app, ApplicationTheme, hasNoLayout, publicRoutes} from '@/defaults';
+import {app, hasNoLayout, publicRoutes} from '@/defaults';
 import useLayoutSwitcher from '@/hooks/useLayoutSwitcher';
 import useSession from '@/hooks/useSession';
 import sidebarMenu from '@/sidebarMenu';
 import ProLayout from '@ant-design/pro-layout';
-import {ConfigProvider} from 'antd';
+import {Button, ConfigProvider} from 'antd';
 import enUS from 'antd/locale/en_US';
 import {useEffect, useState} from 'react';
 import {history, Outlet, useLocation} from 'umi';
+import ApplicationTheme from '@/theme';
 
 const Container = () =>
 {
@@ -32,16 +33,17 @@ const Container = () =>
 
     const {layout} = useLayoutSwitcher();
 
-    const menuItemRender = (item, dom) => <a onClick={() =>
-    {
-        history.push(item.path || '/');
-        setPathname(item.path || '/');
-    }}>{dom}</a>;
+    const menuItemRender = (item, dom) => <Button type={'link'}
+                                                  onClick={() =>
+                                                  {
+                                                      history.push(item.path || '/');
+                                                      setPathname(item.path || '/');
+                                                  }}>{dom}</Button>;
 
     return <ConfigProvider locale={enUS}
                            theme={ApplicationTheme}>
         {!hasNoLayout.includes(location.pathname) && Boolean(session) && <ProLayout {...sidebarMenu}
-                                                                                    token={ApplicationTheme}
+                                                                                    token={ApplicationTheme.token}
                                                                                     layout={layout}
                                                                                     fixSiderbar={true}
                                                                                     fixedHeader={true}
