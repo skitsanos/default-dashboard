@@ -44,8 +44,8 @@ const Container = () =>
         {!hasNoLayout.includes(location.pathname) && Boolean(session) && <ProLayout {...sidebarMenu}
             //token={ApplicationTheme.token}
                                                                                     layout={layout}
-            //fixSiderbar={true}
-            //fixedHeader={true}
+                                                                                    fixSiderbar={true}
+                                                                                    fixedHeader={true}
                                                                                     title={app.title}
                                                                                     location={{
                                                                                         pathname
@@ -54,8 +54,7 @@ const Container = () =>
                                                                                     siderMenuType={'group'}
                                                                                     menu={{
                                                                                         //collapsedShowGroupTitle: true
-                                                                                    }}
-                                                                                    onPageChange={console.log}>
+                                                                                    }}>
             <ConfigProvider theme={ApplicationTheme}>
                 <Outlet context={{
                     debug: true

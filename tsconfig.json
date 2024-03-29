@@ -9,6 +9,9 @@
         "src/.umi/exports"
       ]
     },
+    "types": [
+      "node"
+    ],
     "typeRoots": [
       "@types/"
     ],
@@ -23,12 +26,12 @@
     "removeComments": true,
     "sourceMap": false,
     "allowJs": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "noEmit": true
   },
   "exclude": [
     "dist",
     "functions",
-    "node_modules",
-    "**/node_modules"
+    "node_modules/**/*"
   ]
 }
