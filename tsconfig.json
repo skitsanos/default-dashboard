@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -9,7 +8,22 @@
       "umi": [
         "src/.umi/exports"
       ]
-    }
+    },
+    "typeRoots": [
+      "@types/"
+    ],
+    "lib": [
+      "dom",
+      "es2022"
+    ],
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "sourceMap": false,
+    "allowJs": true,
+    "resolveJsonModule": true
   },
   "exclude": [
     "dist",

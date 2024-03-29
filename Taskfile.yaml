@@ -1,0 +1,35 @@
+version: '3'
+
+silent: true
+
+vars:
+  PACKAGE_MANAGER: yarn
+
+tasks:
+  install:
+    cmds:
+      - |
+        echo "Installing dependencies..."
+        npx npm-check-updates -u
+        {{.PACKAGE_MANAGER}} install
+
+  start:
+    cmds:
+      - echo "Starting development server..."
+      - npx umi dev
+
+  build:
+    env:
+      NODE_ENV: production
+      BABEL_CACHE: none
+    cmds:
+      - npx umi build
+
+  test:
+    cmds:
+      - echo "Testing..."
+
+  deploy:
+    cmds:
+      - echo "Deploying to Netlify..."
+      - netlify deploy --prod
