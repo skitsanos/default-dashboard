@@ -1,4 +1,5 @@
-import request, {RequestOptionsWithResponse} from 'umi-request';
+import request, {RequestOptionsInit} from 'umi-request';
+import {SESSION_STORAGE_KEY} from '@/hooks/useSession';
 
 const url = '/api-local';
 
@@ -10,9 +11,27 @@ export const endpoints = {
 
 const authorizationHeader = () =>
 {
-    const token = localStorage.getItem('token');
+    const raw = localStorage.getItem(SESSION_STORAGE_KEY);
+    if (!raw || raw.length === 0)
+    {
+        return {};
+    }
 
-    return token ? {'Authorization': `Bearer ${token}`} : undefined;
+    let rawParsed = {};
+    try
+    {
+        rawParsed = JSON.parse(raw);
+    }
+    catch (e)
+    {
+        //
+    }
+
+    const {session} = rawParsed as Record<string, any>;
+
+    const {token} = session as Record<string, any>;
+
+    return token ? {'Authorization': `Bearer ${token}`} : {};
 };
 
 request.interceptors.request.use(
@@ -40,16 +59,17 @@ request.interceptors.response.use(response =>
     //skip 403s from login service itself
     if ((response.status === 403 || response.status === 401) && !response.url.endsWith(endpoints.login))
     {
+        localStorage.clear();
         location.href = '/logout';
     }
 
     return response;
 });
 
-export const apiGet = (apiUrl: string, options?: RequestOptionsWithResponse) => request.get(apiUrl, options);
+export const apiGet = (apiUrl: string, options?: RequestOptionsInit) => request.get(apiUrl, options);
 
-export const apiPost = (apiUrl: string, options?: RequestOptionsWithResponse) => request.post(apiUrl, options);
+export const apiPost = (apiUrl: string, options?: RequestOptionsInit) => request.post(apiUrl, options);
 
-export const apiPut = (apiUrl: string, options?: RequestOptionsWithResponse) => request.put(apiUrl, options);
+export const apiPut = (apiUrl: string, options?: RequestOptionsInit) => request.put(apiUrl, options);
 
-export const apiDelete = (apiUrl: string, options?: RequestOptionsWithResponse) => request.delete(apiUrl, options);
+export const apiDelete = (apiUrl: string, options?: RequestOptionsInit) => request.delete(apiUrl, options);

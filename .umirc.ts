@@ -50,6 +50,8 @@ export default ({
 
     mfsu: {},
 
+    svgr: {},
+
     deadCode: {},
 
     devtool: process.env.NODE_ENV === 'development' ? 'eval' : false,

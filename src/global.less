@@ -7,25 +7,19 @@
 
 @color-red: crimson;
 @color-orange: #e1ac41;
+@color-theme: #5A358C;
+@color-theme-accent: #5e536e;
 
 @margin-size: 1rem;
+@radius: 3px;
 
 @form-item-margin-bottom: 0.6rem;
 
 @shadow-light-inset: inset 0px 0px 5px -3px rgba(0, 0, 0, 0.55);
 @shadow-light: 0px 0px 5px -3px rgba(0, 0, 0, 0.55);
 
-
-.ant-page-header-breadcrumb {
-  padding-bottom: @margin-size;
-  margin-bottom: @margin-size;
-  border-bottom: solid 1px #ccc;
-}
-
-.ant-btn, button, .ant-menu-item {
-  box-shadow: none !important;
-  letter-spacing: @font-letter-spacing !important;
-}
+@import url('theme/utils.less');
+@import url('theme/antd.less');
 
 *,
 *::before,
@@ -34,7 +28,6 @@
 }
 
 html, body {
-  //font-family: @font-family;
   margin: 0;
   height: 100%;
   letter-spacing: @font-letter-spacing;
@@ -55,7 +48,7 @@ h1 {
 
 pre, code {
   font-family: @code-family;
-  font-size: 1.1rem;
+  //font-size: 1rem;
 }
 
 #root {
@@ -66,151 +59,42 @@ pre, code {
   }
 }
 
-.debug {
-  background-color: rgba(184, 155, 181, 0.1) !important;
-  border: dashed 1px rgba(184, 155, 181);
-}
-
-.red {
-  color: crimson;
-}
-
-.ant-pro-sider-logo h1 {
-  font-weight: 300 !important;
-}
-
-.chat {
-  height: 100% !important;
-
-  div.ant-pro-card-col:nth-of-type(1) {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-
-    .chat-messages {
-      flex: 1;
-
-      .ant-pro-card-body {
-        flex: 1;
-      }
-    }
-  }
-
-  .ant-form-inline {
-    display: flex;
-
-    > div:nth-of-type(1) {
-      flex: 1;
-      background-color: #6d519d;
-    }
+.page-header {
+  .ant-pro-page-container-warp {
+    background-color: #fff;
+    border-bottom: solid 1px #efefef;
+    margin-bottom: @margin-size;
   }
 }
 
-.h-box {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.v-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.mt {
-  margin-top: @margin-size;
-}
-
-.mb {
-  margin-bottom: @margin-size;
-}
-
-.ml {
-  margin-left: @margin-size;
-}
-
-.mr {
-  margin-right: @margin-size;
-}
-
-.pt {
-  padding-top: @margin-size;
-}
-
-.pt-xxl {
-  padding-top: @margin-size*3;
-}
-
-.w-100 {
-  width: 100%;
-}
-
-.w-auto {
-  width: auto;
-}
-
-.transparent {
-  background-color: transparent;
-}
-
-.shadow {
-  box-shadow: @shadow-light;
-}
-
-.align-center {
-  text-align: center;
-}
-
-.align-right {
-  text-align: right;
-}
-
-.ant-page-header-heading-title {
-  font-weight: @font-weight-light !important;
-}
-
-.ant-menu *,
-.ant-menu-item * {
-  transition: none !important;
+.page-header-dark {
+  .ant-pro-page-container-warp {
+    border-bottom: solid 1px #efefef;
+    margin-bottom: @margin-size;
+  }
 }
 
 .page-login {
+  font-family: @font-family;
+  background-image: linear-gradient(to top, @color-theme-accent, @color-theme);
+  background-size: 200% 200%;
+  animation: gradientAnimation 10s ease infinite;
   height: 100%;
-  background-image: url("/img/bg.svg");
-  background-repeat: no-repeat;
-  background-size: 100%;
 
-  .ant-layout {
-    height: 100%;
-    background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .login-box {
-      min-width: 22rem;
-      min-height: 22rem;
-      padding: 2rem;
-      border: solid 4px #fff;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.75);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+  h1 {
+    color: #fff;
+    font-weight: bold !important;
   }
 
-  .ant-layout-header {
-    background-color: transparent;
-    color: #fff;
+  .logo {
+    border: solid 3px #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
 }
-
 
 //File Thumbnails
 .file-thumbnail {

@@ -1,6 +1,6 @@
 import {create} from 'zustand';
 
-const SESSION_STORAGE_KEY = 'session';
+export const SESSION_STORAGE_KEY = 'session-context';
 
 const useSession = create((set) => ({
     session: localStorage.getItem(SESSION_STORAGE_KEY) !== null
@@ -9,12 +9,12 @@ const useSession = create((set) => ({
 
     login: (newSession) =>
     {
+
         set({
-            session: {
-                ...newSession,
-                createdOn: new Date().getTime()
-            }
+            ...newSession,
+            createdOn: new Date().getTime()
         });
+
         localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(newSession));
     },
 

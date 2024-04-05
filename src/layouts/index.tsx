@@ -1,13 +1,13 @@
-import {app, hasNoLayout, publicRoutes} from '@/defaults';
-import useLayoutSwitcher from '@/hooks/useLayoutSwitcher';
+import {hasNoLayout, publicRoutes} from '@/defaults';
 import useSession from '@/hooks/useSession';
 import sidebarMenu from '@/sidebarMenu';
 import ProLayout from '@ant-design/pro-layout';
-import {ConfigProvider} from 'antd';
+import {App, ConfigProvider} from 'antd';
 import enUS from 'antd/locale/en_US';
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import {history, Link, Outlet, useLocation} from 'umi';
-import ApplicationTheme from '@/theme';
+import applicationTheme from '@/theme/applicationTheme';
+import {ReactComponent as IconLogo} from '@/assets/logo.svg';
 
 const Container = () =>
 {
@@ -29,41 +29,37 @@ const Container = () =>
         }
     }, [session, allowed]);
 
-    const [pathname, setPathname] = useState(location.pathname);
+    const menuItemRender = (item, dom) => <Link to={item.path}>{dom}</Link>;
 
-    const {layout} = useLayoutSwitcher();
+    return <App message={{maxCount: 1}}>
+        <ConfigProvider locale={enUS}
+                        theme={applicationTheme}>
 
-    const menuItemRender = (item, dom) => <Link to={item.path}
-                                                onClick={() =>
-                                                {
-                                                    setPathname(item.path || '/');
-                                                }}>{dom}</Link>;
+            {!hasNoLayout.includes(location.pathname) && Boolean(session) && <ProLayout {...sidebarMenu}
+                                                                                        layout={'side'}
+                                                                                        fixSiderbar={true}
+                                                                                        fixedHeader={true}
+                                                                                        title={APP_NAME}
+                                                                                        logo={<IconLogo width={24}/>}
+                                                                                        location={{
+                                                                                            pathname: location.pathname
+                                                                                        }}
+                                                                                        menuItemRender={menuItemRender}
+                                                                                        siderMenuType={'group'}
+                                                                                        menu={{
+                                                                                            //collapsedShowGroupTitle:
+                                                                                            // true
+                                                                                        }}>
 
-    return <ConfigProvider locale={enUS}
-                           theme={ApplicationTheme}>
-        {!hasNoLayout.includes(location.pathname) && Boolean(session) && <ProLayout {...sidebarMenu}
-            //token={ApplicationTheme.token}
-                                                                                    layout={layout}
-                                                                                    fixSiderbar={true}
-                                                                                    fixedHeader={true}
-                                                                                    title={app.title}
-                                                                                    location={{
-                                                                                        pathname
-                                                                                    }}
-                                                                                    menuItemRender={menuItemRender}
-                                                                                    siderMenuType={'group'}
-                                                                                    menu={{
-                                                                                        //collapsedShowGroupTitle: true
-                                                                                    }}>
-            <ConfigProvider theme={ApplicationTheme}>
                 <Outlet context={{
-                    debug: true
+                    session
                 }}/>
-            </ConfigProvider>
-        </ProLayout>}
+            </ProLayout>}
 
-        {hasNoLayout.includes(document.location.pathname) && !session && <Outlet/>}
-    </ConfigProvider>;
+            {hasNoLayout.includes(document.location.pathname) && !session && <Outlet/>}
+
+        </ConfigProvider>
+    </App>;
 };
 
 export default Container;

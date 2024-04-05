@@ -1,36 +1,32 @@
 import {apiPost, endpoints} from '@/api';
 import useSession from '@/hooks/useSession';
 import {useRequest} from 'ahooks';
-import {Button, Col, Form, Input, Layout, Row} from 'antd';
+import {Avatar, Button, Divider, Flex, Form, Input} from 'antd';
 import {useEffect, useState} from 'react';
 import {history} from 'umi';
-
-const layout = {
-    /*labelCol: {span: 8},
-     wrapperCol: {span: 16}*/
-};
-const tailLayout = {
-    wrapperCol: {offset: 6, span: 18}
-};
+import {ReactComponent as IconLogo} from '@/assets/logo.svg';
 
 const Index = () =>
 {
     const {login} = useSession();
 
-    const {data, error, loading, run} = useRequest(payload => apiPost(endpoints.login, {
+    const {
+        data,
+        error,
+        loading,
+        run
+    } = useRequest(payload => apiPost(endpoints.login, {
         data: payload,
         getResponse: true
     }), {manual: true});
-
-    console.log(data);
 
     const [authError, setAuthError] = useState(false);
     const [errMessage, setErrMessage] = useState(null);
 
     //submit the form data to an API
-    const onFinish = async (values) =>
+    const onFinish = (values) =>
     {
-        await run(values);
+        run(values);
     };
 
     //watch for the possible API errors
@@ -62,82 +58,73 @@ const Index = () =>
         const {data: responseData} = data || {};
         if (responseData)
         {
-            const {token} = responseData?.result || {};
+            const {session} = responseData?.result || {};
+            const {token} = session || {};
             if (token)
             {
-                login({session: responseData.result});
+                login(responseData.result);
 
                 history.push('/');
             }
         }
     }, [data]);
 
-    return (<div className={'page-login'}>
-        <Layout className={'transparent'}>
-            <Layout.Content className={'flex'}>
-                <Row>
-                    <Col>
-                        <div className={'shadow login-box'}>
-                            <div>
-                                <div style={{textAlign: 'center'}}>
-                                    <h1>Login</h1>
-                                </div>
+    return <div className={'page-login'}>
+        <Flex align={'center'}
+              gap={'middle'}>
+            <Avatar icon={<IconLogo/>}
+                    className={'logo'}
+                    size={128}/>
+            <Divider type={'vertical'}
+                     style={{}}/>
 
-                                {!authError && (<Form {...layout}
-                                                      onFinish={onFinish}
-                                                      initialValues={{remember: true}}>
-                                    <Form.Item
-                                        name={'email'}
-                                        rules={[
-                                            {
-                                                required: true, message: 'Email is required'
-                                            }
-                                        ]}>
-                                        <Input placeholder={'Email'}/>
-                                    </Form.Item>
+            <div className={'login-box'}>
+                <h1>{APP_NAME}</h1>
 
-                                    <Form.Item
-                                        name={'password'}
-                                        rules={[
-                                            {
-                                                required: true, message: 'Password is missing'
-                                            }
-                                        ]}>
-                                        <Input.Password placeholder={'Password'}/>
-                                    </Form.Item>
+                {!authError && (<Form onFinish={onFinish}
+                                      autoCapitalize={'off'}
+                                      autoComplete={'off'}
+                                      initialValues={{remember: true}}>
+                    <Form.Item name={'username'}
+                               rules={[
+                                   {
+                                       required: true,
+                                       message: 'Username is required'
+                                   }
+                               ]}>
+                        <Input placeholder={'Username'}/>
+                    </Form.Item>
 
-                                    <Form.Item {...tailLayout}>
-                                        <Button
-                                            loading={loading}
-                                            type={'primary'}
-                                            htmlType={'submit'}>
-                                            Let me in
-                                        </Button>
-                                    </Form.Item>
-                                </Form>)}
+                    <Form.Item name={'password'}
+                               rules={[
+                                   {
+                                       required: true,
+                                       message: 'Password is missing'
+                                   }
+                               ]}>
+                        <Input.Password placeholder={'Password'}/>
+                    </Form.Item>
 
-                                {authError && <div>
-                                    <div className={'mb align-center mb'}><h3 className={'red'}>{errMessage}</h3></div>
-                                    <div className={'mt align-center mt'}>
-                                        <Button loading={loading}
-                                                type={'default'}
-                                                onClick={() => setAuthError(false)}>
-                                            Try again
-                                        </Button>
-                                    </div>
-                                </div>}
-                            </div>
+                    <Form.Item>
+                        <Button loading={loading}
+                                type={'primary'}
+                                htmlType={'submit'}>Let me in</Button>
+                    </Form.Item>
+                </Form>)}
 
-                        </div>
-                    </Col>
-                </Row>
-            </Layout.Content>
-
-            <Layout.Footer className={'transparent'}>
-                #footer
-            </Layout.Footer>
-        </Layout>
-    </div>);
+                {authError && <div>
+                    <div className={'mb align-center mb'}><h3 className={'red'}>{errMessage}</h3></div>
+                    <div className={'mt'}>
+                        <Button loading={loading}
+                                type={'default'}
+                                onClick={() => setAuthError(false)}>
+                            Try again
+                        </Button>
+                    </div>
+                </div>}
+            </div>
+        </Flex>
+    </div>;
 };
 
 export default Index;

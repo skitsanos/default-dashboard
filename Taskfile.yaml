@@ -33,3 +33,8 @@ tasks:
     cmds:
       - echo "Deploying to Netlify..."
       - netlify deploy --prod
+
+  publish:
+    cmds:
+      - task: build
+      - task: deploy

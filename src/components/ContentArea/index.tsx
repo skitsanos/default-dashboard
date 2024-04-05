@@ -1,6 +1,6 @@
 import {AvatarProps, BreadcrumbProps} from 'antd';
 import {FC, ReactNode} from 'react';
-import {PageHeader} from '@ant-design/pro-layout';
+import {PageContainer} from '@ant-design/pro-layout';
 
 export interface ContentAreaProps
 {
@@ -27,19 +27,25 @@ const ContentArea: FC<ContentAreaProps> = ({
                                                onBack
                                            }) =>
 {
-    return <>
-        <PageHeader className={className}
-                    avatar={avatar}
-                    onBack={onBack}
-                    title={title}
-                    subTitle={subTitle}
-                    breadcrumb={breadcrumb}
-                    extra={extra}/>
-
-        {content && <div className={'mt'}>{content}</div>}
-
+    return <PageContainer fixedHeader={true}
+                          affixProps={{
+                              offsetTop: 0
+                          }}
+                          className={className ? `${className} page-header` : 'page-header'}
+                          avatar={avatar}
+                          onBack={onBack}
+                          title={title}
+                          subTitle={subTitle}
+                          extra={extra}
+                          header={{
+                              breadcrumb
+                          }}
+                          content={<>
+                              {content && <div className={'mt'}>{content}</div>}
+                          </>
+                          }>
         {children}
-    </>;
+    </PageContainer>;
 };
 
 export default ContentArea;
