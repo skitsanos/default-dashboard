@@ -59,7 +59,6 @@ const Page = () =>
     }, [latestMessage]);
 
     useEffect(() => connect(), []);
-    //useEffect(() => () => disconnect(), []);
 
     useEffect(() =>
     {

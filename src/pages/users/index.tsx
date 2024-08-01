@@ -27,7 +27,7 @@ const Page = () =>
         data,
         run,
         loading,
-        pagination,
+        pagination
     } = usePagination(({
                            current,
                            pageSize,
