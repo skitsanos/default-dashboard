@@ -3,7 +3,7 @@ version: '3'
 silent: true
 
 vars:
-  PACKAGE_MANAGER: yarn
+  PACKAGE_MANAGER: bun
 
 tasks:
   install:

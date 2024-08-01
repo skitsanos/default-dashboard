@@ -6,7 +6,10 @@ import {Divider, Statistic} from 'antd';
 
 const Page = () =>
 {
-    const {layout, toggle} = useLayoutSwitcher();
+    const {
+        layout,
+        toggle
+    } = useLayoutSwitcher();
 
     return <ContentArea title={'Welcome'}
                         subTitle={'You are logged as Demo user'}

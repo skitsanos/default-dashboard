@@ -7,8 +7,6 @@ import dayjs from 'dayjs';
 
 import manifest from './package.json';
 
-//import AntdDayjsWebpackPlugin from 'antd-dayjs-webpack-plugin';
-
 export default ({
     title: 'My Dashboard',
 
@@ -48,7 +46,7 @@ export default ({
 
     },
 
-    mfsu: {},
+    mako: {},
 
     svgr: {},
 

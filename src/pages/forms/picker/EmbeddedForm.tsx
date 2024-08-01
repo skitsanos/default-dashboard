@@ -2,7 +2,11 @@ import {DatePicker, Form} from 'antd';
 
 const DATE_FORMAT = 'YYYY-MM-DD';
 
-const EmbeddedForm = ({form, onFinish, initialValues}) =>
+const EmbeddedForm = ({
+                          form,
+                          onFinish,
+                          initialValues
+                      }) =>
 {
     return <Form form={form}
                  initialValues={initialValues}
