@@ -46,9 +46,7 @@ exports.handler = async (event, _context) =>
     if (event.httpMethod === 'GET')
     {
 
-        const generatedUsers = [
-            ...Array.from({length: 101}, () => generateUser(seed).next().value)
-        ];
+        const generatedUsers = [...Array.from({length: 101}, () => generateUser(seed).next().value)];
         generatedUsers[0].name = 'Evgenios Skitsanos';
         generatedUsers[0].email = 'info@skitsanos.com';
 
@@ -74,8 +72,8 @@ exports.handler = async (event, _context) =>
         {
             // Return error response with JSON payload
             return {
-                statusCode: 500,
                 headers,
+                statusCode: 500,
                 body: JSON.stringify({
                     error: error.message
                 })
