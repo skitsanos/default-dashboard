@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@umijs/mako": "^0.7.9",
+    "@umijs/mako": "^0.8.0",
     "chance": "^1.1.12"
   }
 }
