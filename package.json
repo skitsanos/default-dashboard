@@ -28,7 +28,7 @@
     "react-entities": "^1.3.0",
     "umi": "^4.3.11",
     "umi-request": "^1.4.0",
-    "zustand": "^4.5.4"
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
