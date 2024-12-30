@@ -13,7 +13,7 @@ tasks:
         npx npm-check-updates -u
         {{.PACKAGE_MANAGER}} install
 
-  start:
+  dev:
     cmds:
       - echo "Starting development server..."
       - npx umi dev

@@ -11,8 +11,7 @@
     "postinstall": "umi setup",
     "start": "umi dev",
     "build": "NODE_ENV=production umi build",
-    "deploy": "netlify deploy --prod",
-    "depupdates": "npx npm-check-updates -u"
+    "deploy": "netlify deploy --prod"
   },
   "dependencies": {
     "@ant-design/icons": "^5.4.0",

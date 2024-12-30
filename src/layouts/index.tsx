@@ -6,8 +6,8 @@ import {App, ConfigProvider} from 'antd';
 import enUS from 'antd/locale/en_US';
 import {useEffect} from 'react';
 import {history, Link, Outlet, useLocation} from 'umi';
-import applicationTheme from '@/theme/applicationTheme';
 import {ReactComponent as IconLogo} from '@/assets/logo.svg';
+import ApplicationTheme from '@/theme';
 
 const Container = () =>
 {
@@ -33,7 +33,7 @@ const Container = () =>
 
     return <App message={{maxCount: 1}}>
         <ConfigProvider locale={enUS}
-                        theme={applicationTheme}>
+                        theme={ApplicationTheme}>
 
             {!hasNoLayout.includes(location.pathname) && Boolean(session) && <ProLayout {...sidebarMenu}
                                                                                         layout={'side'}

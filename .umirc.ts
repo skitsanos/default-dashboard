@@ -52,8 +52,6 @@ export default ({
 
     deadCode: {},
 
-    devtool: process.env.NODE_ENV === 'development' ? 'eval' : false,
-
     proxy: {
         // '/api': {
         //     target: 'http://localhost:3000',
