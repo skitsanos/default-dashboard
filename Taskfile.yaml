@@ -5,9 +5,12 @@ silent: true
 vars:
   PACKAGE_MANAGER: bun
   VERSION:
-    sh: echo $(npx -c 'echo $npm_package_version')
+    sh: npx -c 'echo $npm_package_version'
 
 tasks:
+  default:
+    cmds:
+      - echo "defalt-dashboard {{.VERSION}}"
   install:
     cmds:
       - |
@@ -30,7 +33,7 @@ tasks:
   tag:
     cmds:
       - cmd: |
-          git tag -a v${VERSION} -m "chore: Release v${VERSION}"
+          git tag -a v{{.VERSION}} -m "chore: Release v{{.VERSION}}"
 
   test:
     cmds:
