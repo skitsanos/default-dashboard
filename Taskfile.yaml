@@ -4,6 +4,8 @@ silent: true
 
 vars:
   PACKAGE_MANAGER: bun
+  VERSION:
+    sh: echo $(npx -c 'echo $npm_package_version')
 
 tasks:
   install:
@@ -24,6 +26,11 @@ tasks:
       BABEL_CACHE: none
     cmds:
       - npx umi build
+
+  tag:
+    cmds:
+      - cmd: |
+          git tag -a v${VERSION} -m "chore: Release v${VERSION}"
 
   test:
     cmds:
