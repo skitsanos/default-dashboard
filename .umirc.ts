@@ -18,9 +18,11 @@ export default ({
         'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;300;400&display=swap'
     ],
 
-    headScripts: [{
-        content: 'console.log("Hello from the head! Modify your .umirc.ts")'
-    }],
+    headScripts: [
+        {
+            content: 'console.log("Hello from the head! Modify your .umirc.ts")'
+        }
+    ],
 
     define: {
         // the following are the default values for the application, and they are defined in @types/typings.d.ts
@@ -58,5 +60,7 @@ export default ({
         //     changeOrigin: true,
         //     pathRewrite: {'^/api': ''},
         // }
-    }
+    },
+
+    devtool: process.env.NODE_ENV === 'production' ? false : eval
 });
