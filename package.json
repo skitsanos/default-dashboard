@@ -21,17 +21,17 @@
     "ahooks": "^3.8.4",
     "antd": "^5.22.7",
     "dayjs": "^1.11.13",
-    "rc-virtual-list": "^3.16.1",
+    "rc-virtual-list": "^3.17.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "umi": "^4.4.2",
+    "umi": "^4.4.4",
     "umi-request": "^1.4.0",
     "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
-    "@umijs/mako": "^0.11.0",
+    "@umijs/mako": "^0.11.1",
     "chance": "^1.1.12"
   }
 }

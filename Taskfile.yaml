@@ -3,7 +3,7 @@ version: '3'
 silent: true
 
 vars:
-  PACKAGE_MANAGER: bun
+  PACKAGE_MANAGER: bunx
   VERSION:
     sh: npx -c 'echo $npm_package_version'
 
@@ -15,20 +15,21 @@ tasks:
     cmds:
       - |
         echo "Installing dependencies..."
-        npx npm-check-updates -u
         {{.PACKAGE_MANAGER}} install
 
   dev:
     cmds:
       - echo "Starting development server..."
-      - npx umi dev
+      - |
+        {{.PACKAGE_MANAGER}} umi dev
 
   build:
     env:
       NODE_ENV: production
       BABEL_CACHE: none
     cmds:
-      - npx umi build
+      - |
+        {{.PACKAGE_MANAGER}} umi build
 
   tag:
     cmds:

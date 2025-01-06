@@ -5,13 +5,17 @@ import ProLayout from '@ant-design/pro-layout';
 import {App, ConfigProvider} from 'antd';
 import enUS from 'antd/locale/en_US';
 import {useEffect} from 'react';
-import {history, Link, Outlet, useLocation} from 'umi';
+import {Link, Outlet, useLocation, useNavigate} from 'umi';
 import {ReactComponent as IconLogo} from '@/assets/logo.svg';
 import ApplicationTheme from '@/theme';
+import useLayoutSwitcher from '@/hooks/useLayoutSwitcher';
 
 const Container = () =>
 {
     const location = useLocation();
+    const navigate = useNavigate();
+
+    const {layout}=useLayoutSwitcher();
 
     const allowed = publicRoutes.includes(location.pathname);
 
@@ -21,11 +25,11 @@ const Container = () =>
     {
         if (!session && !allowed)
         {
-            history.push('/login');
+            navigate('/login', {replace: true});
         }
         else if (session && allowed)
         {
-            history.push('/');
+            navigate('/', {replace: true});
         }
     }, [session, allowed]);
 
@@ -36,7 +40,7 @@ const Container = () =>
                         theme={ApplicationTheme}>
 
             {!hasNoLayout.includes(location.pathname) && Boolean(session) && <ProLayout {...sidebarMenu}
-                                                                                        layout={'side'}
+                                                                                        layout={layout}
                                                                                         fixSiderbar={true}
                                                                                         fixedHeader={true}
                                                                                         title={APP_NAME}
