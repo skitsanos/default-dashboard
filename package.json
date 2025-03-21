@@ -14,7 +14,7 @@
     "deploy": "netlify deploy --prod"
   },
   "dependencies": {
-    "@ant-design/icons": "^5.5.2",
+    "@ant-design/icons": "^6.0.0",
     "@ant-design/pro-card": "^2.9.2",
     "@ant-design/pro-form": "^2.31.2",
     "@ant-design/pro-layout": "^7.21.2",
