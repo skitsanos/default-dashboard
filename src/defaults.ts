@@ -3,12 +3,14 @@ export const app = {
 };
 
 export const hasNoLayout = [
-    '/login'
+    '/login',
+    '/logout'
 ];
 
 export const publicRoutes = [
     '/login',
-    '/signup'
+    '/signup',
+    '/logout'
 ];
 
 export const gridGutter = [16, 16];

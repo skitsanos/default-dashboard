@@ -1,7 +1,7 @@
 import request, {RequestOptionsInit} from 'umi-request';
 import {SESSION_STORAGE_KEY} from '@/hooks/useSession';
 
-const url = '/api-local';
+const url = process.env.NODE_ENV === 'development' ? '/api' : '/api';
 
 export const endpoints = {
     login: `${url}/auth/login`,
@@ -17,19 +17,19 @@ const authorizationHeader = () =>
         return {};
     }
 
-    let rawParsed = {};
+    let rawParsed: { session?: import('./@types/session').Session } = {};
     try
     {
         rawParsed = JSON.parse(raw);
     }
     catch (e)
     {
-        //
+        return {};
     }
 
-    const {session} = rawParsed as Record<string, any>;
+    const {session} = rawParsed;
 
-    const {token} = session as Record<string, any>;
+    const token = session?.token;
 
     return token ? {'Authorization': `Bearer ${token}`} : {};
 };
@@ -57,10 +57,10 @@ request.interceptors.response.use(response =>
 {
     //const data = await response.clone().json();
     //skip 403s from login service itself
-    if ((response.status === 403 || response.status === 401) && !response.url.endsWith(endpoints.login))
+    if ((response.status === 403 || response.status === 401) && !response.url.includes('/auth/login'))
     {
         localStorage.clear();
-        location.href = '/logout';
+        location.href = '/';
     }
 
     return response;

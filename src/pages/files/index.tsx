@@ -1,4 +1,5 @@
 import ContentArea from '@/components/ContentArea';
+import GradientButton from '@/components/GradientButton';
 import {DeleteOutlined, FileOutlined, FileTextOutlined, FolderOutlined} from '@ant-design/icons';
 import type {MenuProps} from 'antd';
 import {Avatar, Button, Card, Dropdown, Input, Pagination, Space, Table} from 'antd';
@@ -110,17 +111,17 @@ const Page = () =>
                             <Input.Search/>
                         </Card>}
                         extra={[
-                            <Button key={'refresh'}
+                            <GradientButton key={'refresh'}
+                                    type="default"
                                     onClick={() =>
                                     {
                                         run(pagination);
-                                    }}>Refresh</Button>,
-                            <Button key={'add'}
-                                    type={'primary'}
+                                    }}>Refresh</GradientButton>,
+                            <GradientButton key={'add'}
                                     onClick={() =>
                                     {
                                         history.push('/files/upload');
-                                    }}>Upload</Button>
+                                    }}>Upload</GradientButton>
                         ]}>
         <Card>
             <Table loading={loading}

@@ -1,21 +1,28 @@
 import {create} from 'zustand';
+import {SessionState} from '@/@types/session';
 
 export const SESSION_STORAGE_KEY = 'session-context';
 
-const useSession = create((set) => ({
+const useSession = create<SessionState>((set) => ({
     session: localStorage.getItem(SESSION_STORAGE_KEY) !== null
              ? JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY))
-             : INITIAL_SESSION,
+             : INITIAL_SESSION?.session || null,
 
     login: (newSession) =>
     {
+        const sessionWithTimestamp = {
+            ...newSession,
+            session: {
+                ...newSession.session,
+                createdOn: new Date().getTime()
+            }
+        };
 
         set({
-            ...newSession,
-            createdOn: new Date().getTime()
+            session: sessionWithTimestamp.session
         });
 
-        localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(newSession));
+        localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(sessionWithTimestamp));
     },
 
     logout: () =>
@@ -31,7 +38,8 @@ const useSession = create((set) => ({
         const storedSession = localStorage.getItem(SESSION_STORAGE_KEY);
         if (storedSession)
         {
-            set({session: JSON.parse(storedSession)});
+            const parsed = JSON.parse(storedSession);
+            set({session: parsed.session});
         }
     }
 }));

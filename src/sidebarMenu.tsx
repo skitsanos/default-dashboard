@@ -1,6 +1,7 @@
 import {DashboardOutlined, FolderOutlined, SettingOutlined, UserOutlined} from '@ant-design/icons';
+import {MenuConfig} from '@/@types/menu';
 
-const sidebarMenu = {
+const sidebarMenu: MenuConfig = {
     route: {
         path: '/',
         routes: [
@@ -15,12 +16,6 @@ const sidebarMenu = {
                 name: 'Files',
                 icon: <FolderOutlined/>
             },
-
-            // {
-            //     path: '/chat',
-            //     name: 'Chat',
-            //     icon: <MessageOutlined/>
-            // },
 
             {
                 path: '/users',

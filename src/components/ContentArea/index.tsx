@@ -12,7 +12,7 @@ export interface ContentAreaProps
     content?: ReactNode;
     avatar?: AvatarProps;
     extra?: ReactNode;
-    onBack?: () => {};
+    onBack?: () => void;
 }
 
 const ContentArea: FC<ContentAreaProps> = ({
@@ -40,10 +40,7 @@ const ContentArea: FC<ContentAreaProps> = ({
                           header={{
                               breadcrumb
                           }}
-                          content={<>
-                              {content && <div className={'mt'}>{content}</div>}
-                          </>
-                          }>
+                          content={content && <div className={'mt'}>{content}</div>}>
         {children}
     </PageContainer>;
 };

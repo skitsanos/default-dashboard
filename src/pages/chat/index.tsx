@@ -1,9 +1,10 @@
 import ContentArea from '@/components/ContentArea';
+import GradientButton from '@/components/GradientButton';
 import Loading from '@/components/Loading';
 import {SendOutlined, UserOutlined} from '@ant-design/icons';
 import ProCard from '@ant-design/pro-card';
 import {useWebSocket} from 'ahooks';
-import {Button, Form, Input} from 'antd';
+import {Form, Input} from 'antd';
 import dayjs from 'dayjs';
 import {useEffect, useMemo, useRef} from 'react';
 
@@ -16,7 +17,7 @@ const ReadyState = {
 
 const spacing = 16;
 
-const uiMessage = (raw, index) =>
+const uiMessage = (raw: any, index: number) =>
 {
     console.log(raw);
 
@@ -65,7 +66,7 @@ const Page = () =>
         console.log(readyState);
     }, [readyState]);
 
-    const onFinish = values =>
+    const onFinish = (values: {message: string}) =>
     {
         const {message} = values;
         sendMessage(JSON.stringify({
@@ -98,10 +99,9 @@ const Page = () =>
                         <Input title={'Type'}/>
                     </Form.Item>
 
-                    <Button htmlType={'submit'}
+                    <GradientButton htmlType={'submit'}
                             disabled={readyState !== ReadyState.Open}
-                            type={'primary'}
-                            icon={<SendOutlined/>}>Send</Button>
+                            icon={<SendOutlined/>}>Send</GradientButton>
                 </Form>
             </ProCard>
         </ProCard>

@@ -5,6 +5,7 @@ import {Avatar, Button, Divider, Flex, Form, Input} from 'antd';
 import {useEffect, useState} from 'react';
 import {history} from 'umi';
 import {ReactComponent as IconLogo} from '@/assets/logo.svg';
+import {ApiResponse, ApiError, LoginResponse, LoginRequest} from '@/@types/api';
 
 const Index = () =>
 {
@@ -21,10 +22,10 @@ const Index = () =>
     }), {manual: true});
 
     const [authError, setAuthError] = useState(false);
-    const [errMessage, setErrMessage] = useState(null);
+    const [errMessage, setErrMessage] = useState<string | null>(null);
 
     //submit the form data to an API
-    const onFinish = (values) =>
+    const onFinish = (values: LoginRequest) =>
     {
         run(values);
     };
@@ -37,7 +38,7 @@ const Index = () =>
             const {
                 response,
                 data: errData
-            } = error as Record<string, any>;
+            } = error as unknown as ApiError;
             const {status} = response;
             setAuthError(true);
 
@@ -58,16 +59,17 @@ const Index = () =>
         const {data: responseData} = data || {};
         if (responseData)
         {
-            const {session} = responseData?.result || {};
+            const apiResponse = responseData as ApiResponse<LoginResponse>;
+            const {session} = apiResponse?.result || {};
             const {token} = session || {};
             if (token)
             {
-                login(responseData.result);
+                login(apiResponse.result);
 
                 history.push('/');
             }
         }
-    }, [data]);
+    }, [data, login]);
 
     return <div className={'page-login'}>
         <Flex align={'center'}
@@ -76,7 +78,7 @@ const Index = () =>
                     className={'logo'}
                     size={128}/>
             <Divider type={'vertical'}
-                     style={{}}/>
+                     style={{height: 100}}/>
 
             <div className={'login-box'}>
                 <h1>{APP_NAME}</h1>

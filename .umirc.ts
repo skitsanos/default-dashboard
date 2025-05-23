@@ -30,22 +30,13 @@ export default ({
         APP_VERSION: `${manifest.version} (beta/${dayjs().format('YYYY-MM-DD')})`,
         FEATURE_SMTP_ENABLED: false,
         FEATURE_SSL_ENABLED: true,
+        INITIAL_SESSION: null,
 
-        INITIAL_SESSION:
-            {
-                'session': {
-                    'user': {
-                        '_key': '177651341',
-                        'createdOn': 1696934748132,
-                        'email': 'info@skitsanos.com',
-                        'lastLogin': 1709038324097,
-                        'updatedOn': 1709038324097,
-                        'gravatar': 'https://www.gravatar.com/avatar/df4fd31987b27934b23f90da7af2feb7?d=robohash&s=150'
-                    },
-                    'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.IntcInVzZXJJZFwiOlwiMTc3NjUxMzQxXCIsXCJleHBpcmVzT25cIjoxNzA5MDQxOTQ0NTEyfSI.7NsFhzhDPHH0Gf7IObsskxVWL_7Fdge5uWKviV771SE1FN72eeFH04Zet12WWx_Kx_1cmTrffXy7jB777tl8MQ'
-                }
+        process:{
+            env: {
+                NODE_ENV: process.env.NODE_ENV
             }
-
+        }
     },
 
     mako: {},
@@ -62,5 +53,5 @@ export default ({
         // }
     },
 
-    devtool: process.env.NODE_ENV === 'production' ? false : eval
+    //devtool: process.env.NODE_ENV === 'production' ? false : eval
 });

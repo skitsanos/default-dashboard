@@ -1,0 +1,100 @@
+.gradient-button {
+    // Base button styling
+    &.ant-btn {
+        height: 40px;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+
+        &.ant-btn-lg {
+            height: 48px;
+            font-size: 16px;
+            padding: 0 24px;
+        }
+
+        &.ant-btn-sm {
+            height: 32px;
+            font-size: 14px;
+            padding: 0 16px;
+        }
+
+        // Icon alignment
+        .anticon {
+            vertical-align: middle;
+        }
+    }
+
+    // Primary gradient
+    &.ant-btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+
+        &:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+
+        &:focus {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    }
+
+    // Default button styling
+    &.ant-btn-default {
+        background: white;
+        border: 1px solid #e8e8f0;
+        color: #333;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+        &:hover:not(:disabled) {
+            border-color: #667eea;
+            color: #667eea;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.15);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+
+        &:focus {
+            border-color: #667eea;
+            color: #667eea;
+        }
+    }
+
+    // Secondary gradient variant
+    &.gradient-button-secondary {
+        &.ant-btn {
+            background: linear-gradient(135deg, #a8ff78 0%, #78ffd6 100%);
+            border: none;
+            color: #1a1a1a;
+            
+            &:hover:not(:disabled) {
+                background: linear-gradient(135deg, #a8ff78 0%, #78ffd6 100%);
+                color: #1a1a1a;
+            }
+        }
+    }
+
+    // Danger gradient variant
+    &.gradient-button-danger {
+        &.ant-btn {
+            background: linear-gradient(135deg, #ff6a88 0%, #ff99ac 100%);
+            border: none;
+            color: white;
+            
+            &:hover:not(:disabled) {
+                background: linear-gradient(135deg, #ff6a88 0%, #ff99ac 100%);
+                color: white;
+            }
+        }
+    }
+}

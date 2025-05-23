@@ -1,6 +1,7 @@
 import ContentArea from '@/components/ContentArea';
+import GradientButton from '@/components/GradientButton';
 import {UserOutlined} from '@ant-design/icons';
-import {Avatar, Button, Card, Input, Pagination, Space, Table} from 'antd';
+import {Avatar, Card, Input, Pagination, Space, Table} from 'antd';
 import {usePagination} from 'ahooks';
 import getTableData from '@/utils/getTableData';
 import {endpoints} from '@/api';
@@ -66,13 +67,13 @@ const Page = () =>
                             <Input.Search/>
                         </Card>}
                         extra={[
-                            <Button key={'refresh'}
+                            <GradientButton key={'refresh'}
+                                    type="default"
                                     onClick={() =>
                                     {
                                         run(pagination);
-                                    }}>Refresh</Button>,
-                            <Button key={'add'}
-                                    type={'primary'}>Add</Button>
+                                    }}>Refresh</GradientButton>,
+                            <GradientButton key={'add'}>Add</GradientButton>
                         ]}>
         <Card>
             <Table loading={loading}
