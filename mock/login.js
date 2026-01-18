@@ -1,5 +1,5 @@
 export default {
-    'POST /api/auth/login': (req, res) =>
+    'POST /api-local/auth/login': (req, res) =>
     {
         const {password} = req.body;
 
@@ -7,9 +7,15 @@ export default {
         {
             res.status(200).json({
                 result: {
-                    token: 'demo-token',
-                    user: {
-                        name: 'Demo User'
+                    session: {
+                        token: 'demo-token',
+                        user: {
+                            _key: '123456',
+                            email: req.body.username || 'demo@example.com',
+                            name: 'Demo User',
+                            createdOn: Date.now(),
+                            lastLogin: Date.now()
+                        }
                     }
                 }
             });
