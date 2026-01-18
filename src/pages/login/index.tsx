@@ -1,12 +1,12 @@
 import {apiPost, endpoints} from '@/api';
 import useSession from '@/hooks/useSession';
 import {useRequest} from 'ahooks';
-import {Avatar, Button, Divider, Flex, Form, Input} from 'antd';
+import {Button, Form, Input, Alert} from 'antd';
 import {useEffect, useState} from 'react';
 import {history} from 'umi';
-import {ReactComponent as IconLogo} from '@/assets/logo.svg';
+import {LockOutlined, UserOutlined, ArrowRightOutlined} from '@ant-design/icons';
 
-const Index = () =>
+const LoginPage = () =>
 {
     const {login} = useSession();
 
@@ -21,15 +21,14 @@ const Index = () =>
     }), {manual: true});
 
     const [authError, setAuthError] = useState(false);
-    const [errMessage, setErrMessage] = useState(null);
+    const [errMessage, setErrMessage] = useState<string | null>(null);
 
-    //submit the form data to an API
-    const onFinish = (values) =>
+    const onFinish = (values: any) =>
     {
+        setAuthError(false);
         run(values);
     };
 
-    //watch for the possible API errors
     useEffect(() =>
     {
         if (error)
@@ -52,7 +51,6 @@ const Index = () =>
         }
     }, [error]);
 
-    //process the login response
     useEffect(() =>
     {
         const {data: responseData} = data || {};
@@ -63,68 +61,148 @@ const Index = () =>
             if (token)
             {
                 login(responseData.result);
-
                 history.push('/');
             }
         }
     }, [data]);
 
-    return <div className={'page-login'}>
-        <Flex align={'center'}
-              gap={'middle'}>
-            <Avatar icon={<IconLogo/>}
-                    className={'logo'}
-                    size={128}/>
-            <Divider type={'vertical'}
-                     style={{}}/>
+    return (
+        <div className="login-page">
+            {/* Left Panel - Branding */}
+            <div className="login-branding">
+                {/* Decorative Elements */}
+                <div className="decor-block decor-top-right"/>
+                <div className="decor-block decor-bottom-left"/>
+                <div className="decor-line decor-vertical"/>
+                <div className="decor-line decor-horizontal"/>
 
-            <div className={'login-box'}>
-                <h1>{APP_NAME}</h1>
-
-                {!authError && (<Form onFinish={onFinish}
-                                      autoCapitalize={'off'}
-                                      autoComplete={'off'}
-                                      initialValues={{remember: true}}>
-                    <Form.Item name={'username'}
-                               rules={[
-                                   {
-                                       required: true,
-                                       message: 'Username is required'
-                                   }
-                               ]}>
-                        <Input placeholder={'Username'}/>
-                    </Form.Item>
-
-                    <Form.Item name={'password'}
-                               rules={[
-                                   {
-                                       required: true,
-                                       message: 'Password is missing'
-                                   }
-                               ]}>
-                        <Input.Password placeholder={'Password'}/>
-                    </Form.Item>
-
-                    <Form.Item>
-                        <Button loading={loading}
-                                type={'primary'}
-                                htmlType={'submit'}>Let me in</Button>
-                    </Form.Item>
-                </Form>)}
-
-                {authError && <div>
-                    <div className={'mb align-center mb'}><h3 className={'red'}>{errMessage}</h3></div>
-                    <div className={'mt'}>
-                        <Button loading={loading}
-                                type={'default'}
-                                onClick={() => setAuthError(false)}>
-                            Try again
-                        </Button>
+                {/* Logo */}
+                <div className="branding-logo">
+                    <div className="logo-icon">
+                        {APP_NAME.charAt(0)}
                     </div>
-                </div>}
+                    <span className="logo-text">{APP_NAME}</span>
+                </div>
+
+                {/* Main Tagline */}
+                <div className="branding-content">
+                    <h1>
+                        Welcome<br/>
+                        <span className="accent">Back.</span>
+                    </h1>
+                    <p>
+                        Sign in to access your dashboard and manage your resources with ease.
+                    </p>
+                </div>
+
+                {/* Footer Quote */}
+                <div className="branding-footer">
+                    <p className="quote">
+                        "Simplicity is the ultimate sophistication."
+                    </p>
+                    <div className="attribution">
+                        <div className="avatar">LC</div>
+                        <div className="info">
+                            <span className="name">Leonardo da Vinci</span>
+                            <span className="title">Renaissance Polymath</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </Flex>
-    </div>;
+
+            {/* Right Panel - Login Form */}
+            <div className="login-form-panel">
+                <div className="login-form-container">
+                    {/* Mobile Logo */}
+                    <div className="mobile-logo">
+                        <div className="logo-icon">{APP_NAME.charAt(0)}</div>
+                        <span className="logo-text">{APP_NAME}</span>
+                    </div>
+
+                    {/* Form Header */}
+                    <div className="form-header">
+                        <h2>Sign In</h2>
+                        <div className="header-underline"/>
+                    </div>
+
+                    {/* Error Alert */}
+                    {authError && (
+                        <Alert
+                            message={errMessage}
+                            type="error"
+                            showIcon
+                            className="login-error"
+                            closable
+                            onClose={() => setAuthError(false)}
+                        />
+                    )}
+
+                    {/* Login Form */}
+                    <Form
+                        onFinish={onFinish}
+                        autoCapitalize="off"
+                        autoComplete="off"
+                        layout="vertical"
+                        requiredMark={false}
+                        className="login-form"
+                    >
+                        <Form.Item
+                            name="username"
+                            label="Username (demo)"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Username is required'
+                                }
+                            ]}
+                        >
+                            <Input
+                                prefix={<UserOutlined/>}
+                                placeholder="Enter your username"
+                                size="large"
+                            />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="password"
+                            label="Password (demodemo)"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Password is required'
+                                }
+                            ]}
+                        >
+                            <Input.Password
+                                prefix={<LockOutlined/>}
+                                placeholder="Enter your password"
+                                size="large"
+                            />
+                        </Form.Item>
+
+                        <Form.Item className="form-submit">
+                            <Button
+                                loading={loading}
+                                type="primary"
+                                htmlType="submit"
+                                size="large"
+                                block
+                                icon={<ArrowRightOutlined/>}
+                                iconPlacement="end"
+                            >
+                                Sign In
+                            </Button>
+                        </Form.Item>
+                    </Form>
+
+                    {/* Footer */}
+                    <div className="form-footer">
+                        <span>Version {APP_VERSION}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 };
 
-export default Index;
+export default LoginPage;

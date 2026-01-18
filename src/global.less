@@ -1,54 +1,149 @@
-@font-family: 'Work Sans', sans-serif;
-@code-family: 'IBM Plex Mono', Menlo, Courier, monospace;
-@font-weight-light: 300;
-@font-weight-normal: 400;
+/**
+ * Dutchy Design System - Purple Theme
+ * Global Styles
+ */
 
-@font-letter-spacing: 0.02rem;
+// ============================================
+// DUTCHY DESIGN TOKENS
+// ============================================
 
-@color-red: crimson;
-@color-orange: #e1ac41;
-@color-theme: #5A358C;
-@color-theme-accent: #5e536e;
+// Typography - Dutchy Design System fonts
+@font-display: 'Space Grotesk', sans-serif;
+@font-body: 'Inter', sans-serif;
+@font-mono: 'JetBrains Mono', monospace;
 
-@margin-size: 1rem;
-@radius: 3px;
+// Font weights
+@font-weight-medium: 500;
+@font-weight-semibold: 600;
+@font-weight-bold: 700;
 
-@form-item-margin-bottom: 0.6rem;
+// Letter spacing
+@tracking-tighter: -0.05em;
+@tracking-tight: -0.025em;
+@tracking-normal: 0;
+@tracking-wide: 0.025em;
+@tracking-wider: 0.05em;
+@tracking-widest: 0.1em;
 
-@shadow-light-inset: inset 0px 0px 5px -3px rgba(0, 0, 0, 0.55);
-@shadow-light: 0px 0px 5px -3px rgba(0, 0, 0, 0.55);
+// Dutchy Purple Theme Colors
+@color-primary: #7c3aed;
+@color-primary-hover: #6d28d9;
+@color-primary-light: #ede9fe;
+@color-primary-foreground: #ffffff;
+
+// Neutral Palette
+@color-background: #ffffff;
+@color-foreground: #0a0a0a;
+@color-muted: #f5f5f5;
+@color-muted-foreground: #737373;
+@color-border: #e5e5e5;
+
+// Semantic Colors
+@color-destructive: #dc2626;
+@color-success: #16a34a;
+@color-warning: #f59e0b;
+
+// Spacing (4px base unit)
+@spacing-1: 0.25rem;   // 4px
+@spacing-2: 0.5rem;    // 8px
+@spacing-3: 0.75rem;   // 12px
+@spacing-4: 1rem;      // 16px
+@spacing-6: 1.5rem;    // 24px
+@spacing-8: 2rem;      // 32px
+@spacing-10: 2.5rem;   // 40px
+@spacing-12: 3rem;     // 48px
+@spacing-16: 4rem;     // 64px
+@spacing-20: 5rem;     // 80px
+
+// Legacy variable mapping for backwards compatibility
+@margin-size: @spacing-4;
+
+// Borders - Dutchy signature: no rounded corners
+@border-radius: 0;
+
+// Shadows (minimal in Dutchy)
+@shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+@shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 
 @import url('theme/utils.less');
 @import url('theme/antd.less');
 
+// ============================================
+// GLOBAL RESET & BASE STYLES
+// ============================================
+
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
+  border-radius: 0 !important; // Dutchy: No rounded corners
 }
 
 html, body {
   margin: 0;
   height: 100%;
-  letter-spacing: @font-letter-spacing;
+  font-family: @font-body;
+  color: @color-foreground;
+  background-color: @color-background;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+// ============================================
+// TYPOGRAPHY - DUTCHY STYLE
+// ============================================
+
+// Display headings - Space Grotesk, bold, uppercase
 h1, h2, h3 {
-  font-weight: @font-weight-light;
-}
-
-h1, h2 {
+  font-family: @font-display;
+  font-weight: @font-weight-bold;
   text-transform: uppercase;
+  letter-spacing: @tracking-tighter;
+  line-height: 0.95;
+  margin: 0;
 }
 
 h1 {
-  font-weight: 200 !important;
-  font-size: 2.5rem;
+  font-size: 3rem;      // 48px
 }
 
-pre, code {
-  font-family: @code-family;
+h2 {
+  font-size: 2.25rem;   // 36px
 }
+
+h3 {
+  font-size: 1.5rem;    // 24px
+}
+
+h4, h5, h6 {
+  font-family: @font-body;
+  font-weight: @font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: @tracking-wide;
+}
+
+// Body text
+p {
+  font-family: @font-body;
+  line-height: 1.5;
+}
+
+// Code/monospace
+pre, code {
+  font-family: @font-mono;
+}
+
+// Labels (Dutchy signature: uppercase, tracked)
+label {
+  font-size: 0.75rem;
+  font-weight: @font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: @tracking-wider;
+}
+
+// ============================================
+// ROOT LAYOUT
+// ============================================
 
 #root {
   height: 100%;
@@ -58,47 +153,391 @@ pre, code {
   }
 }
 
+// ============================================
+// PAGE CONTAINER STYLES
+// ============================================
+
 .page-header {
   .ant-pro-page-container-warp {
-    background-color: #fff;
-    border-bottom: solid 1px #efefef;
-    margin-bottom: @margin-size;
+    background-color: @color-background;
+    border-bottom: solid 4px @color-primary; // Dutchy: accent border
+    margin-bottom: @spacing-4;
   }
 }
 
 .page-header-dark {
   .ant-pro-page-container-warp {
-    border-bottom: solid 1px #efefef;
-    margin-bottom: @margin-size;
+    background-color: @color-foreground;
+    color: @color-background;
+    border-bottom: solid 4px @color-primary;
+    margin-bottom: @spacing-4;
   }
 }
 
-.page-login {
-  font-family: @font-family;
-  background-image: linear-gradient(to top, @color-theme-accent, @color-theme);
-  background-size: 200% 200%;
-  animation: gradientAnimation 10s ease infinite;
-  height: 100%;
+// ============================================
+// LOGIN PAGE - DUTCHY STYLE
+// ============================================
 
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Left Panel - Branding
+.login-branding {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: @spacing-12;
+  background-color: @color-foreground;
+  color: @color-background;
+  position: relative;
+  overflow: hidden;
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
+
+  // Decorative blocks
+  .decor-block {
+    position: absolute;
+
+    &.decor-top-right {
+      top: 0;
+      right: 0;
+      width: 16rem;
+      height: 16rem;
+      background-color: rgba(124, 58, 237, 0.1);
+    }
+
+    &.decor-bottom-left {
+      bottom: 0;
+      left: 0;
+      width: 24rem;
+      height: 24rem;
+      background-color: rgba(124, 58, 237, 0.05);
+    }
+  }
+
+  // Decorative lines
+  .decor-line {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+
+    &.decor-vertical {
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: 100%;
+    }
+
+    &.decor-horizontal {
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+    }
+  }
+
+  // Logo
+  .branding-logo {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: @spacing-3;
+
+    .logo-icon {
+      width: 3rem;
+      height: 3rem;
+      background-color: @color-primary;
+      color: @color-background;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: @font-display;
+      font-weight: @font-weight-bold;
+      font-size: 1.5rem;
+    }
+
+    .logo-text {
+      font-family: @font-display;
+      font-weight: @font-weight-bold;
+      font-size: 1.875rem;
+      letter-spacing: @tracking-tighter;
+      text-transform: uppercase;
+    }
+  }
+
+  // Main content
+  .branding-content {
+    position: relative;
+    z-index: 10;
+
+    h1 {
+      font-family: @font-display;
+      font-size: 3.75rem;
+      font-weight: @font-weight-bold;
+      text-transform: uppercase;
+      line-height: 0.9;
+      letter-spacing: @tracking-tighter;
+      margin-bottom: @spacing-6;
+
+      .accent {
+        color: @color-primary;
+      }
+    }
+
+    p {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 28rem;
+      line-height: 1.6;
+    }
+  }
+
+  // Footer quote
+  .branding-footer {
+    position: relative;
+    z-index: 10;
+    border-left: 4px solid @color-primary;
+    padding-left: @spacing-6;
+
+    .quote {
+      color: rgba(255, 255, 255, 0.8);
+      font-style: italic;
+      margin-bottom: @spacing-4;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .attribution {
+      display: flex;
+      align-items: center;
+      gap: @spacing-4;
+
+      .avatar {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: @color-primary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: @font-display;
+        font-weight: @font-weight-bold;
+        font-size: 0.875rem;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+
+        .name {
+          font-weight: @font-weight-bold;
+          font-size: 0.875rem;
+        }
+
+        .title {
+          font-size: 0.75rem;
+          color: rgba(255, 255, 255, 0.6);
+        }
+      }
+    }
+  }
+}
+
+// Right Panel - Form
+.login-form-panel {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: @spacing-8;
+  background-color: @color-background;
+  min-height: 100vh;
+}
 
-  h1 {
-    color: #fff;
-    font-weight: bold !important;
+.login-form-container {
+  width: 100%;
+  max-width: 24rem;
+
+  // Mobile logo
+  .mobile-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: @spacing-3;
+    margin-bottom: @spacing-8;
+
+    @media (min-width: 1024px) {
+      display: none;
+    }
+
+    .logo-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: @color-primary;
+      color: @color-background;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: @font-display;
+      font-weight: @font-weight-bold;
+      font-size: 1.25rem;
+    }
+
+    .logo-text {
+      font-family: @font-display;
+      font-weight: @font-weight-bold;
+      font-size: 1.5rem;
+      letter-spacing: @tracking-tighter;
+      text-transform: uppercase;
+      color: @color-foreground;
+    }
   }
 
-  .logo {
-    border: solid 3px #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  // Form header
+  .form-header {
+    margin-bottom: @spacing-8;
+
+    h2 {
+      font-family: @font-display;
+      font-size: 2rem;
+      font-weight: @font-weight-bold;
+      text-transform: uppercase;
+      letter-spacing: @tracking-tighter;
+      color: @color-foreground;
+      margin-bottom: @spacing-4;
+    }
+
+    .header-underline {
+      width: 4rem;
+      height: 0.5rem;
+      background-color: @color-primary;
+    }
+  }
+
+  // Error alert
+  .login-error {
+    margin-bottom: @spacing-6;
+  }
+
+  // Form styles
+  .login-form {
+    .ant-form-item {
+      margin-bottom: @spacing-6;
+    }
+
+    .ant-form-item-label > label {
+      font-family: @font-display;
+      font-size: 0.75rem !important;
+      font-weight: @font-weight-bold !important;
+      text-transform: uppercase;
+      letter-spacing: @tracking-wider;
+      color: @color-foreground;
+    }
+
+    .ant-input-lg,
+    .ant-input-password-large .ant-input {
+      padding: @spacing-4;
+      font-size: 1rem;
+      border: 2px solid @color-border;
+
+      &:hover,
+      &:focus {
+        border-color: @color-foreground;
+      }
+    }
+
+    .ant-input-affix-wrapper-lg {
+      padding: @spacing-3 @spacing-4;
+      border: 2px solid @color-border;
+
+      &:hover,
+      &:focus,
+      &.ant-input-affix-wrapper-focused {
+        border-color: @color-foreground;
+        box-shadow: none;
+      }
+
+      .ant-input-prefix {
+        margin-right: @spacing-3;
+        color: @color-muted-foreground;
+      }
+    }
+
+    .form-submit {
+      margin-top: @spacing-8;
+      margin-bottom: 0;
+
+      .ant-btn-lg {
+        height: 3.5rem;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  // Footer
+  .form-footer {
+    margin-top: @spacing-12;
+    text-align: center;
+    font-size: 0.75rem;
+    color: @color-muted-foreground;
+    font-family: @font-mono;
+    text-transform: uppercase;
+    letter-spacing: @tracking-wider;
   }
 }
 
-//File Thumbnails
+// ============================================
+// FILE THUMBNAILS
+// ============================================
+
 .file-thumbnail {
   aspect-ratio: 4/3;
   max-width: 120px;
-  background-color: #efefef;
-  border: solid 1px #ccc;
+  background-color: @color-muted;
+  border: solid 2px @color-border;
+}
+
+// ============================================
+// DUTCHY ACCENT PATTERNS
+// ============================================
+
+// Accent underline for section titles
+.dutchy-underline {
+  &::after {
+    content: '';
+    display: block;
+    width: 6rem;
+    height: 0.5rem;
+    background-color: @color-primary;
+    margin-top: @spacing-4;
+  }
+}
+
+// Left accent border for cards/sections
+.dutchy-accent-left {
+  border-left: 4px solid @color-primary;
+}
+
+// Top accent border
+.dutchy-accent-top {
+  border-top: 4px solid @color-primary;
+}
+
+// Stats grid pattern (tight gaps with visible borders)
+.dutchy-stats-grid {
+  display: grid;
+  gap: 2px;
+  background-color: @color-border;
+
+  > * {
+    background-color: @color-background;
+    padding: @spacing-6;
+  }
 }

@@ -1,0 +1,399 @@
+/**
+ * Dutchy Design System - Purple Theme
+ * Utility Classes
+ */
+
+// ============================================
+// DEBUG
+// ============================================
+
+.debug {
+  background-color: rgba(124, 58, 237, 0.1) !important;
+  border: dashed 2px rgba(124, 58, 237, 0.5);
+}
+
+// ============================================
+// TEXT COLORS
+// ============================================
+
+.text-primary {
+  color: @color-primary;
+}
+
+.text-foreground {
+  color: @color-foreground;
+}
+
+.text-muted {
+  color: @color-muted-foreground;
+}
+
+.text-background {
+  color: @color-background;
+}
+
+.text-destructive {
+  color: @color-destructive;
+}
+
+.text-success {
+  color: @color-success;
+}
+
+.text-warning {
+  color: @color-warning;
+}
+
+// Legacy
+.silent {
+  color: @color-muted-foreground;
+}
+
+.red {
+  color: @color-destructive;
+}
+
+// ============================================
+// BACKGROUND COLORS
+// ============================================
+
+.bg-primary {
+  background-color: @color-primary;
+}
+
+.bg-foreground {
+  background-color: @color-foreground;
+}
+
+.bg-background {
+  background-color: @color-background;
+}
+
+.bg-muted {
+  background-color: @color-muted;
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+// ============================================
+// FLEXBOX UTILITIES
+// ============================================
+
+.h-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.v-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-start {
+  display: flex;
+  align-items: flex-start;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.gap-1 { gap: @spacing-1; }
+.gap-2 { gap: @spacing-2; }
+.gap-3 { gap: @spacing-3; }
+.gap-4 { gap: @spacing-4; }
+.gap-6 { gap: @spacing-6; }
+.gap-8 { gap: @spacing-8; }
+
+// ============================================
+// MARGINS
+// ============================================
+
+.mt { margin-top: @spacing-4; }
+.mt-1 { margin-top: @spacing-1; }
+.mt-2 { margin-top: @spacing-2; }
+.mt-3 { margin-top: @spacing-3; }
+.mt-4 { margin-top: @spacing-4; }
+.mt-6 { margin-top: @spacing-6; }
+.mt-8 { margin-top: @spacing-8; }
+.mt-xxl { margin-top: @spacing-12; }
+
+.mb { margin-bottom: @spacing-4; }
+.mb-1 { margin-bottom: @spacing-1; }
+.mb-2 { margin-bottom: @spacing-2; }
+.mb-3 { margin-bottom: @spacing-3; }
+.mb-4 { margin-bottom: @spacing-4; }
+.mb-6 { margin-bottom: @spacing-6; }
+.mb-8 { margin-bottom: @spacing-8; }
+.mb-xxl { margin-bottom: @spacing-12; }
+
+.ml { margin-left: @spacing-4; }
+.ml-1 { margin-left: @spacing-1; }
+.ml-2 { margin-left: @spacing-2; }
+.ml-3 { margin-left: @spacing-3; }
+.ml-4 { margin-left: @spacing-4; }
+
+.mr { margin-right: @spacing-4; }
+.mr-1 { margin-right: @spacing-1; }
+.mr-2 { margin-right: @spacing-2; }
+.mr-3 { margin-right: @spacing-3; }
+.mr-4 { margin-right: @spacing-4; }
+
+// ============================================
+// PADDING
+// ============================================
+
+.p { padding: @spacing-4; }
+.p-1 { padding: @spacing-1; }
+.p-2 { padding: @spacing-2; }
+.p-3 { padding: @spacing-3; }
+.p-4 { padding: @spacing-4; }
+.p-6 { padding: @spacing-6; }
+.p-8 { padding: @spacing-8; }
+
+.pt { padding-top: @spacing-4; }
+.pt-xxl { padding-top: @spacing-12; }
+
+.pb { padding-bottom: @spacing-4; }
+.px-4 { padding-left: @spacing-4; padding-right: @spacing-4; }
+.py-4 { padding-top: @spacing-4; padding-bottom: @spacing-4; }
+
+// ============================================
+// WIDTH
+// ============================================
+
+.w-100 {
+  width: 100%;
+}
+
+.w-auto {
+  width: auto;
+}
+
+.w-full {
+  width: 100%;
+}
+
+// ============================================
+// TEXT ALIGNMENT
+// ============================================
+
+.align-center, .text-center {
+  text-align: center;
+}
+
+.align-right, .text-right {
+  text-align: right;
+}
+
+.align-left, .text-left {
+  text-align: left;
+}
+
+// ============================================
+// TYPOGRAPHY UTILITIES (DUTCHY)
+// ============================================
+
+.font-display {
+  font-family: @font-display;
+}
+
+.font-body {
+  font-family: @font-body;
+}
+
+.font-mono {
+  font-family: @font-mono;
+}
+
+.font-bold {
+  font-weight: @font-weight-bold;
+}
+
+.font-semibold {
+  font-weight: @font-weight-semibold;
+}
+
+.font-medium {
+  font-weight: @font-weight-medium;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.tracking-tight {
+  letter-spacing: @tracking-tight;
+}
+
+.tracking-wide {
+  letter-spacing: @tracking-wide;
+}
+
+.tracking-wider {
+  letter-spacing: @tracking-wider;
+}
+
+// ============================================
+// BORDERS (DUTCHY ACCENTS)
+// ============================================
+
+.border {
+  border: 2px solid @color-border;
+}
+
+.border-primary {
+  border-color: @color-primary;
+}
+
+.border-foreground {
+  border-color: @color-foreground;
+}
+
+.border-l-4 {
+  border-left: 4px solid;
+}
+
+.border-t-4 {
+  border-top: 4px solid;
+}
+
+.border-b-4 {
+  border-bottom: 4px solid;
+}
+
+// ============================================
+// SHADOWS (MINIMAL IN DUTCHY)
+// ============================================
+
+.shadow {
+  box-shadow: @shadow-md;
+}
+
+.shadow-sm {
+  box-shadow: @shadow-sm;
+}
+
+.shadow-none {
+  box-shadow: none;
+}
+
+// ============================================
+// DUTCHY SPECIFIC UTILITIES
+// ============================================
+
+// Accent bullet point
+.dutchy-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: @spacing-3;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: @color-primary;
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+  }
+}
+
+// Section header with underline
+.dutchy-section-header {
+  margin-bottom: @spacing-16;
+
+  h2 {
+    font-family: @font-display;
+    font-size: 3rem;
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: @tracking-tighter;
+    margin-bottom: @spacing-4;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 6rem;
+    height: 0.5rem;
+    background-color: @color-primary;
+  }
+}
+
+// Card with left accent
+.dutchy-card {
+  background-color: @color-background;
+  border-left: 4px solid @color-primary;
+  padding: @spacing-6;
+}
+
+// Card with dark left accent
+.dutchy-card-dark {
+  background-color: @color-background;
+  border-left: 4px solid @color-foreground;
+  padding: @spacing-6;
+}
+
+// Stat block
+.dutchy-stat {
+  padding: @spacing-6;
+  background-color: @color-background;
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: @tracking-wider;
+    color: @color-muted-foreground;
+    margin-bottom: @spacing-2;
+  }
+
+  .stat-value {
+    font-family: @font-display;
+    font-size: 2rem;
+    font-weight: @font-weight-bold;
+    color: @color-foreground;
+  }
+
+  .stat-change {
+    font-size: 0.875rem;
+    margin-top: @spacing-2;
+
+    &.positive {
+      color: @color-success;
+    }
+
+    &.negative {
+      color: @color-destructive;
+    }
+  }
+}
+
+// ============================================
+// TRANSITIONS
+// ============================================
+
+// Transition utilities
+.transition-colors {
+  transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+.transition-none {
+  transition: none !important;
+}

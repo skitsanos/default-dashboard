@@ -1,0 +1,523 @@
+/**
+ * Dutchy Design System - Purple Theme
+ * Ant Design Component Overrides
+ *
+ * Design Principles:
+ * - No rounded corners (sharp geometry)
+ * - Bold typography with clear hierarchy
+ * - High contrast sidebar (dark background)
+ * - Accent borders for emphasis (4px primary borders)
+ */
+
+// ============================================
+// GLOBAL ANT DESIGN OVERRIDES
+// ============================================
+
+.ant-app {
+  height: 100%;
+}
+
+// Remove all transitions for snappy feel (optional - Dutchy prefers no animations)
+.ant-menu *,
+.ant-menu-item * {
+  transition: none !important;
+}
+
+// ============================================
+// PRO LAYOUT - DARK SIDEBAR STYLE
+// ============================================
+
+#root {
+  // Sidebar styling (dark theme)
+  .ant-pro-sider,
+  .ant-pro-sider-light {
+    background-color: @color-foreground !important;
+
+    // Logo area
+    .ant-pro-sider-logo {
+      background-color: @color-foreground;
+      padding: @spacing-4;
+
+      h1 {
+        font-family: @font-display;
+        font-weight: @font-weight-bold;
+        color: @color-background !important;
+        text-transform: uppercase;
+        letter-spacing: @tracking-tighter;
+      }
+
+      // Logo icon styling
+      img, svg {
+        filter: brightness(0) invert(1);
+      }
+    }
+
+    // Menu items
+    .ant-menu {
+      background-color: transparent !important;
+    }
+
+    .ant-menu-item {
+      color: rgba(250, 250, 250, 0.6);
+      font-weight: @font-weight-bold;
+      text-transform: uppercase;
+      letter-spacing: @tracking-wide;
+      font-size: 0.875rem;
+      margin: 0 !important;
+      border-radius: 0 !important;
+
+      &:hover {
+        background-color: rgba(250, 250, 250, 0.05) !important;
+        color: @color-background !important;
+      }
+    }
+
+    .ant-menu-item-selected {
+      background-color: rgba(124, 58, 237, 0.15) !important;
+      color: @color-background !important;
+      border-left: 4px solid @color-primary;
+
+      &::after {
+        display: none; // Remove default indicator
+      }
+    }
+
+    .ant-menu-item-active {
+      background-color: rgba(250, 250, 250, 0.05) !important;
+      color: @color-background !important;
+    }
+
+    // Menu icons
+    .ant-menu-item-icon,
+    .anticon {
+      color: inherit !important;
+    }
+
+    // Collapse button
+    .ant-pro-sider-collapsed-button {
+      background-color: @color-primary;
+      color: @color-background;
+      border: none;
+      border-radius: 0 !important;
+
+      &:hover {
+        background-color: @color-primary-hover;
+      }
+    }
+
+    // Submenu
+    .ant-menu-submenu-title {
+      color: rgba(250, 250, 250, 0.6);
+      font-weight: @font-weight-bold;
+      text-transform: uppercase;
+      letter-spacing: @tracking-wide;
+      font-size: 0.875rem;
+
+      &:hover {
+        background-color: rgba(250, 250, 250, 0.05) !important;
+        color: @color-background !important;
+      }
+    }
+
+    .ant-menu-sub {
+      background-color: rgba(0, 0, 0, 0.2) !important;
+    }
+
+    // Sidebar footer (profile & logout)
+    .sidebar-footer {
+      padding: @spacing-2 @spacing-4 @spacing-4;
+      border-top: 1px solid rgba(250, 250, 250, 0.1);
+      margin-top: auto;
+
+      .footer-link {
+        display: flex;
+        align-items: center;
+        gap: @spacing-3;
+        padding: @spacing-3 @spacing-4;
+        color: rgba(250, 250, 250, 0.6);
+        font-weight: @font-weight-bold;
+        text-transform: uppercase;
+        letter-spacing: @tracking-wide;
+        font-size: 0.875rem;
+        text-decoration: none;
+        transition: background-color 150ms ease-out, color 150ms ease-out;
+
+        &:hover {
+          background-color: rgba(250, 250, 250, 0.05);
+          color: @color-background;
+        }
+
+        &.logout:hover {
+          color: @color-destructive;
+        }
+
+        .anticon {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// HEADER STYLING
+// ============================================
+
+.ant-pro-layout {
+  .ant-pro-layout-header {
+    background-color: @color-background !important;
+    border-bottom: 4px solid @color-primary;
+    box-shadow: none;
+  }
+
+  // Top navigation mode
+  &.ant-pro-layout-top-nav {
+    .ant-pro-layout-header {
+      .ant-menu-item {
+        font-weight: @font-weight-bold;
+        text-transform: uppercase;
+        letter-spacing: @tracking-wide;
+        font-size: 0.875rem;
+      }
+
+      .ant-menu-item-selected {
+        border-bottom: 4px solid @color-primary;
+      }
+    }
+  }
+}
+
+// ============================================
+// PAGE HEADER / BREADCRUMB
+// ============================================
+
+.ant-page-header-heading-title {
+  font-family: @font-display;
+  font-weight: @font-weight-bold !important;
+  text-transform: uppercase;
+  letter-spacing: @tracking-tighter;
+}
+
+.ant-page-header-breadcrumb {
+  padding-bottom: @spacing-2;
+  margin-bottom: @spacing-4;
+  border-bottom: solid 2px @color-border;
+}
+
+.ant-breadcrumb {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: @tracking-wider;
+
+  a {
+    color: @color-muted-foreground;
+
+    &:hover {
+      color: @color-primary;
+    }
+  }
+}
+
+// ============================================
+// BUTTONS - DUTCHY STYLE
+// ============================================
+
+.ant-btn,
+button {
+  box-shadow: none !important;
+  font-weight: @font-weight-bold !important;
+  text-transform: uppercase;
+  letter-spacing: @tracking-wide !important;
+  border-radius: 0 !important;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.ant-btn-primary {
+  &:hover {
+    background-color: @color-primary-hover !important;
+  }
+}
+
+.ant-btn-default {
+  border-width: 2px;
+
+  &:hover {
+    background-color: @color-foreground !important;
+    color: @color-background !important;
+    border-color: @color-foreground !important;
+  }
+}
+
+// ============================================
+// CARDS - DUTCHY STYLE
+// ============================================
+
+.ant-card {
+  border-radius: 0 !important;
+  border: none;
+  box-shadow: none;
+
+  &.dutchy-accent {
+    border-left: 4px solid @color-primary;
+  }
+
+  .ant-card-head {
+    border-bottom: 2px solid @color-border;
+    font-family: @font-display;
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: @tracking-tight;
+  }
+}
+
+// Pro Card
+.ant-pro-card {
+  border-radius: 0 !important;
+}
+
+// ============================================
+// TABLES - DUTCHY STYLE
+// ============================================
+
+.ant-table {
+  border-radius: 0 !important;
+
+  .ant-table-thead > tr > th {
+    background-color: @color-muted;
+    font-size: 0.75rem;
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: @tracking-wider;
+    color: @color-muted-foreground;
+    border-bottom: 2px solid @color-border;
+  }
+
+  .ant-table-tbody > tr > td {
+    border-bottom: 1px solid @color-border;
+  }
+
+  .ant-table-tbody > tr:hover > td {
+    background-color: rgba(124, 58, 237, 0.04);
+  }
+}
+
+// ============================================
+// FORMS - DUTCHY STYLE
+// ============================================
+
+.ant-form-item-label > label {
+  font-size: 0.75rem !important;
+  font-weight: @font-weight-bold !important;
+  text-transform: uppercase;
+  letter-spacing: @tracking-wider;
+}
+
+.ant-input,
+.ant-select-selector,
+.ant-picker {
+  border-radius: 0 !important;
+  border-width: 2px !important;
+
+  &:hover,
+  &:focus {
+    border-color: @color-foreground !important;
+  }
+}
+
+.ant-input:focus,
+.ant-input-focused {
+  box-shadow: none !important;
+  border-color: @color-foreground !important;
+}
+
+.ant-select-focused .ant-select-selector {
+  box-shadow: none !important;
+  border-color: @color-foreground !important;
+}
+
+// ============================================
+// TAGS & BADGES - DUTCHY STYLE
+// ============================================
+
+.ant-tag {
+  border-radius: 0 !important;
+  font-family: @font-mono;
+  font-size: 0.75rem;
+  font-weight: @font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: @tracking-widest;
+  padding: @spacing-1 @spacing-2;
+}
+
+.ant-badge-count {
+  border-radius: 0 !important;
+  font-family: @font-mono;
+}
+
+// ============================================
+// ALERTS & MESSAGES - DUTCHY STYLE
+// ============================================
+
+.ant-alert {
+  border-radius: 0 !important;
+  border-left-width: 4px;
+}
+
+.ant-message-notice-content {
+  border-radius: 0 !important;
+}
+
+// ============================================
+// MODALS & DRAWERS - DUTCHY STYLE
+// ============================================
+
+.ant-modal-content {
+  border-radius: 0 !important;
+}
+
+.ant-modal-header {
+  border-bottom: 2px solid @color-border;
+
+  .ant-modal-title {
+    font-family: @font-display;
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: @tracking-tight;
+  }
+}
+
+.ant-drawer-content {
+  border-radius: 0 !important;
+}
+
+.ant-drawer-header {
+  border-bottom: 4px solid @color-primary;
+
+  .ant-drawer-title {
+    font-family: @font-display;
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+  }
+}
+
+// ============================================
+// TABS - DUTCHY STYLE
+// ============================================
+
+.ant-tabs {
+  .ant-tabs-tab {
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: @tracking-wide;
+    font-size: 0.875rem;
+  }
+
+  .ant-tabs-ink-bar {
+    height: 4px !important;
+    background-color: @color-primary;
+  }
+}
+
+// ============================================
+// PAGINATION - DUTCHY STYLE
+// ============================================
+
+.ant-pagination {
+  .ant-pagination-item {
+    border-radius: 0 !important;
+    border-width: 2px;
+    font-weight: @font-weight-bold;
+
+    &:hover {
+      border-color: @color-foreground;
+    }
+  }
+
+  .ant-pagination-item-active {
+    background-color: @color-primary;
+    border-color: @color-primary;
+
+    a {
+      color: @color-background;
+    }
+  }
+
+  .ant-pagination-prev,
+  .ant-pagination-next {
+    .ant-pagination-item-link {
+      border-radius: 0 !important;
+      border-width: 2px;
+    }
+  }
+}
+
+// ============================================
+// STATISTICS - DUTCHY STYLE
+// ============================================
+
+.ant-statistic {
+  .ant-statistic-title {
+    font-size: 0.75rem;
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: @tracking-wider;
+    color: @color-muted-foreground;
+  }
+
+  .ant-statistic-content {
+    font-family: @font-display;
+    font-weight: @font-weight-bold;
+  }
+}
+
+// ============================================
+// DROPDOWN & POPOVER - DUTCHY STYLE
+// ============================================
+
+.ant-dropdown-menu {
+  border-radius: 0 !important;
+  border: 2px solid @color-border;
+}
+
+.ant-popover-inner {
+  border-radius: 0 !important;
+}
+
+.ant-tooltip-inner {
+  border-radius: 0 !important;
+}
+
+// ============================================
+// AVATAR - DUTCHY STYLE (SQUARE)
+// ============================================
+
+.ant-avatar {
+  border-radius: 0 !important;
+}
+
+// ============================================
+// PROGRESS - DUTCHY STYLE
+// ============================================
+
+.ant-progress-inner {
+  border-radius: 0 !important;
+}
+
+.ant-progress-bg {
+  border-radius: 0 !important;
+}
+
+// ============================================
+// SEGMENTED - DUTCHY STYLE
+// ============================================
+
+.ant-segmented {
+  border-radius: 0 !important;
+
+  .ant-segmented-item {
+    border-radius: 0 !important;
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: @tracking-wide;
+  }
+}
