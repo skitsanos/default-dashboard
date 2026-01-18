@@ -75,7 +75,7 @@ src/
 
 ## Theming
 
-This project uses the **Dutchy Design System** with a Purple theme. The design principles are:
+This project uses the **[Dutchy Design System](https://dutchy.demothat.app/)** with a Purple theme. The design principles are:
 
 - **Sharp geometry** - No rounded corners (borderRadius: 0)
 - **Bold typography** - Space Grotesk (display), Inter (body), JetBrains Mono (code)
