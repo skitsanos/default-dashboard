@@ -1,10 +1,11 @@
 import ContentArea from '@/components/ContentArea';
 import {AlignLeftOutlined, InboxOutlined, TableOutlined, UploadOutlined} from '@ant-design/icons';
-import {Button, Card, Col, Divider, Row, Space, Upload, UploadFile} from 'antd';
+import {Button, Card, Col, Divider, Row, Space, Upload, type UploadFile} from 'antd';
 import {useState} from 'react';
 import {useRequest} from 'ahooks';
+import '@/pages/files/upload/upload.less';
 
-const THUMBNAIL_COUNT = 5;
+const THUMBNAIL_PLACEHOLDERS = Array.from({length: 5}, (_el, index) => `thumbnail-${index + 1}`);
 
 const PROCESSING_DELAY = 2000;
 
@@ -72,8 +73,8 @@ export default () =>
                 <Row gutter={[8, 8]}>
                     <Col style={{width: '200px'}}>
                         <Space direction={'vertical'}>
-                            {Array.from({length: THUMBNAIL_COUNT}, (_el, index) => <Card
-                                key={`thumbnail-${index}`}
+                            {THUMBNAIL_PLACEHOLDERS.map(thumbnail => <Card
+                                key={thumbnail}
                                 style={{
                                     width: '180px',
                                     aspectRatio: '3/4',
@@ -94,11 +95,17 @@ export default () =>
                                   style={{height: '100%'}}/></Col>
 
                     <Col>
-                        <Space direction={'vertical'}>
-                            <h3>File details</h3>
-                            <div aria-label={'File name'}>{contextFile.name}</div>
-                            <div aria-label={'Size'}>{contextFile.size ?? 0} bytes</div>
-                        </Space>
+                        <h3>File details</h3>
+
+                        {/* A <dl> pairs each label with its value for assistive tech - an aria-label on a
+                            plain <div> has no supported role to attach to and is simply ignored. */}
+                        <dl className={'file-details'}>
+                            <dt>File name</dt>
+                            <dd>{contextFile.name}</dd>
+
+                            <dt>Size</dt>
+                            <dd>{contextFile.size ?? 0} bytes</dd>
+                        </dl>
                     </Col>
                 </Row>
             </Card>

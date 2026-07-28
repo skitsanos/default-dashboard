@@ -37,7 +37,8 @@ const Page = () =>
         connect
     } = useWebSocket(socketUrl(), {manual: true});
 
-    useEffect(() => connect(), []);
+    // ahooks wraps connect in useMemoizedFn, so this stays a one-shot connect on mount.
+    useEffect(() => connect(), [connect]);
 
     useEffect(() =>
     {

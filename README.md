@@ -12,6 +12,7 @@ A modern dashboard skeleton built with **React**, **Umi.js**, and **Ant Design v
 | [ahooks](https://ahooks.js.org/) | High-quality React hooks library |
 | [Zustand](https://zustand.docs.pmnd.rs/) | Minimal state management (used for the session store) |
 | [LESS](https://lesscss.org/) | CSS preprocessor for advanced styling |
+| [Biome](https://biomejs.dev/) | Linter |
 
 ## Why Ant Design?
 
@@ -267,10 +268,34 @@ import { endpoints } from '@/api';
 | `bun build` | Build for production |
 | `bun preview` | Preview production build |
 | `bun run typecheck` | Type-check the project (`tsc --noEmit`) |
+| `bun run lint` | Lint with Biome |
+| `bun run lint:fix` | Apply Biome's safe fixes |
 | `bun run depupdates` | Bump every dependency to its latest version |
 
 > The bundler (mako) strips types without checking them, so `typecheck` is what actually catches type errors.
-> CI (`.github/workflows/ci.yml`) runs `typecheck` and `build` on every push to `main` and every pull request.
+> CI (`.github/workflows/ci.yml`) runs `lint`, `typecheck` and `build` on every push to `main` and every
+> pull request.
+
+## Linting
+
+[Biome](https://biomejs.dev/) is configured in `biome.jsonc`. Two deliberate choices are worth knowing about
+before you change them:
+
+**The formatter is off.** This codebase puts opening braces on their own line (Allman style) and Biome has no
+option to preserve that — turning the formatter on rewrites every block in the project to K&R. The linter is
+where the value is; layout stays with whoever wrote the file. The same reasoning applies to Biome's import
+sorting, which is off for the same reason and can be flipped on in the `assist` block if you disagree.
+
+**Folder exclusions take no trailing slash.** In `files.includes`, write `!src/.umi`, not `!src/.umi/` — the
+trailing-slash form silently matches nothing, so generated and vendored files get linted anyway. Confirm what
+is actually in scope with:
+
+```bash
+npx biome lint --reporter=summary   # ends with "Checked N files"
+```
+
+The `define` globals from `.umirc.ts` (`APP_NAME`, `APP_VERSION`, …) are declared in the `javascript.globals`
+list. Add to it when you add a new one, or Biome will report it as undefined.
 
 ## Dependencies
 

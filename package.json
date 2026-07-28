@@ -13,6 +13,8 @@
     "build": "NODE_ENV=production umi build",
     "preview": "umi preview",
     "typecheck": "tsc --noEmit",
+    "lint": "biome lint",
+    "lint:fix": "biome lint --write",
     "deploy": "netlify deploy --prod",
     "depupdates": "npx npm-check-updates -u"
   },
@@ -30,6 +32,7 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.5.6",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@umijs/mako": "^0.11.15",

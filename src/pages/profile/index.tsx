@@ -26,6 +26,12 @@ import {useOutletContext} from 'umi';
 import type {SessionContext} from '@/defaults';
 import '@/pages/profile/profile.less';
 
+interface ProfileFormValues
+{
+    email: string;
+    displayName?: string;
+}
+
 const defaultUser = {
     email: 'user@example.com',
     _key: '000000',
@@ -66,9 +72,9 @@ const ProfilePage = () =>
         return email.substring(0, 2).toUpperCase();
     };
 
-    const handleSave = (values: any) =>
+    // Demo only - a real implementation would PUT `values` to the API before reporting success.
+    const handleSave = (_values: ProfileFormValues) =>
     {
-        console.log('Profile updated:', values);
         message.success('Profile updated successfully');
         setIsEditing(false);
     };

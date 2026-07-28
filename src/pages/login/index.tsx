@@ -5,6 +5,25 @@ import {Button, Form, Input, Alert} from 'antd';
 import {useEffect, useState} from 'react';
 import {history} from 'umi';
 import {LockOutlined, UserOutlined, ArrowRightOutlined} from '@ant-design/icons';
+import type {Session} from '@/hooks/useSession';
+
+interface Credentials
+{
+    username: string;
+    password: string;
+}
+
+/** umi-request rejects with the response attached; 401 bodies carry a message from the login service. */
+interface RequestError
+{
+    response?: {status?: number};
+    data?: {message?: string};
+}
+
+interface LoginResponse
+{
+    data?: {result?: {session?: Session}};
+}
 
 const LoginPage = () =>
 {
@@ -15,7 +34,7 @@ const LoginPage = () =>
         error,
         loading,
         run
-    } = useRequest(payload => apiPost(endpoints.login, {
+    } = useRequest((payload: Credentials) => apiPost(endpoints.login, {
         data: payload,
         getResponse: true
     }), {manual: true});
@@ -23,7 +42,7 @@ const LoginPage = () =>
     const [authError, setAuthError] = useState(false);
     const [errMessage, setErrMessage] = useState<string | null>(null);
 
-    const onFinish = (values: any) =>
+    const onFinish = (values: Credentials) =>
     {
         setAuthError(false);
         run(values);
@@ -36,34 +55,32 @@ const LoginPage = () =>
             const {
                 response,
                 data: errData
-            } = error as Record<string, any>;
-            const {status} = response;
+            } = error as RequestError;
+            const status = response?.status;
             setAuthError(true);
 
             if (status === 401)
             {
-                setErrMessage(errData.message);
+                setErrMessage(errData?.message ?? 'Invalid credentials');
             }
             else
             {
-                setErrMessage(`Network error occurred. Err#${status}`);
+                setErrMessage(`Network error occurred. Err#${status ?? 'unknown'}`);
             }
         }
     }, [error]);
 
     useEffect(() =>
     {
-        const {data: responseData} = data || {};
-        if (responseData)
+        const {data: responseData} = (data ?? {}) as LoginResponse;
+        const session = responseData?.result?.session;
+
+        if (session?.token)
         {
-            const {session} = responseData?.result || {};
-            if (session?.token)
-            {
-                login(session);
-                history.push('/');
-            }
+            login(session);
+            history.push('/');
         }
-    }, [data]);
+    }, [data, login]);
 
     return (
         <div className="login-page">

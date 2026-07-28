@@ -4,7 +4,7 @@ import sidebarMenu from '@/sidebarMenu';
 import ProLayout from '@ant-design/pro-layout';
 import {App, ConfigProvider} from 'antd';
 import enUS from 'antd/locale/en_US';
-import {ReactNode, useEffect} from 'react';
+import {type ReactNode, useEffect} from 'react';
 import {history, Link, Outlet, useLocation} from 'umi';
 import dutchyTheme from '@/theme/dutchyTheme';
 import {ReactComponent as IconLogo} from '@/assets/logo.svg';

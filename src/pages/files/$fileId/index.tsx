@@ -4,7 +4,7 @@ import '@/pages/files/thumbnails.less';
 import {Card} from 'antd';
 import {useEffect, useState} from 'react';
 
-const PAGE_COUNT = 10;
+const PAGE_PLACEHOLDERS = Array.from({length: 10}, (_el, index) => `page-${index + 1}`);
 
 // The viewer fills the space between its own top edge and the bottom of the viewport.
 const BOTTOM_MARGIN_VH = 4;
@@ -59,8 +59,8 @@ export default () =>
                  style={{height}}>
 
                 <div className={'file-thumbnails-list'}>
-                    {Array.from({length: PAGE_COUNT}, (_el, index) => <div key={`page-${index}`}
-                                                                          className={'file-thumbnails-item'}/>)}
+                    {PAGE_PLACEHOLDERS.map(page => <div key={page}
+                                                        className={'file-thumbnails-item'}/>)}
                 </div>
 
                 <div className={'file-page-preview'}>preview</div>

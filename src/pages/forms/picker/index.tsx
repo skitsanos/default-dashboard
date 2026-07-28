@@ -1,8 +1,9 @@
 import ContentArea from '@/components/ContentArea';
 import EmbeddedForm from '@/pages/forms/picker/EmbeddedForm';
-import {Button, DatePicker, Divider, Form, Space} from 'antd';
+import {Button, DatePicker, Descriptions, Divider, Form, Space} from 'antd';
 import type {Dayjs} from 'dayjs';
 import dayjs from 'dayjs';
+import {useState} from 'react';
 
 const DATE_FORMAT = 'YYYY-MM-DD';
 
@@ -17,13 +18,18 @@ const Page = () =>
 
     const [embeddedForm] = Form.useForm<PickerValues>();
 
-    const onFinish = (values: PickerValues) => console.log('form:', values.createdOn?.format(DATE_FORMAT));
+    const [submitted, setSubmitted] = useState<Record<string, string>>({});
+
+    const record = (label: string) => (values: PickerValues) => setSubmitted(current => ({
+        ...current,
+        [label]: values.createdOn?.format(DATE_FORMAT) ?? '(empty)'
+    }));
 
     return <ContentArea title={'Date picker'}
-                        subTitle={'Form and embedded form sharing the same date format'}>
+                        subTitle={'A standalone form and an embedded one sharing the same date format'}>
         <Form form={form}
               initialValues={{createdOn: dayjs()}}
-              onFinish={onFinish}>
+              onFinish={record('Form')}>
             <Form.Item name={'createdOn'}>
                 <DatePicker format={DATE_FORMAT}/>
             </Form.Item>
@@ -33,7 +39,7 @@ const Page = () =>
 
         <EmbeddedForm form={embeddedForm}
                       initialValues={{createdOn: dayjs().add(22, 'd')}}
-                      onFinish={values => console.log('embedded:', (values as PickerValues).createdOn?.format(DATE_FORMAT))}/>
+                      onFinish={values => record('Embedded form')(values as PickerValues)}/>
 
         <Divider/>
 
@@ -42,6 +48,16 @@ const Page = () =>
 
             <Button onClick={() => embeddedForm.submit()}>Save embedded form</Button>
         </Space>
+
+        {Object.keys(submitted).length > 0 && <Descriptions className={'mt'}
+                                                            column={1}
+                                                            bordered={true}
+                                                            size={'small'}>
+            {Object.entries(submitted).map(([label, value]) => <Descriptions.Item key={label}
+                                                                                  label={label}>
+                {value}
+            </Descriptions.Item>)}
+        </Descriptions>}
     </ContentArea>;
 };
 

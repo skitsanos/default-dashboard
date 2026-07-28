@@ -1,5 +1,5 @@
-import {DatePicker, Form, FormInstance} from 'antd';
-import {FC} from 'react';
+import {DatePicker, Form, type FormInstance} from 'antd';
+import type {FC} from 'react';
 
 const DATE_FORMAT = 'YYYY-MM-DD';
 

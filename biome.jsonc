@@ -1,0 +1,88 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.5.6/schema.json",
+
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true
+    },
+
+    "files": {
+        "includes": [
+            "src/**",
+            "mock/**",
+            "functions/**",
+            "*.ts",
+            // Folder exclusions take no trailing slash and no /** suffix - "!src/.umi/" silently matches nothing.
+            "!src/.umi",
+            "!src/.umi-production",
+            // Static assets, not source. The SVGs here are compiled by SVGR.
+            "!src/assets",
+            "!dist"
+        ]
+    },
+
+    // Deliberately off. This project writes braces Allman-style (opening brace on its own line) and Biome has no
+    // option to preserve that, so enabling the formatter rewrites every block in the codebase to K&R. The linter
+    // below is the part that earns its keep; layout stays with the author.
+    "formatter": {
+        "enabled": false
+    },
+
+    // Same reasoning: import sorting is layout, not correctness. Flip to "on" if you want it.
+    "assist": {
+        "actions": {
+            "source": {
+                "organizeImports": "off"
+            }
+        }
+    },
+
+    "linter": {
+        "enabled": true,
+        "domains": {
+            "react": "recommended"
+        },
+        "rules": {
+            "preset": "recommended",
+            "style": {
+                "noNonNullAssertion": "error",
+                "useConst": "error"
+            },
+            "suspicious": {
+                "noExplicitAny": "warn",
+                "noConsole": {
+                    "level": "warn",
+                    "options": {
+                        "allow": ["warn", "error"]
+                    }
+                }
+            }
+        }
+    },
+
+    "javascript": {
+        // Injected by the `define` block in .umirc.ts.
+        "globals": [
+            "APP_NAME",
+            "APP_VERSION",
+            "FEATURE_SMTP_ENABLED",
+            "FEATURE_SSL_ENABLED",
+            "INITIAL_SESSION"
+        ]
+    },
+
+    "overrides": [
+        {
+            // Dev-only mocks and Netlify functions are server-side; logging there is intentional.
+            "includes": ["mock/**", "functions/**"],
+            "linter": {
+                "rules": {
+                    "suspicious": {
+                        "noConsole": "off"
+                    }
+                }
+            }
+        }
+    ]
+}

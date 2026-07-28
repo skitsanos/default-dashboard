@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
+      - name: Lint
+        run: npm run lint
+
       # mako does not type-check, so this is the only thing standing between a type error and production.
       - name: Type check
         run: npm run typecheck

@@ -1,5 +1,5 @@
 import {Spin} from 'antd';
-import {FC} from 'react';
+import type {FC} from 'react';
 
 export interface LoadingProps
 {

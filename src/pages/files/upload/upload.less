@@ -1,0 +1,29 @@
+/**
+ * Upload page - file detail list
+ */
+
+@import url('../../../theme/variables.less');
+
+.file-details {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: @spacing-2 @spacing-4;
+  align-items: baseline;
+
+  dt {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: @tracking-wider;
+    color: @color-muted-foreground;
+  }
+
+  dd {
+    margin: 0;
+    font-family: @font-mono;
+    font-size: 0.875rem;
+    word-break: break-all;
+  }
+}

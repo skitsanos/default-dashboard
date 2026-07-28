@@ -1,4 +1,4 @@
-import request, {RequestOptionsInit} from 'umi-request';
+import request, {type RequestOptionsInit} from 'umi-request';
 import {readStoredSession, SESSION_STORAGE_KEY} from '@/hooks/useSession';
 
 const url = '/api-local';
