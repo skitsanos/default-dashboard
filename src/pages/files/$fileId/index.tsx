@@ -1,31 +1,31 @@
 import ContentArea from '@/components/ContentArea';
 import {useLocation, useParams} from 'umi';
 import '@/pages/files/thumbnails.less';
-import chance from 'chance';
 import {Card} from 'antd';
 import {useEffect, useState} from 'react';
 
-const generatePage = function* ()
-{
-    yield {
-        type: 'PDF',
-        uuid: chance().guid()
-    };
-};
+const PAGE_COUNT = 10;
 
-const loadedDocument = Array.from({length: 10}, () => generatePage().next().value);
+// The viewer fills the space between its own top edge and the bottom of the viewport.
+const BOTTOM_MARGIN_VH = 4;
 
 export default () =>
 {
     const location = useLocation();
-    const {name} = location.state as Record<string, any>;
-    const params = useParams();
-    const {fileId} = params;
+    const {fileId} = useParams();
 
-    const [height, setHeight] = useState('auto'); // Initialize height to 'auto'
+    // The page is reachable by direct link, so route state may be missing entirely.
+    const {name} = (location.state ?? {}) as {name?: string};
+
+    const [height, setHeight] = useState('auto');
 
     useEffect(() =>
     {
+        if (!fileId)
+        {
+            return;
+        }
+
         const adjustHeight = () =>
         {
             const el = document.getElementById(fileId);
@@ -34,31 +34,20 @@ export default () =>
                 return;
             }
 
-            // Get the y position of the second element
-            const yPos = el.getBoundingClientRect().top;
+            const topVh = el.getBoundingClientRect().top * (100 / window.innerHeight);
 
-            // Convert y position from pixels to viewport units (vh)
-            const yPosVh = yPos * (100 / window.innerHeight);
-
-            // Calculate the height
-            const newHeightVh = 96 - yPosVh;
-
-            setHeight(`${newHeightVh}vh`);
+            setHeight(`${100 - BOTTOM_MARGIN_VH - topVh}vh`);
         };
 
-        adjustHeight(); // Initial adjustment
-        window.addEventListener('resize', adjustHeight); // adjust on window resize
+        adjustHeight();
+        window.addEventListener('resize', adjustHeight);
 
-        return () =>
-        {
-            // Cleanup - remove event listener when component unmounts
-            window.removeEventListener('resize', adjustHeight);
-        };
-    }, []);
+        return () => window.removeEventListener('resize', adjustHeight);
+    }, [fileId]);
 
     return <ContentArea title={'File Preview'}
                         className={'v-box'}
-                        subTitle={name}>
+                        subTitle={name ?? fileId}>
 
         <Card>
             some details
@@ -70,14 +59,12 @@ export default () =>
                  style={{height}}>
 
                 <div className={'file-thumbnails-list'}>
-                    {
-                        loadedDocument.map((_el, index) => <div key={`page-${index}`}
-                                                                className={'file-thumbnails-item'}></div>)
-                    }
+                    {Array.from({length: PAGE_COUNT}, (_el, index) => <div key={`page-${index}`}
+                                                                          className={'file-thumbnails-item'}/>)}
                 </div>
 
                 <div className={'file-page-preview'}>preview</div>
             </div>
         </Card>
     </ContentArea>;
-}
+};

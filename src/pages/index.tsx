@@ -7,8 +7,7 @@ import {
     Table,
     Tag,
     Progress,
-    Space,
-    Avatar
+    Space
 } from 'antd';
 import {
     ArrowUpOutlined,
@@ -19,11 +18,13 @@ import {
     ThunderboltOutlined
 } from '@ant-design/icons';
 import {useOutletContext} from 'umi';
+import type {SessionContext} from '@/defaults';
+import '@/pages/dashboard.less';
 
 const Dashboard = () =>
 {
-    const {session} = useOutletContext<{ session: any }>();
-    const userName = session?.session?.user?.email?.split('@')[0] || 'User';
+    const {session} = useOutletContext<SessionContext>();
+    const userName = session?.user?.email?.split('@')[0] || 'User';
 
     // Mock data for recent activity
     const recentActivity = [
@@ -266,55 +267,6 @@ const Dashboard = () =>
                 </Col>
             </Row>
 
-            <style>{`
-                .activity-feed {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 20px;
-                }
-
-                .activity-item {
-                    display: flex;
-                    gap: 12px;
-                    align-items: flex-start;
-                }
-
-                .activity-dot {
-                    width: 8px;
-                    height: 8px;
-                    margin-top: 6px;
-                    flex-shrink: 0;
-                }
-
-                .activity-content {
-                    flex: 1;
-                    min-width: 0;
-                }
-
-                .activity-action {
-                    margin: 0;
-                    font-weight: 600;
-                    font-size: 0.875rem;
-                }
-
-                .activity-target {
-                    margin: 2px 0 0 0;
-                    font-family: 'JetBrains Mono', monospace;
-                    font-size: 0.75rem;
-                    color: #737373;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
-
-                .activity-time {
-                    margin: 4px 0 0 0;
-                    font-size: 0.75rem;
-                    color: #737373;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                }
-            `}</style>
         </ContentArea>
     );
 };

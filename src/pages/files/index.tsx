@@ -19,7 +19,6 @@ import {
     Button,
     Card,
     Col,
-    Dropdown,
     Input,
     Row,
     Space,
@@ -89,9 +88,9 @@ const FilesPage = () =>
         }, 800);
     };
 
-    const handleDelete = (key: string) =>
+    const handleDelete = (file: FileItem) =>
     {
-        message.success('File deleted');
+        message.success(`${file.name} deleted`);
     };
 
     const columns: ColumnsType<FileItem> = [
@@ -178,7 +177,7 @@ const FilesPage = () =>
                             type="text"
                             danger
                             icon={<DeleteOutlined/>}
-                            onClick={() => handleDelete(row.key)}
+                            onClick={() => handleDelete(row)}
                         />
                     </Tooltip>
                 </Space>

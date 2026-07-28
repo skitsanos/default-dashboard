@@ -62,15 +62,17 @@ src/
 ├── assets/          # Static assets (images, SVGs)
 ├── components/      # Reusable React components
 ├── defaults.ts      # App constants and defaults
+├── global.less      # Global styles (entry point for the LESS files below)
 ├── hooks/           # Custom React hooks
 ├── layouts/         # Page layouts (ProLayout wrapper)
 ├── pages/           # Route pages (file-based routing)
 ├── sidebarMenu.tsx  # Sidebar navigation config
+├── utils/           # Shared helpers
 └── theme/           # Theming configuration
     ├── dutchyTheme.ts   # Ant Design theme tokens
+    ├── variables.less   # LESS design tokens
     ├── antd.less        # Component style overrides
-    ├── utils.less       # Utility classes
-    └── variables.less   # LESS variables
+    └── utils.less       # Utility classes
 ```
 
 ## Theming
@@ -146,13 +148,24 @@ export const dutchyColors = {
 
 ### LESS Variables
 
-Global LESS variables are defined in `src/theme/variables.less` and can be used in any `.less` file:
+Design tokens live in `src/theme/variables.less`:
 
 ```less
 @color-primary: #7c3aed;
 @color-foreground: #0a0a0a;
 @color-background: #ffffff;
 @font-display: 'Space Grotesk', sans-serif;
+```
+
+LESS compiles each entry point on its own, so a stylesheet only sees the variables it has imported. Import the
+tokens at the top of any page-level `.less` file before using them:
+
+```less
+@import url('../theme/variables.less');
+
+.my-panel {
+  border-left: 4px solid @color-primary;
+}
 ```
 
 ## Umi.js Best Practices
@@ -241,6 +254,11 @@ import { endpoints } from '@/api';
 | `bun dev` | Start development server |
 | `bun build` | Build for production |
 | `bun preview` | Preview production build |
+| `bun run typecheck` | Type-check the project (`tsc --noEmit`) |
+| `bun run depupdates` | Bump every dependency to its latest version |
+
+> The bundler (mako) strips types without checking them, so `typecheck` is what actually catches type errors.
+> CI runs it on every push and pull request.
 
 ## Authentication
 
@@ -248,9 +266,13 @@ The app uses a simple session-based auth flow:
 
 1. User submits credentials to `/api-local/auth/login`
 2. Server returns `{ result: { session: { token, user } } }`
-3. Session is stored in `localStorage`
+3. The inner `session` object is stored in `localStorage` under `session-context`
 4. `useSession` hook provides session state and `login`/`logout` methods
 5. Protected routes redirect to `/login` when no session exists
+
+The session is always the flat `{ token, user }` object — in the store, in `localStorage`, and in the
+`INITIAL_SESSION` define. `api.ts` reads the token from there to set the `Authorization` header, and drops the
+session on a 401/403 from any endpoint other than login.
 
 ### Session Hook
 
@@ -264,8 +286,17 @@ const MyComponent = () => {
         return <div>Not logged in</div>;
     }
 
-    return <div>Welcome, {session.user.email}</div>;
+    return <div>Welcome, {session.user?.email}</div>;
 };
+```
+
+Pages rendered inside the layout also receive the session through the router outlet:
+
+```tsx
+import { useOutletContext } from 'umi';
+import type { SessionContext } from '@/defaults';
+
+const { session } = useOutletContext<SessionContext>();
 ```
 
 ## Customization Tips

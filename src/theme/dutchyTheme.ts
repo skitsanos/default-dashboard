@@ -317,13 +317,8 @@ const dutchyTheme: ThemeConfig = {
             dotActiveBorderColor: dutchyColors.primary,
         },
 
-        // DatePicker
+        // DatePicker (TimePicker shares these tokens)
         DatePicker: {
-            borderRadius: 0,
-        },
-
-        // TimePicker
-        TimePicker: {
             borderRadius: 0,
         },
 

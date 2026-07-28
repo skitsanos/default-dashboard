@@ -57,10 +57,9 @@ const LoginPage = () =>
         if (responseData)
         {
             const {session} = responseData?.result || {};
-            const {token} = session || {};
-            if (token)
+            if (session?.token)
             {
-                login(responseData.result);
+                login(session);
                 history.push('/');
             }
         }

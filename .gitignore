@@ -11,3 +11,7 @@ src/pages/__tests__/
 src/pages/test/
 
 *.lock
+
+package-lock.json
+bun.lockb
+pnpm-lock.yaml
