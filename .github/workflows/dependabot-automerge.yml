@@ -1,13 +1,20 @@
+# Approves and auto-merges Dependabot pull requests.
+#
+# Renovate raises the scheduled dependency bumps for this repository and merges its own pull requests
+# (see renovate.json), so in practice this workflow only sees Dependabot's security updates.
+
 name: Dependabot Pull Request Approve and Merge
 
 on: pull_request_target
-permissions:
-  pull-requests: write
-  contents: write
-  
+
+permissions: {}
+
 jobs:
   dependabot:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
     # Checking the actor will prevent your Action run failing on non-Dependabot
     # PRs but also ensures that it only does work for Dependabot PRs.
     if: ${{ github.actor == 'dependabot[bot]' }}
@@ -19,16 +26,19 @@ jobs:
         uses: dependabot/fetch-metadata@v3.1.0
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+
       # Here the PR gets approved.
       - name: Approve a PR
+        if: ${{ steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major' }}
         run: gh pr review --approve "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       # Finally, this sets the PR to allow auto-merging for patch and minor
-      # updates if all checks pass
+      # updates if all checks pass. Majors are left for a human to look at.
       - name: Enable auto-merge for Dependabot PRs
-        #if: ${{ steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major' }}
+        if: ${{ steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major' }}
         run: gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
