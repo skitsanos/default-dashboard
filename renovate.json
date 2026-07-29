@@ -4,6 +4,13 @@
     "config:recommended"
   ],
   "automergeStrategy": "squash",
+  "vulnerabilityAlerts": {
+    "description": "Renovate is the only updater here, so it also handles security remediation. This reads GitHub's Dependabot *alerts*, which are a separate feature from Dependabot version updates and must stay enabled under Settings > Code security.",
+    "labels": [
+      "security"
+    ],
+    "prPriority": 10
+  },
   "packageRules": [
     {
       "description": "Merge patch and minor bumps once CI is green. Majors are left for a human - the antd v6 bump is exactly the kind of change that needs eyes on it.",

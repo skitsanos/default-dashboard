@@ -322,8 +322,18 @@ the install will break again. Where a plain antd component will do, prefer it.
 
 ### Lockfiles
 
-Lockfiles are not committed, so every install resolves fresh within the declared ranges. Renovate raises the
-bumps and auto-merges patch and minor updates once CI is green; majors are left for review.
+Lockfiles are not committed, so every install resolves fresh within the declared ranges.
+
+### Updates
+
+Renovate (`renovate.json`) is the only dependency bot. It raises the bumps, auto-merges patch and minor updates
+by squash once CI is green, and leaves majors for review — antd v6 is exactly the sort of bump that needs eyes
+on it.
+
+Renovate also handles security remediation, which it drives from GitHub's **Dependabot alerts**. Those are a
+different feature from Dependabot *version updates* and need to stay enabled under
+**Settings → Code security**; the repository has no `.github/dependabot.yml` and should not gain one, or the
+two bots will raise competing pull requests against the same manifest.
 
 ## Authentication
 
