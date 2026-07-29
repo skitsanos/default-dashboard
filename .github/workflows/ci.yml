@@ -4,6 +4,9 @@ on:
   push:
     branches: [ main ]
   pull_request:
+  # Lets you run CI from the Actions tab on any branch, which is also how you get the
+  # check to show up in the ruleset's "Add checks" picker before a PR exists.
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -14,6 +17,9 @@ concurrency:
 
 jobs:
   build:
+    # This name is the required-status-check contract in the branch ruleset. Renaming it silently
+    # breaks the rule - GitHub waits forever for a check that never reports and PRs stop merging.
+    name: build
     runs-on: ubuntu-latest
 
     steps:
