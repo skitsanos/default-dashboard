@@ -1,7 +1,8 @@
 # Approves and auto-merges Dependabot pull requests.
 #
-# Renovate raises the scheduled dependency bumps for this repository and merges its own pull requests
-# (see renovate.json), so in practice this workflow only sees Dependabot's security updates.
+# Note that this repository runs two update bots against the same npm manifest: Dependabot (.github/dependabot.yml,
+# daily) and Renovate (renovate.json). Renovate has been winning the race, which is why every run of this workflow
+# so far has been a Renovate pull request that the actor check below skipped. Worth settling on one of them.
 
 name: Dependabot Pull Request Approve and Merge
 
