@@ -3,6 +3,7 @@
   "extends": [
     "config:recommended"
   ],
+  "automergeStrategy": "squash",
   "packageRules": [
     {
       "description": "Merge patch and minor bumps once CI is green. Majors are left for a human - the antd v6 bump is exactly the kind of change that needs eyes on it.",
