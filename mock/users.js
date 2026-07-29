@@ -1,5 +1,5 @@
 import chance from 'chance';
-import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'fs';
+import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 
 const generateUser = function* () {
     yield {

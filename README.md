@@ -10,7 +10,9 @@ A modern dashboard skeleton built with **React**, **Umi.js**, and **Ant Design v
 | [Ant Design v6](https://ant.design/) | Comprehensive React UI component library |
 | [ProLayout](https://procomponents.ant.design/en-US/components/layout) | Out-of-the-box layout solution for dashboards |
 | [ahooks](https://ahooks.js.org/) | High-quality React hooks library |
+| [Zustand](https://zustand.docs.pmnd.rs/) | Minimal state management (used for the session store) |
 | [LESS](https://lesscss.org/) | CSS preprocessor for advanced styling |
+| [Biome](https://biomejs.dev/) | Linter |
 
 ## Why Ant Design?
 
@@ -27,7 +29,7 @@ Ant Design provides:
 
 ### Prerequisites
 
-- Node.js 18+ or Bun 1.0+
+- Node.js 20+ or Bun 1.0+ (CI builds on Node 22)
 - Package manager: npm, yarn, pnpm, or bun
 
 ### Installation
@@ -62,15 +64,17 @@ src/
 ├── assets/          # Static assets (images, SVGs)
 ├── components/      # Reusable React components
 ├── defaults.ts      # App constants and defaults
+├── global.less      # Global styles (entry point for the LESS files below)
 ├── hooks/           # Custom React hooks
 ├── layouts/         # Page layouts (ProLayout wrapper)
 ├── pages/           # Route pages (file-based routing)
 ├── sidebarMenu.tsx  # Sidebar navigation config
+├── utils/           # Shared helpers
 └── theme/           # Theming configuration
     ├── dutchyTheme.ts   # Ant Design theme tokens
+    ├── variables.less   # LESS design tokens
     ├── antd.less        # Component style overrides
-    ├── utils.less       # Utility classes
-    └── variables.less   # LESS variables
+    └── utils.less       # Utility classes
 ```
 
 ## Theming
@@ -146,13 +150,24 @@ export const dutchyColors = {
 
 ### LESS Variables
 
-Global LESS variables are defined in `src/theme/variables.less` and can be used in any `.less` file:
+Design tokens live in `src/theme/variables.less`:
 
 ```less
 @color-primary: #7c3aed;
 @color-foreground: #0a0a0a;
 @color-background: #ffffff;
 @font-display: 'Space Grotesk', sans-serif;
+```
+
+LESS compiles each entry point on its own, so a stylesheet only sees the variables it has imported. Import the
+tokens at the top of any page-level `.less` file before using them:
+
+```less
+@import url('../theme/variables.less');
+
+.my-panel {
+  border-left: 4px solid @color-primary;
+}
 ```
 
 ## Umi.js Best Practices
@@ -163,11 +178,20 @@ Pages in `src/pages/` automatically become routes:
 
 ```
 src/pages/
-├── index.tsx        → /
-├── login/index.tsx  → /login
-├── users/index.tsx  → /users
-├── files/index.tsx  → /files
-└── 404.tsx          → 404 fallback
+├── index.tsx                → /
+├── login/index.tsx          → /login
+├── users/index.tsx          → /users
+├── files/index.tsx          → /files
+├── files/$fileId/index.tsx  → /files/:fileId   (a `$` prefix marks a dynamic segment)
+└── 404.tsx                  → 404 fallback
+```
+
+Read dynamic segments with `useParams()`. Note that anything passed through router state is absent when the
+page is opened by direct link, so guard it:
+
+```tsx
+const {fileId} = useParams();
+const {name} = (useLocation().state ?? {}) as {name?: string};
 ```
 
 ### Configuration
@@ -189,11 +213,13 @@ export default {
         APP_VERSION: '1.0.0',
     },
 
-    // API proxy (development)
+    // Dev-server proxy. The chat page connects to `/ws` on its own origin and
+    // this forwards it, so the target lives in one place.
     proxy: {
-        '/api': {
-            target: 'http://localhost:3000',
+        '/ws': {
+            target: 'wss://socketsbay.com/wss/v2/1/demo/',
             changeOrigin: true,
+            ws: true,
         }
     },
 };
@@ -241,6 +267,63 @@ import { endpoints } from '@/api';
 | `bun dev` | Start development server |
 | `bun build` | Build for production |
 | `bun preview` | Preview production build |
+| `bun run typecheck` | Type-check the project (`tsc --noEmit`) |
+| `bun run lint` | Lint with Biome |
+| `bun run lint:fix` | Apply Biome's safe fixes |
+| `bun run depupdates` | Bump every dependency to its latest version |
+
+> The bundler (mako) strips types without checking them, so `typecheck` is what actually catches type errors.
+> CI (`.github/workflows/ci.yml`) runs `lint`, `typecheck` and `build` on every push to `main` and every
+> pull request.
+
+## Linting
+
+[Biome](https://biomejs.dev/) is configured in `biome.jsonc`. Two deliberate choices are worth knowing about
+before you change them:
+
+**The formatter is off.** This codebase puts opening braces on their own line (Allman style) and Biome has no
+option to preserve that — turning the formatter on rewrites every block in the project to K&R. The linter is
+where the value is; layout stays with whoever wrote the file. The same reasoning applies to Biome's import
+sorting, which is off for the same reason and can be flipped on in the `assist` block if you disagree.
+
+**Folder exclusions take no trailing slash.** In `files.includes`, write `!src/.umi`, not `!src/.umi/` — the
+trailing-slash form silently matches nothing, so generated and vendored files get linted anyway. Confirm what
+is actually in scope with:
+
+```bash
+npx biome lint --reporter=summary   # ends with "Checked N files"
+```
+
+The `define` globals from `.umirc.ts` (`APP_NAME`, `APP_VERSION`, …) are declared in the `javascript.globals`
+list. Add to it when you add a new one, or Biome will report it as undefined.
+
+## Dependencies
+
+### Ant Design v6 and pro-components
+
+`@ant-design/pro-layout` still declares `antd@^4 || ^5` as its peer dependency, so a plain `npm install`
+against antd 6 fails with `ERESOLVE`. `package.json` carries `overrides` that point the pro-components
+packages at the root `antd` and `@ant-design/icons`:
+
+```json
+"overrides": {
+  "@ant-design/pro-layout": {
+    "antd": "$antd",
+    "@ant-design/icons": "$@ant-design/icons"
+  }
+}
+```
+
+Besides fixing the install, this collapses a duplicate `@ant-design/icons` v5 tree that pro-components would
+otherwise pull in — worth roughly 370 kB off the vendors chunk.
+
+If you add another pro-component (`pro-card`, `pro-form`, `pro-table`, …), give it the same override entry, or
+the install will break again. Where a plain antd component will do, prefer it.
+
+### Lockfiles
+
+Lockfiles are not committed, so every install resolves fresh within the declared ranges. Renovate raises the
+bumps and auto-merges patch and minor updates once CI is green; majors are left for review.
 
 ## Authentication
 
@@ -248,9 +331,13 @@ The app uses a simple session-based auth flow:
 
 1. User submits credentials to `/api-local/auth/login`
 2. Server returns `{ result: { session: { token, user } } }`
-3. Session is stored in `localStorage`
+3. The inner `session` object is stored in `localStorage` under `session-context`
 4. `useSession` hook provides session state and `login`/`logout` methods
 5. Protected routes redirect to `/login` when no session exists
+
+The session is always the flat `{ token, user }` object — in the store, in `localStorage`, and in the
+`INITIAL_SESSION` define. `api.ts` reads the token from there to set the `Authorization` header, and drops the
+session on a 401/403 from any endpoint other than login.
 
 ### Session Hook
 
@@ -264,8 +351,17 @@ const MyComponent = () => {
         return <div>Not logged in</div>;
     }
 
-    return <div>Welcome, {session.user.email}</div>;
+    return <div>Welcome, {session.user?.email}</div>;
 };
+```
+
+Pages rendered inside the layout also receive the session through the router outlet:
+
+```tsx
+import { useOutletContext } from 'umi';
+import type { SessionContext } from '@/defaults';
+
+const { session } = useOutletContext<SessionContext>();
 ```
 
 ## Customization Tips
@@ -309,6 +405,31 @@ const MyComponent = () => {
        'GET /api-local/settings': { result: { theme: 'dark' } }
    };
    ```
+
+## Deployment
+
+The project is set up for [Netlify](https://www.netlify.com/) via `netlify.toml`:
+
+```bash
+bun build       # writes to ./dist
+bun run deploy  # netlify deploy --prod
+```
+
+Two redirect rules matter, and their order matters too — Netlify applies the first rule that matches, reading
+top to bottom:
+
+1. `/api/*` → `/.netlify/functions/:splat` — routes API calls to the serverless functions in `functions/`.
+2. `/*` → `/index.html` (200) — the SPA fallback, so deep links like `/files/abc` reach the router instead of
+   returning a 404.
+
+Keep the catch-all last. Above the API rule it matches `/api/...` first and answers function calls with
+`index.html`.
+
+`functions/users.js` is a worked example of one such function. Note that anything a function `require`s at
+runtime belongs in `dependencies`, not `devDependencies`.
+
+The `mock/` directory is a separate mechanism: Umi serves it from the dev server only, and it never ships in
+a build.
 
 ## License
 

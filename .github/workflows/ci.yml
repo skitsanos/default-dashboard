@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  # Lets you run CI from the Actions tab on any branch, which is also how you get the
+  # check to show up in the ruleset's "Add checks" picker before a PR exists.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # This name is the required-status-check contract in the branch ruleset. Renaming it silently
+    # breaks the rule - GitHub waits forever for a check that never reports and PRs stop merging.
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Lint
+        run: npm run lint
+
+      # mako does not type-check, so this is the only thing standing between a type error and production.
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build

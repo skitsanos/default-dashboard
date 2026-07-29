@@ -1,5 +1,4 @@
 import ContentArea from '@/components/ContentArea';
-import useSession from '@/hooks/useSession';
 import {
     Avatar,
     Button,
@@ -24,28 +23,42 @@ import {
 } from '@ant-design/icons';
 import {useState} from 'react';
 import {useOutletContext} from 'umi';
+import type {SessionContext} from '@/defaults';
+import '@/pages/profile/profile.less';
+
+interface ProfileFormValues
+{
+    email: string;
+    displayName?: string;
+}
+
+const defaultUser = {
+    email: 'user@example.com',
+    _key: '000000',
+    createdOn: 0,
+    lastLogin: 0,
+    // Must stay undefined rather than '' - an empty `src` makes the browser re-request the page.
+    gravatar: undefined as string | undefined
+};
 
 const ProfilePage = () =>
 {
-    const {session} = useOutletContext<{ session: any }>();
+    const {session} = useOutletContext<SessionContext>();
     const [isEditing, setIsEditing] = useState(false);
     const [form] = Form.useForm();
 
-    const defaultUser = {
-        email: 'user@example.com',
-        _key: '000000',
-        createdOn: Date.now(),
-        lastLogin: Date.now()
-    };
-
     const user = {
         ...defaultUser,
-        ...session?.session?.user
+        ...session?.user
     };
 
-    const formatDate = (timestamp: number) =>
+    const formatDate = (timestamp?: number) =>
     {
-        if (!timestamp) return 'N/A';
+        if (!timestamp)
+        {
+            return 'N/A';
+        }
+
         return new Date(timestamp).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
@@ -59,9 +72,9 @@ const ProfilePage = () =>
         return email.substring(0, 2).toUpperCase();
     };
 
-    const handleSave = (values: any) =>
+    // Demo only - a real implementation would PUT `values` to the API before reporting success.
+    const handleSave = (_values: ProfileFormValues) =>
     {
-        console.log('Profile updated:', values);
         message.success('Profile updated successfully');
         setIsEditing(false);
     };
@@ -148,7 +161,7 @@ const ProfilePage = () =>
                 <Col xs={24} lg={16}>
                     <Card title="Account Information">
                         {!isEditing ? (
-                            <Descriptions column={1} labelStyle={{fontWeight: 700}}>
+                            <Descriptions column={1} styles={{label: {fontWeight: 700}}}>
                                 <Descriptions.Item label="Email Address">
                                     <Space>
                                         <MailOutlined/>
@@ -225,105 +238,6 @@ const ProfilePage = () =>
                 </Col>
             </Row>
 
-            <style>{`
-                .profile-header {
-                    display: flex;
-                    align-items: center;
-                    gap: 24px;
-                    flex-wrap: wrap;
-                }
-
-                .profile-avatar {
-                    background-color: #7c3aed;
-                    font-family: 'Space Grotesk', sans-serif;
-                    font-weight: 700;
-                }
-
-                .profile-info {
-                    flex: 1;
-                    min-width: 200px;
-                }
-
-                .profile-name {
-                    font-family: 'Space Grotesk', sans-serif;
-                    font-size: 1.5rem;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                    letter-spacing: -0.025em;
-                    margin: 0 0 8px 0;
-                }
-
-                .profile-id {
-                    color: #737373;
-                    margin: 0;
-                    font-size: 0.875rem;
-                }
-
-                .profile-id .label {
-                    margin-right: 8px;
-                }
-
-                .profile-id code {
-                    font-family: 'JetBrains Mono', monospace;
-                    background-color: #f5f5f5;
-                    padding: 2px 8px;
-                }
-
-                .profile-actions {
-                    margin-left: auto;
-                }
-
-                .security-section {
-                    padding: 8px 0;
-                }
-
-                .security-item {
-                    display: flex;
-                    align-items: center;
-                    gap: 16px;
-                }
-
-                .security-icon {
-                    width: 48px;
-                    height: 48px;
-                    background-color: #f5f5f5;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 1.25rem;
-                    color: #737373;
-                }
-
-                .security-info h4 {
-                    margin: 0;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                    font-size: 0.875rem;
-                    letter-spacing: 0.025em;
-                }
-
-                .security-info p {
-                    margin: 4px 0 0 0;
-                    color: #737373;
-                    font-size: 0.75rem;
-                }
-
-                @media (max-width: 768px) {
-                    .profile-header {
-                        flex-direction: column;
-                        text-align: center;
-                    }
-
-                    .profile-actions {
-                        margin-left: 0;
-                        width: 100%;
-                    }
-
-                    .profile-actions button {
-                        width: 100%;
-                    }
-                }
-            `}</style>
         </ContentArea>
     );
 };

@@ -1,7 +1,9 @@
-import request, {RequestOptionsInit} from 'umi-request';
-import {SESSION_STORAGE_KEY} from '@/hooks/useSession';
+import request, {type RequestOptionsInit} from 'umi-request';
+import {readStoredSession, SESSION_STORAGE_KEY} from '@/hooks/useSession';
 
 const url = '/api-local';
+
+const REQUEST_TIMEOUT = 60000;
 
 export const endpoints = {
     login: `${url}/auth/login`,
@@ -9,57 +11,38 @@ export const endpoints = {
     users: `${url}/users`
 };
 
-const authorizationHeader = () =>
+const authorizationHeader = (): Record<string, string> =>
 {
-    const raw = localStorage.getItem(SESSION_STORAGE_KEY);
-    if (!raw || raw.length === 0)
-    {
-        return {};
-    }
+    const token = readStoredSession()?.token;
 
-    let rawParsed = {};
-    try
-    {
-        rawParsed = JSON.parse(raw);
-    }
-    catch (e)
-    {
-        //
-    }
-
-    const {session} = rawParsed as Record<string, any>;
-
-    const {token} = session as Record<string, any>;
-
-    return token ? {'Authorization': `Bearer ${token}`} : {};
+    return token ? {Authorization: `Bearer ${token}`} : {};
 };
 
 request.interceptors.request.use(
     (requestUrl, options) =>
-    {
-        options.headers = {
-            ...options.headers,
-            ...authorizationHeader()
-        };
-
-        return {
-            url: requestUrl,
-            options: {
-                ...options,
-                timeout: 60000
+    ({
+        url: requestUrl,
+        options: {
+            ...options,
+            timeout: REQUEST_TIMEOUT,
+            headers: {
+                ...(options.headers as Record<string, string>),
+                ...authorizationHeader()
             }
-        };
-    },
+        }
+    }),
     {global: true}
 );
 
 request.interceptors.response.use(response =>
 {
-    //const data = await response.clone().json();
-    //skip 403s from login service itself
-    if ((response.status === 403 || response.status === 401) && !response.url.endsWith(endpoints.login))
+    // The login service answers 401 on bad credentials; that is for the login page to handle, not a dead session.
+    const isLoginRequest = response.url.endsWith(endpoints.login);
+    const isRejected = response.status === 401 || response.status === 403;
+
+    if (isRejected && !isLoginRequest && location.pathname !== '/logout')
     {
-        localStorage.clear();
+        localStorage.removeItem(SESSION_STORAGE_KEY);
         location.href = '/logout';
     }
 

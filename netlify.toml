@@ -3,13 +3,16 @@ base = "."
 publish = "./dist"
 functions = "./functions"
 
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
-
+# Netlify applies the first matching rule, top to bottom, so the API rule has to come before the SPA
+# catch-all below - otherwise /* swallows /api/* and every function call is answered with index.html.
 [[redirects]]
 from = "/api/*"
 to = "/.netlify/functions/:splat"
 status = 200
 force = true
+
+# SPA fallback: deep links reach the router instead of returning a 404.
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200

@@ -1,5 +1,5 @@
-import {AvatarProps, BreadcrumbProps} from 'antd';
-import {FC, ReactNode} from 'react';
+import type {AvatarProps, BreadcrumbProps} from 'antd';
+import type {FC, ReactNode} from 'react';
 import {PageContainer} from '@ant-design/pro-layout';
 
 export interface ContentAreaProps
@@ -12,7 +12,7 @@ export interface ContentAreaProps
     content?: ReactNode;
     avatar?: AvatarProps;
     extra?: ReactNode;
-    onBack?: () => {};
+    onBack?: () => void;
 }
 
 const ContentArea: FC<ContentAreaProps> = ({
@@ -40,10 +40,7 @@ const ContentArea: FC<ContentAreaProps> = ({
                           header={{
                               breadcrumb
                           }}
-                          content={<>
-                              {content && <div className={'mt'}>{content}</div>}
-                          </>
-                          }>
+                          content={content && <div className={'mt'}>{content}</div>}>
         {children}
     </PageContainer>;
 };

@@ -1,40 +1,45 @@
 import {apiGet} from '@/api';
 
-const getTableData = async (url: string, {
-    current,
-    pageSize,
-    query = ''
-}) =>
+export interface TableRequest
 {
-    const skip = current === 1 ? 0 : current * pageSize - pageSize;
+    current?: number;
+    pageSize?: number;
+    query?: string;
+}
 
-    const q = query !== '' ? `${query}` : '';
+export interface TableData<T>
+{
+    total: number;
+    list: T[];
+}
 
-    try
-    {
-        const apiCallResult = await apiGet(`${url}?skip=${skip}&pageSize=${pageSize}&q=${q}`);
-        const {
-            total,
-            data
-        } = apiCallResult as Record<string, any>;
+/**
+ * Adapts the `{data, total}` payload served by the mock/Netlify endpoints to the `{list, total}` shape
+ * ProTable-style components expect.
+ */
+const getTableData = async <T = unknown>(url: string, {
+    current = 1,
+    pageSize = 10,
+    query = ''
+}: TableRequest): Promise<TableData<T>> =>
+{
+    const skip = Math.max(0, current - 1) * pageSize;
 
-        if (apiCallResult)
-        {
-            return ({
-                total,
-                list: data
-            });
-        }
+    const params = new URLSearchParams({
+        skip: String(skip),
+        pageSize: String(pageSize),
+        q: query
+    });
 
-        return {
-            total: 0,
-            list: []
-        };
-    }
-    catch (e)
-    {
-        return Promise.reject(e);
-    }
+    const {
+        total = 0,
+        data = []
+    } = (await apiGet(`${url}?${params}`)) as {total?: number; data?: T[]};
+
+    return {
+        total,
+        list: data
+    };
 };
 
 export default getTableData;

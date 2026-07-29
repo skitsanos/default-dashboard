@@ -9,7 +9,7 @@
  * - Accent borders for emphasis (4px borders)
  * - Grid-forward layouts with visible rhythm
  */
-import {ThemeConfig} from 'antd/es/config-provider/context';
+import type {ThemeConfig} from 'antd/es/config-provider/context';
 import {theme} from 'antd';
 
 // ============================================
@@ -317,13 +317,8 @@ const dutchyTheme: ThemeConfig = {
             dotActiveBorderColor: dutchyColors.primary,
         },
 
-        // DatePicker
+        // DatePicker (TimePicker shares these tokens)
         DatePicker: {
-            borderRadius: 0,
-        },
-
-        // TimePicker
-        TimePicker: {
             borderRadius: 0,
         },
 

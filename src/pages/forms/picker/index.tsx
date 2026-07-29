@@ -1,29 +1,35 @@
-//import DatePicker from '@/components/DatePicker';
+import ContentArea from '@/components/ContentArea';
 import EmbeddedForm from '@/pages/forms/picker/EmbeddedForm';
-import {Button, DatePicker, Divider, Form, Space} from 'antd';
-
+import {Button, DatePicker, Descriptions, Divider, Form, Space} from 'antd';
+import type {Dayjs} from 'dayjs';
 import dayjs from 'dayjs';
+import {useState} from 'react';
 
 const DATE_FORMAT = 'YYYY-MM-DD';
 
-const page = () =>
+interface PickerValues
 {
-    const [form] = Form.useForm();
+    createdOn?: Dayjs;
+}
 
-    const [embeddedForm] = Form.useForm();
+const Page = () =>
+{
+    const [form] = Form.useForm<PickerValues>();
 
-    const onFinish = values =>
-    {
-        console.log(values.createdOn);
-    };
+    const [embeddedForm] = Form.useForm<PickerValues>();
 
-    return <>
-        <h2>Form</h2>
+    const [submitted, setSubmitted] = useState<Record<string, string>>({});
+
+    const record = (label: string) => (values: PickerValues) => setSubmitted(current => ({
+        ...current,
+        [label]: values.createdOn?.format(DATE_FORMAT) ?? '(empty)'
+    }));
+
+    return <ContentArea title={'Date picker'}
+                        subTitle={'A standalone form and an embedded one sharing the same date format'}>
         <Form form={form}
-              initialValues={{
-                  createdOn: dayjs()
-              }}
-              onFinish={onFinish}>
+              initialValues={{createdOn: dayjs()}}
+              onFinish={record('Form')}>
             <Form.Item name={'createdOn'}>
                 <DatePicker format={DATE_FORMAT}/>
             </Form.Item>
@@ -32,28 +38,27 @@ const page = () =>
         <Divider/>
 
         <EmbeddedForm form={embeddedForm}
-                      initialValues={{
-                          createdOn: dayjs().add(22, 'd')
-                      }}
-                      onFinish={values =>
-                      {
-                          console.log('embedded:', values.createdOn);
-                      }
-                      }/>
+                      initialValues={{createdOn: dayjs().add(22, 'd')}}
+                      onFinish={values => record('Embedded form')(values as PickerValues)}/>
 
         <Divider/>
 
         <Space>
-            <Button onClick={() =>
-            {
-                form.submit();
-            }
-            }>Save</Button>
+            <Button onClick={() => form.submit()}>Save</Button>
 
             <Button onClick={() => embeddedForm.submit()}>Save embedded form</Button>
         </Space>
-    </>;
+
+        {Object.keys(submitted).length > 0 && <Descriptions className={'mt'}
+                                                            column={1}
+                                                            bordered={true}
+                                                            size={'small'}>
+            {Object.entries(submitted).map(([label, value]) => <Descriptions.Item key={label}
+                                                                                  label={label}>
+                {value}
+            </Descriptions.Item>)}
+        </Descriptions>}
+    </ContentArea>;
 };
 
-
-export default page;
+export default Page;

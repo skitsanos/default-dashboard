@@ -7,12 +7,7 @@ export default () =>
 {
     const {logout} = useSession();
 
-    useEffect(() =>
-    {
-        localStorage.clear();
-
-        logout();
-    }, []);
+    useEffect(() => logout(), [logout]);
 
     return <ContentArea title={'Logout'}>
         <Skeleton active={true}/>

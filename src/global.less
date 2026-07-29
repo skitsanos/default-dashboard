@@ -3,68 +3,7 @@
  * Global Styles
  */
 
-// ============================================
-// DUTCHY DESIGN TOKENS
-// ============================================
-
-// Typography - Dutchy Design System fonts
-@font-display: 'Space Grotesk', sans-serif;
-@font-body: 'Inter', sans-serif;
-@font-mono: 'JetBrains Mono', monospace;
-
-// Font weights
-@font-weight-medium: 500;
-@font-weight-semibold: 600;
-@font-weight-bold: 700;
-
-// Letter spacing
-@tracking-tighter: -0.05em;
-@tracking-tight: -0.025em;
-@tracking-normal: 0;
-@tracking-wide: 0.025em;
-@tracking-wider: 0.05em;
-@tracking-widest: 0.1em;
-
-// Dutchy Purple Theme Colors
-@color-primary: #7c3aed;
-@color-primary-hover: #6d28d9;
-@color-primary-light: #ede9fe;
-@color-primary-foreground: #ffffff;
-
-// Neutral Palette
-@color-background: #ffffff;
-@color-foreground: #0a0a0a;
-@color-muted: #f5f5f5;
-@color-muted-foreground: #737373;
-@color-border: #e5e5e5;
-
-// Semantic Colors
-@color-destructive: #dc2626;
-@color-success: #16a34a;
-@color-warning: #f59e0b;
-
-// Spacing (4px base unit)
-@spacing-1: 0.25rem;   // 4px
-@spacing-2: 0.5rem;    // 8px
-@spacing-3: 0.75rem;   // 12px
-@spacing-4: 1rem;      // 16px
-@spacing-6: 1.5rem;    // 24px
-@spacing-8: 2rem;      // 32px
-@spacing-10: 2.5rem;   // 40px
-@spacing-12: 3rem;     // 48px
-@spacing-16: 4rem;     // 64px
-@spacing-20: 5rem;     // 80px
-
-// Legacy variable mapping for backwards compatibility
-@margin-size: @spacing-4;
-
-// Borders - Dutchy signature: no rounded corners
-@border-radius: 0;
-
-// Shadows (minimal in Dutchy)
-@shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-@shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-
+@import url('theme/variables.less');
 @import url('theme/utils.less');
 @import url('theme/antd.less');
 

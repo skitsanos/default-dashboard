@@ -1,0 +1,53 @@
+/**
+ * Dashboard - Activity feed
+ */
+
+@import url('../theme/variables.less');
+
+.activity-feed {
+  display: flex;
+  flex-direction: column;
+  gap: @spacing-5;
+
+  .activity-item {
+    display: flex;
+    gap: @spacing-3;
+    align-items: flex-start;
+  }
+
+  .activity-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .activity-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .activity-action {
+    margin: 0;
+    font-weight: @font-weight-semibold;
+    font-size: 0.875rem;
+  }
+
+  .activity-target {
+    margin: 2px 0 0 0;
+    font-family: @font-mono;
+    font-size: 0.75rem;
+    color: @color-muted-foreground;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .activity-time {
+    margin: @spacing-1 0 0 0;
+    font-size: 0.75rem;
+    color: @color-muted-foreground;
+    text-transform: uppercase;
+    letter-spacing: @tracking-wider;
+  }
+}
